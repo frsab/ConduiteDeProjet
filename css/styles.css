@@ -13,6 +13,25 @@ body{
 	border-bottom: 3px solid #999;
 	border-radius: 5px;
 }
+#menu{
+	width: 990px;
+	margin: 0px auto;
+	text-align: center;
+	border-bottom: 1px solid #CCC;
+}
+
+#menu a{
+	text-decoration: :none;
+	display: inline-block;
+	color: #666;
+	padding: 20px;
+	background-color: #eee;
+
+}
+#menu a:hover{
+	color: #000;
+	background-color: $eee;
+}
 #error{
 	width: 1000px;
 	margin:0px auto;
