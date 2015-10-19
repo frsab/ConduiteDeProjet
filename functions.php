@@ -6,5 +6,22 @@
 			}
 			else return false;
 		}
+		function email_exists($email_project,$con){
+			$result =mysqli_query($con,"SELECT id FROM projects WHERE emailproject='$email_project'");
+			if(mysqli_num_rows($result) == 1){
+				return true;
+			}
+			else return false;
+
+		}
+		function logged_in(){
+			if(isset($_SESSSION['nameproject'])){
+				return true;
+			}	
+			else{
+				return false;
+
+			}
+		}
 
  ?>

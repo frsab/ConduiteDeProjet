@@ -7,17 +7,39 @@
 	if (isset($_POST['submit'])) {
 		$nameproject=mysql_real_escape_string($_POST['nameproject']);
 		
-		$passwordproject=$_POST['password'];
+		$passwordproject=mysql_real_escape_string($_POST['password']);
 		if(name_project_exists($nameproject,$con)){
-			$error="Project name Exists";
-		}
+			$result=mysqli_query($con,"SELECT password FROM projects WHERE nameproject='$nameproject'");
+			$retrievepassword=mysqli_fetch_assoc($result);
+
+			if(md5($passwordproject) !== $retrievepassword['password']){
+				$error ="Password is incorrect";
+			}
+			else{
+				
+				$_SESSSION['nameproject'] = $nameproject;
+				if(isset($_SESSSION['nameproject'])){
+				header("location: profil.php");
+					}
+				
+				else{
+						echo "You are not logged in ";
+						}
+				}	
+			}
+			
+			
+
+
+
+
+		
 		else{
 			$error=" Project name does not exists";
 		}
 		
-
-	}
-
+	
+}
 ?>
 
 <!DOCTYPE html>

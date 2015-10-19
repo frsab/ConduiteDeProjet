@@ -2,65 +2,44 @@
 	
 	include("connect.php");
 	include("functions.php");
-
 	$error="";
 	if (isset($_POST['submit'])) {
 		$nameproject=mysql_real_escape_string($_POST['nameproject']);
 		$emailproject=mysql_real_escape_string($_POST['emailproject']);
 		$passwordproject=$_POST['password'];
 		$passwordprojectconfirm=$_POST['passwordConfirm'];
-		$image=$_FILES['image']['name'];
-		$tmp_image=$_FILES['image']['tmp_name'];
-		$image_size=$_FILES['image']['size'];
-
-		$date=date("F,d ");
-
+		
+		$date=date("F,d Y");
 		if(strlen($nameproject)<3){
 			$error ="Name of Project is too short";
 		}
-		else if(strlen($passwordproject)<8){
+		else if(strlen($passwordproject)<6){
 			$error="Password must be greater than 8 characters";
 		}
 		else if($passwordproject !== $passwordprojectconfirm){
 			$error="Password does not match";
 		}
-		else if($image == ""){
-			$error ="Please upload your image";
+		
+		else if(name_project_exists($nameproject,$con)){
+			$error="Project name Exists";
 		}
-		else if($image_size>1048576){
-			$error ="Image size must be less than 1 mb ";
+		else if(email_exists($emailproject,$con)){
+			$error="email Exists";
+		}
 
-		}
+		
+
 		else{
-
 			$passwordproject = md5($passwordproject);
-
-			$imageExt=explode(".",$image );
-			$imageExtension=$imageExt[1];
-
-			if($imageExtension == 'PNG' || $imageExtension == 'png' || $imageExtension == 'JPG' || $imageExtension == 'jpg'){
-
-
-			$image=rand(0,100000).rand(0,10000).rand(0,100000).time().".".$imageExtension;
-			$insertQuery="INSERT INTO projects(nameproject,emailproject,password,image,date)  
-			VALUES('$nameproject','$emailproject','$passwordproject','$image','$date')";
+			
+			$insertQuery="INSERT INTO projects(nameproject,emailproject,password,date)  
+			VALUES('$nameproject','$emailproject','$passwordproject','$date')";
 			if(mysqli_query($con,$insertQuery)){
-				if(move_uploaded_file($tmp_image, "images/$image")){
+				
 					$error="You are succefully registred";
 				}
-				else{
-					$error="Image is not uploaded";
-				}
-			}
-			}
-			else{
-				$error="File must be an image ";
-			}
 		}
-
-
 	}
-
 ?>
 
 <!DOCTYPE html>
@@ -87,8 +66,7 @@
 				<input type="password" name="password"/></br></br>
 				<label >Re-enter Password</label></br>
 				<input type="password" name="passwordConfirm"/></br></br>
-				<label >Image</label></br>
-				<input type="file" name="image"/></br></br>
+				
 				<input type="submit" name="submit"/>
 
 
