@@ -15,7 +15,8 @@
 
 		}
 		function logged_in(){
-			if(isset($_SESSSION['nameproject'])){
+			
+			if(isset($_SESSION['nameproject'])){
 				return true;
 			}	
 			else{

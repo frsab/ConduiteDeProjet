@@ -2,7 +2,10 @@
 	
 	include("connect.php");
 	include("functions.php");
-
+	if(logged_in()){
+		header("location:profil.php");
+		exit();
+	}
 	$error="";
 	if (isset($_POST['submit'])) {
 		$nameproject=mysql_real_escape_string($_POST['nameproject']);
@@ -16,16 +19,10 @@
 				$error ="Password is incorrect";
 			}
 			else{
-				
-				$_SESSSION['nameproject'] = $nameproject;
-				if(isset($_SESSSION['nameproject'])){
-				header("location: profil.php");
-					}
-				
-				else{
-						echo "You are not logged in ";
-						}
-				}	
+				$_SESSION['nameproject'] =$nameproject;
+				header("location:profil.php");
+			}
+			
 			}
 			
 			

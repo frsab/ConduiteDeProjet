@@ -1,7 +1,13 @@
 <?php 
 	
 	include("connect.php");
+
+
 	include("functions.php");
+		if(logged_in()){
+		header("location:profil.php");
+		exit();
+	}
 	$error="";
 	if (isset($_POST['submit'])) {
 		$nameproject=mysql_real_escape_string($_POST['nameproject']);
