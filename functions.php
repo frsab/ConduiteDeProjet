@@ -16,7 +16,7 @@
 		}
 		function logged_in(){
 			
-			if(isset($_SESSION['nameproject'])){
+			if(isset($_SESSION['nameproject']) || isset($_COOKIE['nameproject'])){
 				return true;
 			}	
 			else{

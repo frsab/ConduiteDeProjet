@@ -11,7 +11,7 @@
 		$nameproject=mysql_real_escape_string($_POST['nameproject']);
 		
 		$passwordproject=mysql_real_escape_string($_POST['password']);
-		$checkBox=isset(($_POST['keep']));
+		$checkBox=isset($_POST['keep']);
 		if(name_project_exists($nameproject,$con)){
 			$result=mysqli_query($con,"SELECT password FROM projects WHERE nameproject='$nameproject'");
 			$retrievepassword=mysqli_fetch_assoc($result);
