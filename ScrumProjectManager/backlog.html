@@ -3,7 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scrum Manager Project</title>
+    <title>Scrum Project Manager</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -72,12 +72,89 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
+             
+
                 <div class="row">
                     <div class="col-md-12">
                      <h2>Backlog</h2>   
                         <h5>You must begin by your backlog project. </h5>
+                    
+                        <a href="helpBacklog.html" class="btn btn-info">How to make a backlog</a>
+
                     </div>
-                </div>         
+                </div> 
+                <!--   Kitchen Sink -->
+                 <div style="margin-top: 10px;">
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">
+                            User stories list
+                        </div>
+                        <div class="panel-body">
+                          
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>US Description</th>
+                                            <th>Priority</th>
+                                            <th>Cost</th>
+                                            <th>Status</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>test d'une us très longue pour voir comment s'adapte le tableau</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>To Do</td>
+                                            <td>
+                                              <a href="updateUs.html" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
+                                            </td>
+                                            <td>
+                                              <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>US 3</td>
+                                            <td>2</td>
+                                            <td>4</td>
+                                            <td>To Do</td>
+                                            <td>
+                                              <a href="updateUs.html" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
+                                            </td>
+                                            <td><button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></td>                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>US 3</td>
+                                            <td>3</td>
+                                            <td>6</td>
+                                            <td>To Do</td>
+                                            <td>
+                                              <a href="updateUs.html" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
+                                            </td>
+                                            <td><button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                          
+                        </div>
+                    </div>
+                  </div>
+                     <!-- End  Kitchen Sink -->
+                <div class="row">
+                  
+                        <div class="col-md-12">
+                          <a href="addUs.html" class="btn btn-success">Add an user story</a>
+                        </div>
+                  
+                </div> 
+              
              </div>
         <!-- /. PAGE INNER  -->
         </div>

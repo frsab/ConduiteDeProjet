@@ -3,7 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scrum Manager Project</title>
+    <title>Scrum Project Manager</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -92,7 +92,7 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                   <!--   Kitchen Sink -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Project List
+                            Projects List
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -102,7 +102,7 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                                             <th>#</th>
                                             <th>Project Name</th>
                                             <th>Number of Collaborators</th>
-                                            <th>Project State</th>
+                                            <th>Project Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -111,18 +111,36 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                                             <td>Cdp</td>
                                             <td>4</td>
                                             <td>On going</td>
+                                            <td>
+                                              <a href="updateProject.html" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
+                                            </td>
+                                            <td>
+                                              <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>PdP</td>
                                             <td>4</td>
                                             <td>Done</td>
+                                            <td>
+                                              <a href="updateProject.html" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
+                                            </td>
+                                            <td>
+                                              <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
                                             <td>Ped</td>
                                             <td>3</td>
                                             <td>To do</td>
+                                            <td>
+                                              <a href="updateProject.html" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
+                                            </td>
+                                            <td>
+                                              <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -130,7 +148,11 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                         </div>
                     </div>
                      <!-- End  Kitchen Sink -->
-                
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="addProject.html" class="btn btn-success">Add a project</a>
+                    </div>
+                </div> 
                 
                 </div>
             </div>

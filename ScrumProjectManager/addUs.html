@@ -58,12 +58,11 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                     </li>
 
                     <li  >
-                        <a   href="backlog.html"><i class="fa fa-bars fa-3x"></i> Backlog</a>
+                        <a class="active-menu"  href="backlog.html"><i class="fa fa-bars fa-3x"></i> Backlog</a>
                     </li>
 
-
                     <li  >
-                        <a class="active-menu" href="planning.html"><i class="fa fa-edit fa-3x"></i> Planning</a>
+                        <a href="planning.html"><i class="fa fa-edit fa-3x"></i> Planning</a>
                     </li>   
                 </ul>
                
@@ -74,12 +73,48 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
-                    <div class="col-md-12">
-                     <h2>Planning</h2>   
-                        <h5>Now you have to make the planning of your project. </h5>
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Add an user story
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                              <div style="margin-top: 10px;">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                            <label>User story</label>
+                                            <input class="form-control" placeholder="Please enter your US" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Cost</label>
+                                            <input class="form-control" placeholder="Please enter the cost" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Priority</label>
+                                            <input class="form-control" placeholder="Please enter the priority" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Satus</label>
+                                            <input class="form-control" placeholder="Please enter the status (Default : ToDo)" />
+                                        </div>
+                                        <div class= "row">
+                                        <div class="col-md-6">
+                                            <a href="backlog.html" class="btn btn-danger">Cancel</a>
+                                            <a href="backlog.html" class="btn btn-success">Add</a>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
                     </div>
-                </div>         
-             </div>
+                </div>
+                </div>
+             
         <!-- /. PAGE INNER  -->
         </div>
     <!-- /. PAGE WRAPPER  -->
