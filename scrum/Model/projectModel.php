@@ -44,7 +44,8 @@ class Project extends Model {
                             ':IDUSER'=>$IDUSER,
                             ':NAME'=>$NAME,
                             ':NBCOLABORATORS'=>$NBCOLABORATORS,
-                            ':DESCRIPTION'=>$DESCRIPTION
+                            ':DESCRIPTION'=>$DESCRIPTION,
+                            ':IDPROJECT'=>$IDPROJECT
 					       	);
 		if ($stmt->fetch() == false){
                 echo 'ERROR on update';
