@@ -65,6 +65,7 @@
           <div class="col-md-12">
            <h2>Planning</h2>   
            <h5>Now you have to make the planning of your project. </h5>
+           <a href="../view/helpplanning.php" class="btn btn-info">How to make a planning</a>
            <h3>COMING SOON!</h3>
          </div>
        </div>         
