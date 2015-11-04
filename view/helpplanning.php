@@ -155,7 +155,7 @@
 
 						English tutorial is growing, coming soon.. </br></br>
 
-
+						<a href="../view/planning.php" class="btn btn-success">Back</a>
 					</div>
 				</div>         
 			</div>

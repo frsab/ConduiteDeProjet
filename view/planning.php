@@ -53,6 +53,21 @@
           <li  >
             <a class="active-menu" href="../view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
           </li>   
+
+          <li>
+            <a href="#"><i class="fa fa-sitemap fa-3x" ></i> Sprints <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="../view/sprint.php">Sprint 1</a>
+              </li>
+              <li>
+                <a href="../view/sprint.php">Sprint 2</a>
+              </li>
+              <li>
+                <a href="../view/sprint.php">Sprint 3</a>
+              </li>
+            </ul>
+          </li> 
         </ul>
 
       </div>
@@ -66,17 +81,125 @@
            <h2>Planning</h2>   
            <h5>Now you have to make the planning of your project. </h5>
            <a href="../view/helpplanning.php" class="btn btn-info">How to make a planning</a>
-           <h3>COMING SOON!</h3>
-         </div>
-       </div>         
-     </div>
-     <!-- /. PAGE INNER  -->
-   </div>
-   <!-- /. PAGE WRAPPER  -->
- </div>   
- <!-- /. WRAPPER  -->
- <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
- <!-- JQUERY SCRIPTS -->
+            <!--   Kitchen Sink -->
+       <div style="margin-top: 10px;">
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+            User stories list
+          </div>
+          <div class="panel-body">
+
+            <div class="table-responsive"> 
+
+             
+              <table class="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Sprint resume</th>
+                    <th>Total difficulty</th>
+                    <th>Status</th>
+
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                      <td>1</td>
+                      <td>Sprint about blabla..</td>
+                      <td>12</td>
+                      <td>Done</td>
+                      <td>
+                        <fieldset disabled="disabled">
+                        <a href="../view/updatesprint.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                        </fieldset>
+                      </td>
+                      <td>
+                        <fieldset disabled="disabled">
+                        <button class="btn btn-success"><i class="fa "></i> Tasks</button>
+                        </fieldset>
+                      </td>
+                      <td>
+                        <fieldset disabled="disabled">
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                        </fieldset>
+                      </td>
+                      <td>
+                        <button class="btn btn-warning"><i class="fa "></i> Kanban</button>
+                      </td>                     
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sprint about blabla..</td>
+                      <td>10</td>
+                      <td>On going</td>
+                      
+                      
+                      <td>
+                          <fieldset disabled="disabled">
+                          <a href="../view/updateproject.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                          </fieldset>    
+                      </td>
+                      <td>
+                        <fieldset disabled="disabled">
+                        <button class="btn btn-success"><i class="fa "></i> Tasks</button>
+                        </fieldset>
+                      </td>
+                      <td>
+                        <fieldset disabled="disabled">
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                        </fieldset>
+                      </td>
+                      
+                      <td>
+                        <button class="btn btn-warning"><i class="fa "></i> Kanban</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Sprint about blabla..</td>
+                      <td>14</td>
+                      <td>To do</td>
+                      <td>
+                        <a href="../view/updateproject.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                      </td>
+                      <td>
+                        <button class="btn btn-success"><i class="fa "></i> Tasks</button>
+                      </td>
+                     <td>
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                      </td>
+                      <td>
+                        <button class="btn btn-warning"><i class="fa "></i> Kanban</button>
+                      </td>                     
+                    </tr>
+                </tbody>
+              </table>
+           
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- End  Kitchen Sink -->
+
+
+           <div class="row">
+            <div class="col-md-12">
+              <a href="../view/addsprint.php" class="btn btn-success">Add new sprint</a>
+            </div>
+          </div> 
+        </div>
+      </div>         
+    </div>
+    <!-- /. PAGE INNER  -->
+  </div>
+  <!-- /. PAGE WRAPPER  -->
+</div>   
+<!-- /. WRAPPER  -->
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<!-- JQUERY SCRIPTS -->
 <script src="../assets/js/jquery-1.10.2.js"></script>
 <!-- BOOTSTRAP SCRIPTS -->
 <script src="../assets/js/bootstrap.min.js"></script>
