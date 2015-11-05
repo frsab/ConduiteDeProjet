@@ -103,6 +103,7 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                                             <th>#</th>
                                             <th>Project Name</th>
                                             <th>Number of Collaborators</th>
+                                            <th>Status</th>
                                             <th>Description</th>
                                         </tr>
                                     </thead>
@@ -116,6 +117,7 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                                             <td><?php echo $project->IDPROJECT; ?></td>
                                             <td><?php echo $project->NAME; ?></td>
                                             <td><?php echo $project->NBCOLABORATORS; ?></td>
+                                            <td><?php echo $project->STATUS; ?></td>
                                             <td><?php echo $project->DESCRIPTION; ?></td>
                                             <td>
                                               <a href="/scrum/?p=updateviewProject&IDPROJECT=<?php echo $project->IDPROJECT; ?>" class= "btn btn-default">

@@ -19,23 +19,25 @@ class Project extends Model {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function insert($IDUSER, $NAME , $NBCOLABORATORS, $DESCRIPTION){
-	    $query = $this->db->prepare('INSERT INTO PROJECT (IDPROJECT, IDUSER, NAME, NBCOLABORATORS, DESCRIPTION) 
-                                                VALUES (NULL, :IDUSER, :NAME, :NBCOLABORATORS, :DESCRIPTION)');
+    function insert($IDUSER, $NAME , $NBCOLABORATORS, $STATUS, $DESCRIPTION){
+	    $query = $this->db->prepare('INSERT INTO PROJECT (IDPROJECT, IDUSER, NAME, NBCOLABORATORS, STATUS, DESCRIPTION) 
+                                                VALUES (NULL, :IDUSER, :NAME, :NBCOLABORATORS, :STATUS, :DESCRIPTION)');
         return $query->execute(array(
             "IDUSER"=>$IDUSER,
             "NAME"=>$NAME,
             "NBCOLABORATORS"=>$NBCOLABORATORS,
-			"DESCRIPTION"=>$DESCRIPTION, 
+            "STATUS"=>$STATUS,
+			"DESCRIPTION"=>$DESCRIPTION 
         ));
     }
 
-    function update($IDPROJECT, $IDUSER, $NAME , $NBCOLABORATORS, $DESCRIPTION){
+    function update($IDPROJECT, $IDUSER, $NAME , $NBCOLABORATORS, $STATUS, $DESCRIPTION){
 		$sqlUpdate = "UPDATE PROJECT
         					SET 
                                 IDUSER= :IDUSER,
                                 NAME= :NAME,
                                 NBCOLABORATORS= :NBCOLABORATORS,
+                                STATUS= :STATUS,
     							DESCRIPTION= :DESCRIPTION
     						WHERE 
     							IDPROJECT = :IDPROJECT";
@@ -45,6 +47,7 @@ class Project extends Model {
                             ':NAME'=>$NAME,
                             ':NBCOLABORATORS'=>$NBCOLABORATORS,
                             ':DESCRIPTION'=>$DESCRIPTION,
+                            ':STATUS'=>$STATUS,
                             ':IDPROJECT'=>$IDPROJECT
 					       	);
 		if ($stmt->fetch() == false){

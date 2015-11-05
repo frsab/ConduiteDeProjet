@@ -31,8 +31,9 @@ class ProjectControler extends Controler{
         //$IDUSER = $data["IDUSER"];
         $NAME = $data["projectName"];
         $NBCOLABORATORS= $data["nbColaborators"];
+        $STATUS= $data["status"];
         $DESCRIPTION = $data["description"];
-		echo $this->model->insert(1, $NAME, $NBCOLABORATORS, $DESCRIPTION);
+		echo $this->model->insert(1, $NAME, $NBCOLABORATORS,$STATUS, $DESCRIPTION);
         //ADD LOCATION ...
         header("Location: /scrum");
     }
@@ -42,8 +43,9 @@ class ProjectControler extends Controler{
         //$IDUSER =(int) $data["IDUSER"];
         $NAME = $data["projectName"];
         $NBCOLABORATORS= $data["nbColaborators"];
+        $STATUS= $data["status"];
         $DESCRIPTION = $data["description"];
-		echo $this->model->update($IDPROJECT, 1, $NAME, $NBCOLABORATORS, $DESCRIPTION);
+		echo $this->model->update($IDPROJECT, 1, $NAME, $NBCOLABORATORS,$STATUS, $DESCRIPTION);
         //ADD LOCATION ...
         header("Location: /scrum");
     }
