@@ -58,20 +58,20 @@ else{
           </li>
 
           <li  >
-            <a  class="active-menu"  href="../view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+            <a  class="active-menu"  href="/scrum/?p=showProjects"><i class="fa fa-list fa-3x"></i> Project List</a>
           </li>
+          <?php if($Project_s != null) { ?>
           <li>
             <a href="#"><i class="fa fa-sitemap fa-3x" ></i> Projects <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
-              <li>
-                <a href="view/backlog.php">Project 1</a>
-              </li>
-              <li>
-                <a href="view/backlog.php">Project 2</a>
-              </li>
-              
+              <?php foreach ($Project_s as $project) { ?>
+                <li>
+                  <a href="view/backlog.php"><?php echo $project->NAME; ?></a>
+                </li>
+              <?php } ?>
             </ul>
-          </li> 
+          </li>
+          <?php } ?> 
 
         </ul>
 
@@ -123,13 +123,13 @@ else{
                         <td><?php echo $project->STATUS; ?></td>
                         <td><?php echo $project->DESCRIPTION; ?></td>
                         <td>
-                          <a href="/scrum/?p=updateviewProject&IDPROJECT=<?php echo $project->IDPROJECT; ?>" class= "btn btn-default">
+                          <a href="/scrum/?p=updateviewProject&NAME=<?php echo $project->NAME; ?>" class= "btn btn-default">
                             <i class=" fa fa-refresh "></i> 
                             Update
                           </a>
                         </td>
                         <td>
-                          <a href="/scrum/?p=removeProject&IDPROJECT=<?php echo $project->IDPROJECT; ?>" class= "btn btn-danger">
+                          <a href="/scrum/?p=removeProject&NAME=<?php echo $project->NAME; ?>" class= "btn btn-danger">
                             <i class="fa fa-pencil"></i> 
                             Delete
                           </a>

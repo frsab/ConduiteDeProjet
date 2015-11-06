@@ -16,10 +16,10 @@ if(isset($_GET["p"]))
     switch ($_GET["p"]) {
     	case 'insertProject'   : $controller->insertProject($_POST); break;
         case 'updateProject'   : $controller->update($_POST); break;
-        case 'removeProject'   : $controller->removeProject($_GET["IDPROJECT"]); break;
+        case 'removeProject'   : $controller->removeProject($_GET["NAME"]); break;
         case 'newProject' 		: $controller->newProject(); break;
-        case 'updateviewProject'   : $controller->updateProject($_GET["IDPROJECT"]); break;
-        case 'showProjects'			: $controller->showAllProjects();
+        case 'updateviewProject'   : $controller->updateProject($_GET["NAME"]); break;
+        case 'showProjects'			: $controller->showAll();
         /*
         case 'insert'   : $controller->insert($_POST); break;
         case 'update'   : $controller->update($_POST); break;

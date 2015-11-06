@@ -68,10 +68,9 @@
                                 <div style="margin-top: 10px;">
                                     <div class="col-md-6">
                                         <form role="form" name="updateProject" method="POST" action="/scrum/?p=updateProject">
-                                            <input type="hidden" name="IDPROJECT" value="<?php echo $_GET["IDPROJECT"]; ?>"/>
                                             <div class="form-group">
                                                 <label>Project Name</label>
-                                                <input class="form-control" placeholder="Please enter your project Name" name="projectName" value="<?php echo htmlentities($Project->NAME); ?>" />
+                                                <input class="form-control" placeholder="Please enter your project Name" name="projectName" value="<?php echo $_GET["NAME"]; ?>" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Number of colaborators</label>

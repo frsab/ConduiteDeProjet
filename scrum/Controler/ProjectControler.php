@@ -15,14 +15,14 @@ class ProjectControler extends Controler{
         include "View/addProject.php";
     }
 
-    public function showAllProjects(){
+    public function showAll(){
         $Project_s = $this->model->selectAll();
         //voir avec antoine la location
         include "View/projectList.php";
     }
 
-    public function updateProject($IDProject){
-        $Project = $this->model->select($IDProject);
+    public function updateProject($NAME){
+        $Project = $this->model->select($NAME);
         //voir avec antoine la location
         include "View/updateProject.php";
     }
@@ -50,8 +50,8 @@ class ProjectControler extends Controler{
         header("Location: /scrum");
     }
 	
-    public function removeProject($IDProject){
-        $this->model->delete($IDProject);
+    public function removeProject($NAME){
+        $this->model->delete($NAME);
         //ADD LOCATION ...
         header("Location: /scrum");
     }
