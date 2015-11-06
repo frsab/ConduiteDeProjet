@@ -1,13 +1,12 @@
 <?php 
-//include("../controller/connect.php");
-//include("../controller/functions.php");
-if(/*logged_in()*/true){
+include("../controller/connect.php");
+include("../controller/functions.php");
+if(logged_in()){
 	header("location:../view/projectlist.php");
 	exit();
 }
 $error="";
 if (isset($_POST['submit'])) {
-	/*
 	$nameproject=$_POST['nameproject'];
 	$passwordproject=$_POST['password'];
 	$checkBox=isset($_POST['keep']);
@@ -23,15 +22,14 @@ if (isset($_POST['submit'])) {
 			if($checkBox =="on"){
 				setcookie("nameproject",$nameproject,time()+3600);
 			}
-		*/	
 			header("location:../view/projectlist.php");
-		//}
+		}
 
 	}		
 	else{
 		$error="This user name does not exists.";
 	}
-//}
+}
 ?>
 
 <!DOCTYPE html>
