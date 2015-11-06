@@ -15,7 +15,7 @@ class ProjectControler extends Controler{
         include "View/addProject.php";
     }
 
-    public function showAll(){
+    public function showAllProjects(){
         $Project_s = $this->model->selectAll();
         //voir avec antoine la location
         include "View/projectList.php";

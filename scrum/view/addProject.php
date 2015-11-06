@@ -84,7 +84,7 @@
                                             <div class= "row">
                                                 <div class="col-md-6">
                                                     <input type="submit" class="btn btn-success" name="register" value="Add"/>
-                                                    <a href="view/projectlist.php" class="btn btn-danger">Cancel</a>
+                                                    <a href="/scrum/?p=showProjects" class="btn btn-danger">Cancel</a>
                                                 </div>
                                             </div>
                                         </div>
