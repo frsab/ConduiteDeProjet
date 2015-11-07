@@ -123,13 +123,13 @@ else{
                         <td><?php echo $project->STATUS; ?></td>
                         <td><?php echo $project->DESCRIPTION; ?></td>
                         <td>
-                          <a href="/scrum/?p=updateviewProject&NAME=<?php echo $project->NAME; ?>" class= "btn btn-default">
+                          <a href="/scrum/?p=updateviewProject&IDPROJECT=<?php echo $project->IDPROJECT; ?>" class= "btn btn-default">
                             <i class=" fa fa-refresh "></i> 
                             Update
                           </a>
                         </td>
                         <td>
-                          <a href="/scrum/?p=removeProject&NAME=<?php echo $project->NAME; ?>" class= "btn btn-danger">
+                          <a href="/scrum/?p=removeProject&IDPROJECT=<?php echo $project->IDPROJECT; ?>" class= "btn btn-danger">
                             <i class="fa fa-pencil"></i> 
                             Delete
                           </a>

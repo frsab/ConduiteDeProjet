@@ -2,7 +2,7 @@
 include 'Model.php';
 class UserStory extends Model {
     function __construct() {
-        parent::__construct();
+        $this->db= Model::getInstance()->db;
     }
 	
     function select($IDUSERSTORY){

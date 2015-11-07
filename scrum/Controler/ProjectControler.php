@@ -21,8 +21,8 @@ class ProjectControler extends Controler{
         include "View/projectList.php";
     }
 
-    public function updateProject($NAME){
-        $Project = $this->model->select($NAME);
+    public function updateProject($PROJECTID){
+        $Project = $this->model->select($PROJECTID);
         //voir avec antoine la location
         include "View/updateProject.php";
     }
@@ -50,8 +50,8 @@ class ProjectControler extends Controler{
         header("Location: /scrum");
     }
 	
-    public function removeProject($NAME){
-        $this->model->delete($NAME);
+    public function removeProject($PROJECTID){
+        $this->model->delete($PROJECTID);
         //ADD LOCATION ...
         header("Location: /scrum");
     }

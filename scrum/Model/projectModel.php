@@ -4,12 +4,12 @@ include 'Model.php';
 class Project extends Model {
     
     function __construct() {
-        parent::__construct();
+        $this->db= Model::getInstance()->db;
     }
 	
-    function select($NAME){
-        $query = $this->db->prepare('SELECT * FROM project WHERE NAME = :NAME');
-        $query->execute(array("NAME" => $NAME));
+    function select($IDPROJECT){
+        $query = $this->db->prepare('SELECT * FROM project WHERE IDPROJECT = :IDPROJECT');
+        $query->execute(array("IDPROJECT" => $IDPROJECT));
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
@@ -31,7 +31,7 @@ class Project extends Model {
         ));
     }
 
-    function update($IDUSER, $NAME , $NBCOLABORATORS, $STATUS, $DESCRIPTION){
+    function update($IDPROJECT, $IDUSER, $NAME , $NBCOLABORATORS, $STATUS, $DESCRIPTION){
 		$sqlUpdate = "UPDATE PROJECT
         					SET 
                                 IDUSER= :IDUSER,
@@ -40,14 +40,15 @@ class Project extends Model {
                                 STATUS= :STATUS,
     							DESCRIPTION= :DESCRIPTION
     						WHERE 
-    							NAME = :NAME";
+    							IDPROJECT = :IDPROJECT";
 		$stmt = $this->db->prepare($sqlUpdate);
 		$valeurs = array(
                             ':IDUSER'=>$IDUSER,
                             ':NAME'=>$NAME,
                             ':NBCOLABORATORS'=>$NBCOLABORATORS,
                             ':DESCRIPTION'=>$DESCRIPTION,
-                            ':STATUS'=>$STATUS
+                            ':STATUS'=>$STATUS,
+                            ':IDPROJECT'=>$IDPROJECT
 					       	);
 		if ($stmt->fetch() == false){
                 echo 'ERROR on update';
@@ -57,10 +58,10 @@ class Project extends Model {
 	   return $stmt->execute($valeurs);
     }
 
-    function delete($NAME){
+    function delete($IDPROJECT){
         try{
-            $req = $this->db->prepare("DELETE FROM PROJECT WHERE NAME = :NAME");
-            $result = $req->execute(array("NAME" => $NAME));
+            $req = $this->db->prepare("DELETE FROM PROJECT WHERE IDPROJECT = :IDPROJECT");
+            $result = $req->execute(array("IDPROJECT" => $IDPROJECT));
             return $result;
         }catch (Exception $e){
             return 0;
