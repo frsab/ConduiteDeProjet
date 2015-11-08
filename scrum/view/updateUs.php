@@ -103,7 +103,7 @@
                                             </div>
                                             <div class= "row">
                                                 <div class="col-md-6">
-                                                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
+                                                    <input type="submit" class="btn btn-success" name="update" value="Update"/>
                                                     <a href="/scrum/?p=showUS&IDPROJECT=<?php echo $_GET["IDPROJECT"];?>" class="btn btn-danger">Cancel</a>    
                                                 </div>
                                             </div>
