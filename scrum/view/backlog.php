@@ -42,11 +42,11 @@
           </li> 
 
           <li  >
-            <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+            <a  href="/scrum/?p=showProjects"><i class="fa fa-list fa-3x"></i> Project List</a>
           </li>
 
           <li  >
-            <a class="active-menu"  href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+            <a class="active-menu"  href="/scrum/?p=showUS&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-edit fa-3x"></i> Backlog</a>
           </li>
 
           <li  >
