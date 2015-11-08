@@ -1,5 +1,6 @@
 <?php
 
+include 'Model/ProjectModel.php';
 include 'controler.php';
 
 class ProjectControler extends Controler{

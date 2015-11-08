@@ -2,8 +2,5 @@
 
 class Controler{
 
-	public function showAll(){
-
-	}
 
 }

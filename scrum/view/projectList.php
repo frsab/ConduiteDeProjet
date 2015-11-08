@@ -66,7 +66,7 @@ else{
             <ul class="nav nav-second-level">
               <?php foreach ($Project_s as $project) { ?>
                 <li>
-                  <a href="view/backlog.php"><?php echo $project->NAME; ?></a>
+                  <a href="/scrum/?p=showUS&IDPROJECT=<?php echo $project->IDPROJECT; ?>"><?php echo $project->NAME; ?></a>
                 </li>
               <?php } ?>
             </ul>
