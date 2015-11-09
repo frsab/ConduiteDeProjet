@@ -1,10 +1,9 @@
 <?php 
 
-include("connect.php");
-include("functions.php");
+include("../controller/connect.php");
+include("../controller/functions.php");
 if(logged_in()){
-	//header("location:profil.php");
-	header("location:/scrum/?p=register");
+	header("location:../controller/profil.php");
 	exit();
 }
 $error="";
@@ -37,17 +36,15 @@ if (isset($_POST['submit'])) {
 	else{
 		$passwordproject = md5($passwordproject);
 
-		$insertQuery="INSERT INTO user(USERNAME,MAIL,PASSWORD,REGISTRATIONDATE)
+		$insertQuery="INSERT INTO projects(nameproject,emailproject,password,date)
 		VALUES('$nameproject','$emailproject','$passwordproject','$date')";
 		if(mysqli_query($con,$insertQuery)){
 
 			$error="You are succefully registred.";
-			
 		}
 	}
 }
 ?>
-
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -56,11 +53,11 @@ if (isset($_POST['submit'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Scrum Project Manager</title>
 	<!-- BOOTSTRAP STYLES-->
-	<link href="assets/css/bootstrap.css" rel="stylesheet" />
+	<link href="../assets/css/bootstrap.css" rel="stylesheet" />
 	<!-- FONTAWESOME STYLES-->
-	<link href="assets/css/font-awesome.css" rel="stylesheet" />
+	<link href="../assets/css/font-awesome.css" rel="stylesheet" />
 	<!-- CUSTOM STYLES-->
-	<link href="assets/css/custom.css" rel="stylesheet" />
+	<link href="../assets/css/custom.css" rel="stylesheet" />
 	<!-- GOOGLE FONTS-->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
@@ -85,7 +82,7 @@ if (isset($_POST['submit'])) {
 					</div>
 					
 					<div class="panel-body">
-						<form method="POST" action="/scrum/?p=register" enctype="multipart/form-data" role="form"><br/>
+						<form method="POST" action="../view/registration.php" enctype="multipart/form-data" role="form"><br/>
 							<div id="error"><font color="red"><?php echo $error ?></font></div>
 							<br />
 							<div class="form-group input-group">
@@ -107,7 +104,7 @@ if (isset($_POST['submit'])) {
 							
 							<input class="btn btn-success" name ="submit" type="submit" />
 							<hr />
-							Already Registered ?  <a href="/scrum/?p=login" >Login here</a>
+							Already Registered ?  <a href="../view/login.php" >Login here</a>
 						</form>
 					</div>
 
@@ -121,13 +118,13 @@ if (isset($_POST['submit'])) {
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
+	<script src="../assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="../assets/js/bootstrap.min.js"></script>
 	<!-- METISMENU SCRIPTS -->
-	<script src="assets/js/jquery.metisMenu.js"></script>
+	<script src="../assets/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
-	<script src="assets/js/custom.js"></script>
+	<script src="../assets/js/custom.js"></script>
 </body>
 </html>
 

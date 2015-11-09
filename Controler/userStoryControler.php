@@ -1,6 +1,8 @@
 <?php
 
-class UserStoryControler {
+include 'controler.php'
+
+class UserStoryControler extends Controler {
 
     private $model;
 
@@ -9,7 +11,7 @@ class UserStoryControler {
     }
     public function showAll(){
         $userstory_s = $this->model->selectAll();
-        include "view/backlog.php";
+        include "View/backlog.php";
     }
     public function insert($data){
         $DISCRIPTION = $data["DISCRIPTION"];
@@ -17,7 +19,7 @@ class UserStoryControler {
         $COST = $data["COST"];
         $ETAT = $data["ETAT"];
 		echo $this->model->insert($DISCRIPTION, $PRIORITY, $COST, $ETAT);
-        header("Location: /ConduiteDP");
+        header("Location: /scrum");
     }
     public function update($data){
 		$IDUSERSTORY =(int) $data["IDUSERSTORY"];
@@ -28,22 +30,22 @@ class UserStoryControler {
 		echo "userstoryController ---- >  update(data)$IDUSERSTORY, $DISCRIPTION, $PRIORITY, $COST, $ETAT";
 		
         echo $this->model->update($IDUSERSTORY, $DISCRIPTION, $PRIORITY, $COST, $ETAT);
-        header("Location: /ConduiteDP");
+        header("Location: /scrum");
         //header("Location: /scrum?p=updateview&IDUSERSTORY=".$IDUSERSTORY);
     }
 	
     public function remove($IDUSERSTORY){
         $this->model->delete($IDUSERSTORY);
-        header("Location: /ConduiteDP");
+        header("Location: /scrum");
     }
  
     public function newUserStory(){
-        include "view/addus.php";
+        include "View/addUS.php";
     }
 	
     public function updateUserStory($IDUSERSTORY){
         $userstory = $this->model->select($IDUSERSTORY);
-        include "view/updateus.php";
+        include "View/updateUs.php";
     }
 
 

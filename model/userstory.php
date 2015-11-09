@@ -1,5 +1,5 @@
 <?php
-include 'model.php';
+include 'Model.php';
 class UserStory extends Model {
     function __construct() {
         parent::__construct();
@@ -17,7 +17,7 @@ class UserStory extends Model {
     }
     function insert($DISCRIPTION, $PRIORITY, $COST , $ETAT){
 	    $query = $this->db->prepare('INSERT INTO USERSTORY (IDUSERSTORY, IDPROJECT, IDSPRINT, DISCRIPTION, PRIORITY, COST, ETAT) VALUES (NULL, 73, 1, :DISCRIPTION, :PRIORITY, :COST, :ETAT)');
-
+//		'INSERT INTO USERSTORY VALUES (null, :DISCRIPTION, :PRIORITY, :COST, :ETAT)');
         return $query->execute(array(
 			"DISCRIPTION"=>$DISCRIPTION, 
 			"PRIORITY"=>$PRIORITY, 
@@ -57,6 +57,7 @@ class UserStory extends Model {
     }	
 	return $stmt->execute($valeurs);	
 			
+				/*$stmt->execute(); */
 
   }
 

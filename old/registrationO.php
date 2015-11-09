@@ -3,8 +3,7 @@
 include("connect.php");
 include("functions.php");
 if(logged_in()){
-	//header("location:profil.php");
-	header("location:/scrum/?p=register");
+	header("location:profil.php");
 	exit();
 }
 $error="";
@@ -42,7 +41,6 @@ if (isset($_POST['submit'])) {
 		if(mysqli_query($con,$insertQuery)){
 
 			$error="You are succefully registred.";
-			
 		}
 	}
 }
@@ -85,7 +83,7 @@ if (isset($_POST['submit'])) {
 					</div>
 					
 					<div class="panel-body">
-						<form method="POST" action="/scrum/?p=register" enctype="multipart/form-data" role="form"><br/>
+						<form method="POST" action="registration.php" enctype="multipart/form-data" role="form"><br/>
 							<div id="error"><font color="red"><?php echo $error ?></font></div>
 							<br />
 							<div class="form-group input-group">
@@ -107,7 +105,7 @@ if (isset($_POST['submit'])) {
 							
 							<input class="btn btn-success" name ="submit" type="submit" />
 							<hr />
-							Already Registered ?  <a href="/scrum/?p=login" >Login here</a>
+							Already Registered ?  <a href="login.php" >Login here</a>
 						</form>
 					</div>
 

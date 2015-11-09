@@ -83,31 +83,30 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                             <div class="row">
                               <div style="margin-top: 10px;">
                                 <div class="col-md-6">
-                                    <form role="form" name="updateProject" method="POST" action="/scrum/?p=updateProject">
-                                        <input type="hidden" name="IDPROJECT" value="<?php echo $_GET["IDPROJECT"]; ?>"/>
-                                        <div class="form-group">
+                                  <div class="form-group">
                                             <label>Project Name</label>
-                                            <input class="form-control" placeholder="Please enter your project Name" name="projectName" value="<?php echo htmlentities($Project->NAME); ?>"/>
+                                            <input class="form-control" placeholder="Please enter your project Name" />
                                         </div>
                                         <div class="form-group">
                                             <label>Number of colaborators</label>
-                                            <input class="form-control" placeholder="Please enter the number of colaborator" name="nbColaborators" value="<?php echo htmlentities($Project->NBCOLABORATORS); ?>" />
+                                            <input class="form-control" placeholder="Please enter the number of colaborator" />
                                         </div>
                                         <div class="form-group">
                                             <label>Project Status</label>
-                                            <input class="form-control" placeholder="Please enter your project status" name="status" value="<?php echo htmlentities($Project->IDUSER); ?>" />
+                                            <input class="form-control" placeholder="Please enter your project status" />
                                         </div>
+
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea class="form-control" placeholder="Please enter a description" rows="5" name= "description" value="<?php echo htmlentities($Project->DESCRIPTION); ?>"></textarea>
-                                        </div>        
-                                        <div class= "row">
-                                            <div class="col-md-6">
-                                                <input type="submit" class="btn btn-primary" name="update" value="Update"/>
-                                                <input type="reset" class="btn btn-primary" name="updateCancel" value="Cancel"/>                                        
-                                            </div>
+                                            <textarea class="form-control" placeholder="Please enter a description" rows="5"></textarea>
                                         </div>
-                                    </form>
+                                    
+                                        <div class= "row">
+                                        <div class="col-md-6">
+                                            <a href="projectList.html" class="btn btn-danger">Cancel</a>
+                                            <a href="projectList.html" class="btn btn-success">Update</a>
+                                        </div>
+                                    </div>
                                 </div>
                               </div>
                             </div>

@@ -54,15 +54,16 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                     </li>   
 
                      <li  >
-                        <a class="active-menu"  href="projectList.html"><i class="fa fa-table fa-3x"></i> Project List</a>
+                        <a  href="projectList.html"><i class="fa fa-table fa-3x"></i> Project List</a>
                     </li>
 
                     <li  >
-                        <a  href="backlog.html"><i class="fa fa-bars fa-3x"></i> Backlog</a>
+                        <a   href="backlog.html"><i class="fa fa-bars fa-3x"></i> Backlog</a>
                     </li>
 
+
                     <li  >
-                        <a href="planning.html"><i class="fa fa-edit fa-3x"></i> Planning</a>
+                        <a class="active-menu" href="planning.html"><i class="fa fa-edit fa-3x"></i> Planning</a>
                     </li>   
                 </ul>
                
@@ -73,49 +74,12 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
-                <div class="col-md-12">
-                    <!-- Form Elements -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Update a project
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                              <div style="margin-top: 10px;">
-                                <div class="col-md-6">
-                                    <form role="form" name="updateProject" method="POST" action="/scrum/?p=updateProject">
-                                        <input type="hidden" name="IDPROJECT" value="<?php echo $_GET["IDPROJECT"]; ?>"/>
-                                        <div class="form-group">
-                                            <label>Project Name</label>
-                                            <input class="form-control" placeholder="Please enter your project Name" name="projectName" value="<?php echo htmlentities($Project->NAME); ?>"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Number of colaborators</label>
-                                            <input class="form-control" placeholder="Please enter the number of colaborator" name="nbColaborators" value="<?php echo htmlentities($Project->NBCOLABORATORS); ?>" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Project Status</label>
-                                            <input class="form-control" placeholder="Please enter your project status" name="status" value="<?php echo htmlentities($Project->IDUSER); ?>" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Description</label>
-                                            <textarea class="form-control" placeholder="Please enter a description" rows="5" name= "description" value="<?php echo htmlentities($Project->DESCRIPTION); ?>"></textarea>
-                                        </div>        
-                                        <div class= "row">
-                                            <div class="col-md-6">
-                                                <input type="submit" class="btn btn-primary" name="update" value="Update"/>
-                                                <input type="reset" class="btn btn-primary" name="updateCancel" value="Cancel"/>                                        
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
+                    <div class="col-md-12">
+                     <h2>Planning</h2>   
+                        <h5>Now you have to make the planning of your project. </h5>
                     </div>
-                </div>
-                </div>
-             
+                </div>         
+             </div>
         <!-- /. PAGE INNER  -->
         </div>
     <!-- /. PAGE WRAPPER  -->

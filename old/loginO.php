@@ -2,8 +2,7 @@
 include("connect.php");
 include("functions.php");
 if(logged_in()){
-				header("location:/scrum/?p=showProjects");
-
+	header("location:projectlist.php");
 	exit();
 }
 $error="";
@@ -23,7 +22,7 @@ if (isset($_POST['submit'])) {
 			if($checkBox =="on"){
 				setcookie("nameproject",$nameproject,time()+3600);
 			}
-			header("location:/scrum/?p=showProjects");
+			header("location:projectlist.php");
 		}
 
 	}		
@@ -69,7 +68,7 @@ if (isset($_POST['submit'])) {
 					</div>
 					<div class="panel-body">
 						<div id="error"><font color="red"><?php echo $error ?></font></div>
-						<form method="POST" action="/scrum/?p=authentify" enctype="multipart/form-data" role="form">
+						<form method="POST" action="login.php" enctype="multipart/form-data" role="form">
 							<br />
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
@@ -90,7 +89,7 @@ if (isset($_POST['submit'])) {
 
 							<input class="btn btn-primary" name="submit" type="submit" value="Login now" />
 							<hr />
-							Not register ? <a href="/scrum/?p=register" >click here </a> 
+							Not register ? <a href="registration.php" >click here </a> 
 						</form>
 					</div>
 

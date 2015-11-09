@@ -1,21 +1,21 @@
 <?php 
-include("connect.php");
-include("functions.php");
-if(logged_in()){
-				header("location:/scrum/?p=showProjects");
-
+//include("../controller/connect.php");
+//include("../controller/functions.php");
+if(/*logged_in()*/true){
+	header("location:../view/projectlist.php");
 	exit();
 }
 $error="";
 if (isset($_POST['submit'])) {
+	/*
 	$nameproject=$_POST['nameproject'];
 	$passwordproject=$_POST['password'];
 	$checkBox=isset($_POST['keep']);
 	if(name_project_exists($nameproject,$con)){
-		$result=mysqli_query($con,"SELECT PASSWORD FROM user WHERE USERNAME='$nameproject'");
+		$result=mysqli_query($con,"SELECT password FROM projects WHERE nameproject='$nameproject'");
 		$retrievepassword=mysqli_fetch_assoc($result);
 
-		if(md5($passwordproject) !== $retrievepassword['PASSWORD']){
+		if(md5($passwordproject) !== $retrievepassword['password']){
 			$error ="Password is incorrect";
 		}
 		else{
@@ -23,16 +23,16 @@ if (isset($_POST['submit'])) {
 			if($checkBox =="on"){
 				setcookie("nameproject",$nameproject,time()+3600);
 			}
-			header("location:/scrum/?p=showProjects");
-		}
+		*/	
+			header("location:../view/projectlist.php");
+		//}
 
 	}		
 	else{
 		$error="This user name does not exists.";
 	}
-}
+//}
 ?>
-
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -41,11 +41,11 @@ if (isset($_POST['submit'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Scrum Project Manager </title>
 	<!-- BOOTSTRAP STYLES-->
-	<link href="assets/css/bootstrap.css" rel="stylesheet" />
+	<link href="../assets/css/bootstrap.css" rel="stylesheet" />
 	<!-- FONTAWESOME STYLES-->
-	<link href="assets/css/font-awesome.css" rel="stylesheet" />
+	<link href="../assets/css/font-awesome.css" rel="stylesheet" />
 	<!-- CUSTOM STYLES-->
-	<link href="assets/css/custom.css" rel="stylesheet" />
+	<link href="../assets/css/custom.css" rel="stylesheet" />
 	<!-- GOOGLE FONTS-->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
 					</div>
 					<div class="panel-body">
 						<div id="error"><font color="red"><?php echo $error ?></font></div>
-						<form method="POST" action="/scrum/?p=authentify" enctype="multipart/form-data" role="form">
+						<form method="POST" action="../view/login.php" enctype="multipart/form-data" role="form">
 							<br />
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
 
 							<input class="btn btn-primary" name="submit" type="submit" value="Login now" />
 							<hr />
-							Not register ? <a href="/scrum/?p=register" >click here </a> 
+							Not register ? <a href="../view/registration.php" >click here </a> 
 						</form>
 					</div>
 
@@ -104,13 +104,13 @@ if (isset($_POST['submit'])) {
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
+	<script src="../assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="../assets/js/bootstrap.min.js"></script>
 	<!-- METISMENU SCRIPTS -->
-	<script src="assets/js/jquery.metisMenu.js"></script>
+	<script src="../assets/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
-	<script src="assets/js/custom.js"></script>
+	<script src="../assets/js/custom.js"></script>
 </body>
 </html>
 

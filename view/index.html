@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scrum Project Manager</title>
-    <!-- BOOTSTRAP STYLES-->
+	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
@@ -36,13 +36,13 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                <li class="text-center">
+				<li class="text-center">
                     <img src="assets/img/scrum.png" class="user-image img-responsive"/>
-                    </li>
-                
-                    
+					</li>
+				
+					
                     <li>
-                        <a  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
 
                      <li  >
@@ -58,65 +58,27 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                     </li>
 
                     <li  >
-                        <a class="active-menu"  href="backlog.html"><i class="fa fa-bars fa-3x"></i> Backlog</a>
+                        <a   href="backlog.html"><i class="fa fa-bars fa-3x"></i> Backlog</a>
                     </li>
 
                     <li  >
-                        <a href="planning.html"><i class="fa fa-edit fa-3x"></i> Planning</a>
+                        <a  href="planning.html"><i class="fa fa-edit fa-3x"></i> Planning </a>
                     </li>   
                 </ul>
+               
             </div>
+            
         </nav>  
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
-                <div class="col-md-12">
-                    <!-- Form Elements -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Update an user story
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                              <div style="margin-top: 10px;">
-                                <div class="col-md-6">
-							<form role="form" name="updateUSphp" method="POST" action="/scrum/?p=update">
-							
-								<input type="hidden" name="IDUSERSTORY" value="<?php echo $_GET["IDUSERSTORY"]; ?>"/>
-								
-								<div class="form-group">
-									<label>User story</label>
-									<input  class="form-control" type="text" placeholder="Please enter your US" name="DISCRIPTION" value="<?php echo htmlentities($userstory->DISCRIPTION); ?>"/>										
-								</div>
-								<div class="form-group">
-									<label>Cost</label>	
-									<input class="form-control" type="text" placeholder="Please enter your US"  name="COST" value="<?php echo htmlentities($userstory->COST); ?>"/>										
-								</div>
-								<div class="form-group">
-									<label>Priority</label>
-									<input  class="form-control" type="text" placeholder="Please enter your US" name="PRIORITY" value="<?php echo htmlentities($userstory->PRIORITY); ?>"/>										
-								</div>
-								<div class="form-group">
-									<label>Satus</label>
-								<input  class="form-control" type="text" placeholder="Please enter your US" name="ETAT" value="<?php echo htmlentities($userstory->ETAT); ?>"/>										
-								</div>
-									<div class= "row">
-										<div class="col-md-6">
-											<input type="submit" class="btn btn-primary" name="update" value="Update"/>
-											<input type="reset" class="btn btn-primary" name="updateCancel" value="Cancel"/>	
-										</div>
-									</div>
-							</form>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
+                    <div class="col-md-12">
+                     <h2>Scrum Manager Project</h2>   
+                        <h5>Welcome to Scrum Manager Project, the best website that you have ever seen.. </h5>
                     </div>
-                </div>
-                </div>
-             
+                </div>         
+             </div>
         <!-- /. PAGE INNER  -->
         </div>
     <!-- /. PAGE WRAPPER  -->
