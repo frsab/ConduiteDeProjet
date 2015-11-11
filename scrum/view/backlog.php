@@ -76,7 +76,7 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
 
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>Backlog</h2>   
+                     <h2>Backlog :</h2>   
                         <h5>You must begin by your backlog project. </h5>
                     
                         <a href="helpBacklog.html" class="btn btn-info">How to make a backlog</a>
