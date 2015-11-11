@@ -25,7 +25,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">Home</a> 
+				<a class="navbar-brand" href="#">SPM</a> 
 			</div>
 			<div style="color: white;
 			padding: 15px 50px 5px 50px;
@@ -106,6 +106,9 @@
 
 						3) Certaines tâches peuvent dépendre les unes des autres. C'est pourquoi il est nécessaire de faire
 						attention aux dépendances afin de bien réaliser les tâches dans l'ordre.</br></br>
+
+						Et voilà vous savez maintenant comment faire une liste de tâches. Il faut maintenant gérer l'état de ces
+						tâches dans le Kanban. Nous vous expliquerons en quoi il consiste et comment le manager.
 
 
 						<h2>English tutorial</h2>
