@@ -1,6 +1,6 @@
 <?php
 
-include 'Model/projectModel.php';
+include 'model/projectModel.php';
 include 'Controller.php';
 
 class ProjectController extends Controller{
