@@ -30,7 +30,7 @@ if(isset($_GET["p"]))
         case 'new'                   :$userStoryController->newUserStory();                         break;
         case 'updateView'            :$userStoryController->updateUserStory($_GET["IDUSERSTORY"],$_GET["IDUSER"]);   break;
         case 'showUS'                :$userStoryController->showall($_GET["IDPROJECT"]);break; 
-        case 'helpbacklog'           :$userStoryController->showall($_GET["IDPROJECT"]);break; 
+        case 'helpbacklog'           :$userStoryController->showHelpBacklog($_GET["IDUSER"], $_GET["IDPROJECT"]);break; 
 
         default :   include 'view/home.php'; break;    
     
