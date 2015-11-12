@@ -1,7 +1,7 @@
 <?php
 
 
-include 'Model/userstory.php';
+include 'model/userstory.php';
 include 'Controller.php';
 
 class UserStoryController extends Controller {
@@ -13,7 +13,7 @@ class UserStoryController extends Controller {
     }
     public function showAll($IDPROJECT){
         $userstory_s = $this->model->selectAll($IDPROJECT);
-        include "View/backlog.php";
+        include "../view/backlog.php";
     }
     public function insert($data){
         $IDPROJECT = $data["IDPROJECT"];
@@ -46,12 +46,12 @@ class UserStoryController extends Controller {
     }
  
     public function newUserStory(){
-        include "View/addus.php";
+        include "../view/addus.php";
     }
 	
     public function updateUserStory($IDUSERSTORY){
         $userstory = $this->model->select($IDUSERSTORY);
-        include "View/updateUs.php";
+        include "../view/updateus.php";
     }
 
 
