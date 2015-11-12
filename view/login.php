@@ -1,8 +1,10 @@
-<?php 
-include("../controller/connect.php");
-include("../controller/functions.php");
+<?php
+/* 
+include("config/connect.php");
+include("Model/userModel.php");
 if(logged_in()){
-	header("location:../view/projectlist.php");
+				header("location:/ConduiteDeProjet/?p=showProjects");
+
 	exit();
 }
 $error="";
@@ -11,10 +13,10 @@ if (isset($_POST['submit'])) {
 	$passwordproject=$_POST['password'];
 	$checkBox=isset($_POST['keep']);
 	if(name_project_exists($nameproject,$con)){
-		$result=mysqli_query($con,"SELECT password FROM projects WHERE nameproject='$nameproject'");
+		$result=mysqli_query($con,"SELECT PASSWORD FROM user WHERE USERNAME='$nameproject'");
 		$retrievepassword=mysqli_fetch_assoc($result);
 
-		if(md5($passwordproject) !== $retrievepassword['password']){
+		if(md5($passwordproject) !== $retrievepassword['PASSWORD']){
 			$error ="Password is incorrect";
 		}
 		else{
@@ -22,7 +24,7 @@ if (isset($_POST['submit'])) {
 			if($checkBox =="on"){
 				setcookie("nameproject",$nameproject,time()+3600);
 			}
-			header("location:../view/projectlist.php");
+			header("location:/ConduiteDeProjet/?p=showProjects");
 		}
 
 	}		
@@ -30,7 +32,9 @@ if (isset($_POST['submit'])) {
 		$error="This user name does not exists.";
 	}
 }
+//*/
 ?>
+
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,11 +43,11 @@ if (isset($_POST['submit'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Scrum Project Manager </title>
 	<!-- BOOTSTRAP STYLES-->
-	<link href="../assets/css/bootstrap.css" rel="stylesheet" />
+	<link href="assets/css/bootstrap.css" rel="stylesheet" />
 	<!-- FONTAWESOME STYLES-->
-	<link href="../assets/css/font-awesome.css" rel="stylesheet" />
+	<link href="assets/css/font-awesome.css" rel="stylesheet" />
 	<!-- CUSTOM STYLES-->
-	<link href="../assets/css/custom.css" rel="stylesheet" />
+	<link href="assets/css/custom.css" rel="stylesheet" />
 	<!-- GOOGLE FONTS-->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
@@ -66,16 +70,16 @@ if (isset($_POST['submit'])) {
 						<strong>   Enter Details To Login </strong>  
 					</div>
 					<div class="panel-body">
-						<div id="error"><font color="red"><?php echo $error ?></font></div>
-						<form method="POST" action="../view/login.php" enctype="multipart/form-data" role="form">
+						<div id="error"><font color="red"><?php /*echo $error */?></font></div>
+						<form method="POST" action="/ConduiteDeProjet/?p=login" enctype="multipart/form-data" role="form">
 							<br />
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-								<input type="text" name="nameproject" class="form-control" placeholder="Your Username " />
+								<input type="text" name="username" class="form-control" placeholder="Your Username " value="<?php if(isset($_POST['username'])) { echo htmlentities($_POST['username']);}?>"/>
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-								<input type="password" name="password" class="form-control"  placeholder="Your Password" />
+								<input type="password" name="password" class="form-control"  placeholder="Your Password" value="<?php if(isset($_POST['password'])) { echo htmlentities($_POST['password']);}?>" />
 							</div>
 							<div class="form-group">
 								<label class="checkbox-inline">
@@ -88,7 +92,7 @@ if (isset($_POST['submit'])) {
 
 							<input class="btn btn-primary" name="submit" type="submit" value="Login now" />
 							<hr />
-							Not register ? <a href="../view/registration.php" >click here </a> 
+							Not register ? <a href="/ConduiteDeProjet/?p=register" >click here </a> 
 						</form>
 					</div>
 
@@ -102,13 +106,13 @@ if (isset($_POST['submit'])) {
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
-	<script src="../assets/js/jquery-1.10.2.js"></script>
+	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
-	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
 	<!-- METISMENU SCRIPTS -->
-	<script src="../assets/js/jquery.metisMenu.js"></script>
+	<script src="assets/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
-	<script src="../assets/js/custom.js"></script>
+	<script src="assets/js/custom.js"></script>
 </body>
 </html>
 

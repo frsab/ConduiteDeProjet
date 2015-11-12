@@ -1,8 +1,8 @@
 <?php
-include 'model.php';
+include 'Model.php';
 class UserStory extends Model {
     function __construct() {
-        parent::__construct();
+        $this->db= Model::getInstance()->db;
     }
 	
     function select($IDUSERSTORY){
@@ -10,28 +10,30 @@ class UserStory extends Model {
         $query->execute(array("IDUSERSTORY" => $IDUSERSTORY));
         return $query->fetch(PDO::FETCH_OBJ);
     }
-    function selectAll(){
-        $query = $this->db->prepare('SELECT * FROM USERSTORY');
-        $query->execute();
+    function selectAll($IDPROJECT){
+        $query = $this->db->prepare('SELECT * FROM userstory WHERE IDPROJECT = :IDPROJECT');
+        $query->execute(array("IDPROJECT" => $IDPROJECT));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
-    function insert($DISCRIPTION, $PRIORITY, $COST , $ETAT){
-	    $query = $this->db->prepare('INSERT INTO USERSTORY (IDUSERSTORY, IDPROJECT, IDSPRINT, DISCRIPTION, PRIORITY, COST, ETAT) VALUES (NULL, 73, 1, :DISCRIPTION, :PRIORITY, :COST, :ETAT)');
-
+    function insert($IDPROJECT, $DESCRIPTION, $PRIORITY, $COST , $ETAT){
+	    $query = $this->db->prepare('INSERT INTO USERSTORY (IDUSERSTORY, IDPROJECT, IDSPRINT, DESCRIPTION, PRIORITY, COST, ETAT) 
+                                        VALUES (NULL, :IDPROJECT, 1, :DESCRIPTION, :PRIORITY, :COST, :ETAT)');
+//		'INSERT INTO USERSTORY VALUES (null, :DESCRIPTION, :PRIORITY, :COST, :ETAT)');
         return $query->execute(array(
-			"DISCRIPTION"=>$DISCRIPTION, 
+            "IDPROJECT"=>$IDPROJECT,
+			"DESCRIPTION"=>$DESCRIPTION, 
 			"PRIORITY"=>$PRIORITY, 
-			"COST"=>$COST , 
+			"COST"=>$COST, 
 			"ETAT"=>$ETAT
         ));
     }
 
-    function update($IDUSERSTORY, $DISCRIPTION, $PRIORITY, $COST , $ETAT){
+    function update($IDUSERSTORY, $DESCRIPTION, $PRIORITY, $COST , $ETAT){
 		
 			// Création de la requête SQL
 			$sqlUpdate = "UPDATE USERSTORY
 						SET 
-							DISCRIPTION= :DISCRIPTION,
+							DESCRIPTION= :DESCRIPTION,
 							PRIORITY= :PRIORITY,
 							COST = :COST ,
 							ETAT= :ETAT
@@ -39,7 +41,7 @@ class UserStory extends Model {
 							IDUSERSTORY = :IDUSERSTORY";
 			$stmt = $this->db->prepare($sqlUpdate);
 			$valeurs = array(
-							':DISCRIPTION'=>$DISCRIPTION,
+							':DESCRIPTION'=>$DESCRIPTION,
 							':PRIORITY'=>$PRIORITY,
 							':COST'=>$COST,
 							':ETAT'=>$ETAT,
@@ -57,6 +59,7 @@ class UserStory extends Model {
     }	
 	return $stmt->execute($valeurs);	
 			
+				/*$stmt->execute(); */
 
   }
 

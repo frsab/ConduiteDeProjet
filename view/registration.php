@@ -1,9 +1,9 @@
 <?php 
-
-include("../controller/connect.php");
-include("../controller/functions.php");
+/*
+include("config/connect.php");
 if(logged_in()){
-	header("location:../controller/profil.php");
+	//header("location:profil.php");
+	header("location:/ConduiteDeProjet/?p=showProjects");
 	exit();
 }
 $error="";
@@ -36,15 +36,18 @@ if (isset($_POST['submit'])) {
 	else{
 		$passwordproject = md5($passwordproject);
 
-		$insertQuery="INSERT INTO projects(nameproject,emailproject,password,date)
+		$insertQuery="INSERT INTO user(USERNAME,MAIL,PASSWORD,REGISTRATIONDATE)
 		VALUES('$nameproject','$emailproject','$passwordproject','$date')";
 		if(mysqli_query($con,$insertQuery)){
 
 			$error="You are succefully registred.";
+			
 		}
 	}
 }
+//*/
 ?>
+
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,11 +56,11 @@ if (isset($_POST['submit'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Scrum Project Manager</title>
 	<!-- BOOTSTRAP STYLES-->
-	<link href="../assets/css/bootstrap.css" rel="stylesheet" />
+	<link href="assets/css/bootstrap.css" rel="stylesheet" />
 	<!-- FONTAWESOME STYLES-->
-	<link href="../assets/css/font-awesome.css" rel="stylesheet" />
+	<link href="assets/css/font-awesome.css" rel="stylesheet" />
 	<!-- CUSTOM STYLES-->
-	<link href="../assets/css/custom.css" rel="stylesheet" />
+	<link href="assets/css/custom.css" rel="stylesheet" />
 	<!-- GOOGLE FONTS-->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
@@ -82,29 +85,29 @@ if (isset($_POST['submit'])) {
 					</div>
 					
 					<div class="panel-body">
-						<form method="POST" action="../view/registration.php" enctype="multipart/form-data" role="form"><br/>
-							<div id="error"><font color="red"><?php echo $error ?></font></div>
+						<form role="form" name="registration" method="POST" action="/ConduiteDeProjet/?p=register" enctype="multipart/form-data" ><br/>
+							<div id="error"><font color="red"><?/*php echo $error*/ ?></font></div>
 							<br />
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-								<input type="text" name="nameproject" class="form-control" placeholder="Desired Username" />
+								<input type="text" name="nameproject" class="form-control" placeholder="Desired Username" value="<?php if(isset($_POST['nameproject'])) { echo htmlentities($_POST['nameproject']);}?>" />
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon">@</span>
-								<input type="text" name="emailproject" class="form-control" placeholder="Your Email" />
+								<input type="text" name="emailproject" class="form-control" placeholder="Your Email" value="<?php if(isset($_POST['emailproject'])) { echo htmlentities($_POST['emailproject']);}?>" />
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-								<input type="password" name="password" class="form-control" placeholder="Enter Password" />
+								<input type="password" name="password" class="form-control" placeholder="Enter Password" value="<?php if(isset($_POST['password'])) { echo htmlentities($_POST['password']);}?>" />
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-								<input type="password" name="passwordConfirm" class="form-control" placeholder="Retype Password" />
+								<input type="password" name="passwordConfirm" class="form-control" placeholder="Retype Password" value="<?php if(isset($_POST['passwordConfirm'])) { echo htmlentities($_POST['passwordConfirm']);}?>" />
 							</div>
 							
 							<input class="btn btn-success" name ="submit" type="submit" />
 							<hr />
-							Already Registered ?  <a href="../view/login.php" >Login here</a>
+							Already Registered ?  <a href="/ConduiteDeProjet/?p=login" >Login here</a>
 						</form>
 					</div>
 
@@ -118,13 +121,13 @@ if (isset($_POST['submit'])) {
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
-	<script src="../assets/js/jquery-1.10.2.js"></script>
+	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
-	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
 	<!-- METISMENU SCRIPTS -->
-	<script src="../assets/js/jquery.metisMenu.js"></script>
+	<script src="assets/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
-	<script src="../assets/js/custom.js"></script>
+	<script src="assets/js/custom.js"></script>
 </body>
 </html>
 

@@ -2,9 +2,9 @@
 
 
 include 'Model/userstory.php';
-include 'controler.php';
+include 'Controller.php';
 
-class UserStoryControler extends Controler {
+class UserStoryController extends Controller {
 
     private $model;
 
@@ -22,7 +22,8 @@ class UserStoryControler extends Controler {
         $COST = $data["COST"];
         $ETAT = $data["ETAT"];
 		echo $this->model->insert($IDPROJECT, $DESCRIPTION, $PRIORITY, $COST, $ETAT);
-        header("Location: /scrum/?p=showUS&IDPROJECT=".$IDPROJECT);
+        $IDUSER= $data["IDUSER"];
+        header("Location: /ConduiteDeProjet/?p=showUS&IDUSER=".$IDUSER."&IDPROJECT=".$IDPROJECT);
     }
 
     public function update($data){
@@ -34,13 +35,14 @@ class UserStoryControler extends Controler {
         $ETAT = $data["ETAT"];
 		echo "userstoryController ---- >  update(data)$IDUSERSTORY, $DESCRIPTION, $PRIORITY, $COST, $ETAT";
         echo $this->model->update($IDUSERSTORY, $DESCRIPTION, $PRIORITY, $COST, $ETAT);
-        header("Location: /scrum/?p=showUS&IDPROJECT=".$IDPROJECT);
-        //header("Location: /scrum?p=updateview&IDUSERSTORY=".$IDUSERSTORY);
+        $IDUSER= $data["IDUSER"];
+        header("Location: /ConduiteDeProjet/?p=showUS&IDUSER=".$IDUSER."&IDPROJECT=".$IDPROJECT);
+        //header("Location: /ConduiteDeProjet?p=updateView&IDUSERSTORY=".$IDUSERSTORY);
     }
 	
-    public function remove($IDUSERSTORY,$IDPROJECT){
+    public function remove($IDUSERSTORY, $IDPROJECT, $IDUSER){
         $this->model->delete($IDUSERSTORY);
-        header("Location: /scrum?p=showUS&IDPROJECT=".$IDPROJECT);
+        header("Location: /ConduiteDeProjet/?p=showUS&IDUSER=".$IDUSER."&IDPROJECT=".$IDPROJECT);
     }
  
     public function newUserStory(){

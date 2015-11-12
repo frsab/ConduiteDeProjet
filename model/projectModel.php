@@ -4,7 +4,7 @@ include 'Model.php';
 class Project extends Model {
     
     function __construct() {
-        parent::__construct();
+        $this->db= Model::getInstance()->db;
     }
 	
     function select($IDPROJECT){
@@ -13,30 +13,32 @@ class Project extends Model {
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    function selectAll(){
-        $query = $this->db->prepare('SELECT * FROM PROJECT');
-        $query->execute();
+    function selectAll($IDUSER){
+        $query = $this->db->prepare('SELECT * FROM PROJECT WHERE IDUSER = :IDUSER');
+        $query->execute(array("IDUSER" => $IDUSER));/*array("IDUSER" => $IDUSER)*/
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function insert($IDUSER, $NAME , $NBCOLABORATORS, $DESCRIPTION){
-	    $query = $this->db->prepare('INSERT INTO PROJECT (IDPROJECT, IDUSER, NAME, NBCOLABORATORS, DESCRIPTION) 
-                                                VALUES (NULL, :IDUSER, :NAME, :NBCOLABORATORS, :DESCRIPTION)');
+    function insert($IDUSER, $NAME , $NBCOLABORATORS, $STATUS, $DESCRIPTION){
+	    $query = $this->db->prepare('INSERT INTO PROJECT (IDPROJECT, IDUSER, NAME, NBCOLABORATORS, STATUS, DESCRIPTION) 
+                                                VALUES (NULL, :IDUSER, :NAME, :NBCOLABORATORS, :STATUS, :DESCRIPTION)');
         return $query->execute(array(
-            "IDUSER"=>$IDUSER
-            "NAME"=>$NAME
+            "IDUSER"=>$IDUSER,
+            "NAME"=>$NAME,
             "NBCOLABORATORS"=>$NBCOLABORATORS,
-			"DESCRIPTION"=>$DESCRIPTION, 
+            "STATUS"=>$STATUS,
+			"DESCRIPTION"=>$DESCRIPTION 
         ));
     }
 
-    function update($IDPROJECT, $IDUSER, $NAME , $NBCOLABORATORS, $DESCRIPTION){
+    function update($IDPROJECT, $IDUSER, $NAME , $NBCOLABORATORS, $STATUS, $DESCRIPTION){
 		$sqlUpdate = "UPDATE PROJECT
         					SET 
-                                IDUSER= :IDUSER
-                                NAME= :NAME
-                                NBCOLABORATORS= :NBCOLABORATORS
-    							DESCRIPTION= :DESCRIPTION,
+                                IDUSER= :IDUSER,
+                                NAME= :NAME,
+                                NBCOLABORATORS= :NBCOLABORATORS,
+                                STATUS= :STATUS,
+    							DESCRIPTION= :DESCRIPTION
     						WHERE 
     							IDPROJECT = :IDPROJECT";
 		$stmt = $this->db->prepare($sqlUpdate);
@@ -44,7 +46,9 @@ class Project extends Model {
                             ':IDUSER'=>$IDUSER,
                             ':NAME'=>$NAME,
                             ':NBCOLABORATORS'=>$NBCOLABORATORS,
-                            ':DESCRIPTION'=>$DESCRIPTION
+                            ':DESCRIPTION'=>$DESCRIPTION,
+                            ':STATUS'=>$STATUS,
+                            ':IDPROJECT'=>$IDPROJECT
 					       	);
 		if ($stmt->fetch() == false){
                 echo 'ERROR on update';
