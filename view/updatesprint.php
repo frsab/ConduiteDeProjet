@@ -80,7 +80,7 @@
                                             <th>US Description</th>
                                             <th>Priority</th>
                                             <th>Cost</th>
-                                            <th>Status</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -89,14 +89,18 @@
                                             <td>US2</td>
                                             <td>21</td>
                                             <td>21</td>
-                                            <td>TODO</td>
+                                            <td> 
+                                                <button class="btn btn-info">Move Right</a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
                                             <td>US3</td>
                                             <td>33</td>
                                             <td>44</td>
-                                            <td>TODO</td>
+                                            <td> 
+                                                <button class="btn btn-info">Move Right</a>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -119,7 +123,7 @@
                                             <th>US Description</th>
                                             <th>Priority</th>
                                             <th>Cost</th>
-                                            <th>Status</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -128,7 +132,18 @@
                                             <td>US1</td>
                                             <td>12</td>
                                             <td>12</td>
-                                            <td>TODO</td>
+                                            <td> 
+                                                <button class="btn btn-info">Move Left</a>
+                                            </td>
+                                        </tr>
+                                        <tr >
+                                            <td>4</td>
+                                            <td>US4</td>
+                                            <td>12</td>
+                                            <td>12</td>
+                                            <td> 
+                                                <button class="btn btn-info">Move Left</a>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -138,13 +153,13 @@
                 </div>
                 
             </div>
-            <div class= "row">
+            <!-- <div class= "row">
                 <div style="margin-top: 10px;">
                 <div class="col-md-6">
                     <button class="btn btn-info">Move the US selected to the other side</button>
                 </div>
             </div>
-            </div>
+            </div> -->
             <div class= "row">
                 <div style="margin-top: 10px;">
                 <div class="col-md-6">
