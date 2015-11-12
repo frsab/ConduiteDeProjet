@@ -1,6 +1,6 @@
 <?php
 
-include 'Model/userModel.php';
+include 'model/userModel.php';
 //include("config/connect.php");
 include 'Controller.php';
 
