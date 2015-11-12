@@ -81,7 +81,7 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                             <div class="row">
                               <div style="margin-top: 10px;">
                                 <div class="col-md-6">
-							<form role="form" name="updateUSphp" method="POST" action="/scrum/?p=update">
+							<form role="form" name="updateUSphp" method="POST" action="/ConduiteDeProjet/?p=update">
 							
 								<input type="hidden" name="IDUSERSTORY" value="<?php echo $_GET["IDUSERSTORY"]; ?>"/>
 								

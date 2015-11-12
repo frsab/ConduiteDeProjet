@@ -120,13 +120,13 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
 											<td><?php echo $userstory->COST; ?></td>
 											<td><?php echo $userstory->ETAT; ?></td>
                                             <td>
-                                              <a href="/scrum/?p=updateview&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-default">
+                                              <a href="/ConduiteDeProjet/?p=updateview&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-default">
 												  <i class=" fa fa-refresh "></i> 
 												  Update
 											  </a>
                                             </td>
 											<td>
-											          <a href="/scrum/?p=remove&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-default">
+											          <a href="/ConduiteDeProjet/?p=remove&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-default">
 												  <i class=" fa fa-refresh "></i> 
 												  remove
 											  </a>
@@ -134,7 +134,7 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
 											</td>
 
                                             <td>
-												<button class="btn btn-danger" onclick="/scrum/?p=remove&id=<?php echo $userstory->IDUSERSTORY; ?>">
+												<button class="btn btn-danger" onclick="/ConduiteDeProjet/?p=remove&id=<?php echo $userstory->IDUSERSTORY; ?>">
 													<i class="fa fa-pencil"></i> 
 													Delete
 												</button>
@@ -154,7 +154,7 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                 <div class="row">
                   
                         <div class="col-md-12">
-							<a href="/scrum/?p=new" class="btn btn-success">Add an user story</a>
+							<a href="/ConduiteDeProjet/?p=new" class="btn btn-success">Add an user story</a>
                          
                         </div>
                   

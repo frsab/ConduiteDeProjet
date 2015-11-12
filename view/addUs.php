@@ -79,7 +79,7 @@ font-size: 16px;"> Last access : 18 october 2015 &nbsp; <a href="#" class="btn b
                         <div class="panel-heading">
                             Add an user story
                         </div>
-						<form role="form" name="registration" method="POST" action="/scrum/?p=insert">
+						<form role="form" name="registration" method="POST" action="/ConduiteDeProjet/?p=insert">
 							<div class="panel-body">
 								<div class="row">
 								  <div style="margin-top: 10px;">

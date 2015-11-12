@@ -12,38 +12,38 @@ class UserStoryControler {
         include "View/backlog.php";
     }
     public function insert($data){
-        $DISCRIPTION = $data["DISCRIPTION"];
+        $DESCRIPTION = $data["DESCRIPTION"];
         $PRIORITY = $data["PRIORITY"];
         $COST = $data["COST"];
         $ETAT = $data["ETAT"];
-		echo $this->model->insert($DISCRIPTION, $PRIORITY, $COST, $ETAT);
-        header("Location: /scrum");
+		echo $this->model->insert($DESCRIPTION, $PRIORITY, $COST, $ETAT);
+        header("Location: /ConduiteDeProjet");
     }
     public function update($data){
 		$IDUSERSTORY =(int) $data["IDUSERSTORY"];
-        $DISCRIPTION = $data["DISCRIPTION"];
+        $DESCRIPTION = $data["DESCRIPTION"];
         $PRIORITY = $data["PRIORITY"];
         $COST = $data["COST"];
         $ETAT = $data["ETAT"];
-		echo "userstoryController ---- >  update(data)$IDUSERSTORY, $DISCRIPTION, $PRIORITY, $COST, $ETAT";
+		echo "userstoryController ---- >  update(data)$IDUSERSTORY, $DESCRIPTION, $PRIORITY, $COST, $ETAT";
 		
-        echo $this->model->update($IDUSERSTORY, $DISCRIPTION, $PRIORITY, $COST, $ETAT);
-        header("Location: /scrum");
-        //header("Location: /scrum?p=updateview&IDUSERSTORY=".$IDUSERSTORY);
+        echo $this->model->update($IDUSERSTORY, $DESCRIPTION, $PRIORITY, $COST, $ETAT);
+        header("Location: /ConduiteDeProjet");
+        //header("Location: /ConduiteDeProjet?p=updateview&IDUSERSTORY=".$IDUSERSTORY);
     }
 	
     public function remove($IDUSERSTORY){
         $this->model->delete($IDUSERSTORY);
-        header("Location: /scrum");
+        header("Location: /ConduiteDeProjet");
     }
  
     public function newUserStory(){
-        include "View/addUS.php";
+        include "view/addUS.php";
     }
 	
     public function updateUserStory($IDUSERSTORY){
         $userstory = $this->model->select($IDUSERSTORY);
-        include "View/updateUs.php";
+        include "view/updateUs.php";
     }
 
 
