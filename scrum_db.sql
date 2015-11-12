@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2015 at 06:20 PM
+-- Generation Time: Nov 12, 2015 at 09:34 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -36,17 +36,17 @@ CREATE TABLE IF NOT EXISTS `project` (
   PRIMARY KEY (`IDPROJECT`),
   KEY `AK_IDENTIFIANT_1` (`IDPROJECT`),
   KEY `FK_ASSOCIATIONUSERPROJECT` (`IDUSER`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `project`
 --
 
 INSERT INTO `project` (`IDPROJECT`, `IDUSER`, `NAME`, `NBCOLABORATORS`, `STATUS`, `DESCRIPTION`) VALUES
-(13, 1, 'MEAN', 3, 'TODO', 'WEB'),
-(14, 1, 'CDP', 4, 'ONGOING', 'CONDUITE'),
-(17, 1, 'PDP', 4, 'DONE', 'M1'),
-(18, 1, 'PED', 1, 'TODO', 'M2');
+(25, 1, 'PDP', 4, 'DONE', 'M1'),
+(30, 1, 'PED', 4, 'TODO', 'M2'),
+(31, 1, 'MEAN', 3, 'TODO', 'WEB'),
+(35, 7, 'PED', 4, 'TODO', 'EQW');
 
 -- --------------------------------------------------------
 
@@ -61,7 +61,14 @@ CREATE TABLE IF NOT EXISTS `sprint` (
   `DATEFIN` datetime DEFAULT NULL,
   PRIMARY KEY (`IDSPRINT`),
   KEY `AK_IDENTIFIANT_1` (`IDSPRINT`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `sprint`
+--
+
+INSERT INTO `sprint` (`IDSPRINT`, `NUMERO`, `DATEDEBUT`, `DATEFIN`) VALUES
+(1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -94,14 +101,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`IDUSER`),
   KEY `AK_IDENTIFIANT_1` (`IDUSER`),
   KEY `AK_IDENTIFIANT_2` (`IDUSER`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`IDUSER`, `USERNAME`, `MAIL`, `PASSWORD`, `REGISTRATIONDATE`) VALUES
-(1, '', 'm', 's', '2015-11-03 00:00:00');
+(1, '', 'm', 's', '2015-11-03 00:00:00'),
+(2, 'salim', 'salim@s.fr', '22d7fe8c185003c98f97e5d6ced420c7', 'November,11 2015'),
+(3, 'salim3', 'salim@s.fr', '006d2143154327a64d86a264aea225f3', 'November,11 2015'),
+(4, 'salim3', 'm@s', '006d2143154327a64d86a264aea225f3', 'November,11 2015'),
+(5, 'salim3', 'salim@s.fr', '006d2143154327a64d86a264aea225f3', 'November,12 2015'),
+(6, 'test1', 'test@test', '006d2143154327a64d86a264aea225f3', 'November,12 2015'),
+(7, 'test3', 'a@a', '8ad8757baa8564dc136c1e07507f4a98', 'November,12 2015');
 
 -- --------------------------------------------------------
 
@@ -116,12 +129,21 @@ CREATE TABLE IF NOT EXISTS `userstory` (
   `DESCRIPTION` varchar(254) DEFAULT NULL,
   `PRIORITY` int(11) DEFAULT NULL,
   `COST` int(11) DEFAULT NULL,
-  `ETAT` int(11) DEFAULT NULL,
+  `ETAT` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`IDUSERSTORY`),
   KEY `AK_IDENTIFIANT_1` (`IDUSERSTORY`),
   KEY `FK_ASSOCIATIONPROJETUSERSTORY` (`IDPROJECT`),
   KEY `FK_ASSOCIATIONUSERSTORYSPRINT` (`IDSPRINT`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `userstory`
+--
+
+INSERT INTO `userstory` (`IDUSERSTORY`, `IDPROJECT`, `IDSPRINT`, `DESCRIPTION`, `PRIORITY`, `COST`, `ETAT`) VALUES
+(3, 25, 1, 'us1', 1, 1, 'TODO'),
+(5, 31, 1, '', 6, 5, '12345'),
+(6, 35, 1, NULL, 2, 2, '0');
 
 --
 -- Constraints for dumped tables
@@ -143,8 +165,8 @@ ALTER TABLE `task`
 -- Constraints for table `userstory`
 --
 ALTER TABLE `userstory`
-  ADD CONSTRAINT `FK_ASSOCIATIONUSERSTORYSPRINT` FOREIGN KEY (`IDSPRINT`) REFERENCES `sprint` (`IDSPRINT`),
-  ADD CONSTRAINT `FK_ASSOCIATIONPROJETUSERSTORY` FOREIGN KEY (`IDPROJECT`) REFERENCES `project` (`IDPROJECT`);
+  ADD CONSTRAINT `FK_ASSOCIATIONPROJETUSERSTORY` FOREIGN KEY (`IDPROJECT`) REFERENCES `project` (`IDPROJECT`),
+  ADD CONSTRAINT `FK_ASSOCIATIONUSERSTORYSPRINT` FOREIGN KEY (`IDSPRINT`) REFERENCES `sprint` (`IDSPRINT`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

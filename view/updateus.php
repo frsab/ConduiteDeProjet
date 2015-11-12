@@ -104,7 +104,7 @@
                                             <div class= "row">
                                                 <div class="col-md-6">
                                                     <input type="submit" class="btn btn-success" name="update" value="Update"/>
-                                                    <a href="/ConduiteDeProjet/?p=showUS&IDPROJECT=<?php echo $_GET["IDPROJECT"];?>" class="btn btn-danger">Cancel</a>    
+                                                    <a href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-danger">Cancel</a>    
                                                 </div>
                                             </div>
                                         </form>

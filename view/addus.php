@@ -76,9 +76,9 @@
                                             <input type="hidden" name="IDUSER" value="<?php echo $_GET["IDUSER"];/*Added by MS*/ ?>"/>
 
                                             <label>User story</label>
-                                            <input id="DISCRIPTION" class="form-control" placeholder="Please enter your US" 
-                                                name="DISCRIPTION" 
-                                                value="<?php if(isset($_POST['DISCRIPTION'])) { echo htmlentities($_POST['DISCRIPTION']);}?>" />                                      
+                                            <input id="DESCRIPTION" class="form-control" placeholder="Please enter your US" 
+                                                name="DESCRIPTION" 
+                                                value="<?php if(isset($_POST['DESCRIPTION'])) { echo htmlentities($_POST['DESCRIPTION']);}?>" />                                      
                                         </div>
 
                                         <div class="form-group">
@@ -103,7 +103,7 @@
                                         <div class= "row">
                                             <div class="col-md-6">
                                               <input type="submit" class="btn btn-success" name="register" value="Add"/>
-                                              <a href="/ConduiteDeProjet/?p=showUS&IDPROJECT=<?php echo $_GET["IDPROJECT"];?>" class="btn btn-danger">Cancel</a>                     
+                                              <a href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-danger">Cancel</a>                     
                                           </div>
                                       </div>
                                   </div>

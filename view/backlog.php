@@ -108,7 +108,7 @@
                     <td><?php echo $userstory->COST; ?></td>
                     <td><?php echo $userstory->ETAT; ?></td>
                     <td>
-                      <a href="/ConduiteDeProjet/?p=updateview&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-default">
+                      <a href="/ConduiteDeProjet/?p=updateView&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-default">
                         <i class=" fa fa-refresh "></i> 
                         Update
                       </a>
