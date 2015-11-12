@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrum Project Manager</title>
   <!-- BOOTSTRAP STYLES-->
-  <link href="assets/css/bootstrap.css" rel="stylesheet" />
+  <link href="../assets/css/bootstrap.css" rel="stylesheet" />
   <!-- FONTAWESOME STYLES-->
-  <link href="assets/css/font-awesome.css" rel="stylesheet" />
+  <link href="../assets/css/font-awesome.css" rel="stylesheet" />
   <!-- MORRIS CHART STYLES-->
-  <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+  <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
   <!-- CUSTOM STYLES-->
-  <link href="assets/css/custom.css" rel="stylesheet" />
+  <link href="../assets/css/custom.css" rel="stylesheet" />
   <!-- GOOGLE FONTS-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -31,14 +31,14 @@
       padding: 15px 50px 5px 50px;
       float: right;
       font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-      <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+      <a href="../view/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
       <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
           <li class="text-center">
-            <img src="assets/img/scrum.png" class="user-image img-responsive"/>
+            <img src="../assets/img/scrum.png" class="user-image img-responsive"/>
           </li> 
 
           <li  >
@@ -50,7 +50,7 @@
           </li>
 
           <li  >
-            <a href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+            <a href="../view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
           </li>   
         </ul>
 
@@ -67,7 +67,7 @@
            <h2>Backlog</h2>   
            <h5>You must begin by your backlog project. </h5>
 
-           <a href="view/helpbacklog.php" class="btn btn-info">How to make a backlog</a>
+           <a href="../view/helpbacklog.php" class="btn btn-info">How to make a backlog</a>
 
          </div>
        </div> 
@@ -151,16 +151,16 @@
 <!-- /. WRAPPER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
-<script src="assets/js/jquery-1.10.2.js"></script>
+<script src="../assets/js/jquery-1.10.2.js"></script>
 <!-- BOOTSTRAP SCRIPTS -->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
 <!-- METISMENU SCRIPTS -->
-<script src="assets/js/jquery.metisMenu.js"></script>
+<script src="../assets/js/jquery.metisMenu.js"></script>
 <!-- MORRIS CHART SCRIPTS -->
-<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="assets/js/morris/morris.js"></script>
+<script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="../assets/js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
-<script src="assets/js/custom.js"></script>
+<script src="../assets/js/custom.js"></script>
 
 
 </body>
