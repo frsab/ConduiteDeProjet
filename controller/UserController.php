@@ -13,11 +13,11 @@ class UserController extends Controller{
     }
     
     public function home(){   
-        include "../view/home.php";
+        include "view/home.php";
     }
 
     public function registerView(){
-        include "../view/registration.php";
+        include "view/registration.php";
     }
 
     public function connected(){      
@@ -66,7 +66,7 @@ class UserController extends Controller{
 }
 
     public function loginView(){
-        include "../view/login.php";
+        include "view/login.php";
     }
 
 	public function login($data){
@@ -105,11 +105,11 @@ class UserController extends Controller{
     }*/
 		
 	public function logout(){  
-        include "../view/logout.php";
+        include "view/logout.php";
     }
 
 	public function authentify(){
-        include "../view/login.php";
+        include "view/login.php";
     }
 	
 }

@@ -13,7 +13,7 @@ class ProjectController extends Controller{
 
     public function newProject(){
         //voir avec antoine la location
-        include "../view/addproject.php";
+        include "view/addproject.php";
     }
 
     public function showAll($IDUSER){
@@ -29,13 +29,13 @@ class ProjectController extends Controller{
 
         $Project_s = $this->model->selectAll($IDUSER);
         //voir avec antoine la location
-        include "../view/projectList.php";
+        include "view/projectList.php";
     }
 
     public function updateProject($PROJECTID){
         $Project = $this->model->select($PROJECTID);
         //voir avec antoine la location
-        include "../view/updateproject.php";
+        include "view/updateproject.php";
     }
 
     public function insertProject($data){

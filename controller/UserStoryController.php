@@ -13,7 +13,7 @@ class UserStoryController extends Controller {
     }
     public function showAll($IDPROJECT){
         $userstory_s = $this->model->selectAll($IDPROJECT);
-        include "../view/backlog.php";
+        include "view/backlog.php";
     }
     public function insert($data){
         $IDPROJECT = $data["IDPROJECT"];
@@ -46,12 +46,12 @@ class UserStoryController extends Controller {
     }
  
     public function newUserStory(){
-        include "../view/addus.php";
+        include "view/addus.php";
     }
 	
     public function updateUserStory($IDUSERSTORY){
         $userstory = $this->model->select($IDUSERSTORY);
-        include "../view/updateus.php";
+        include "view/updateus.php";
     }
 
 

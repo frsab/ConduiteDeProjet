@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrum Project Manager</title>
   <!-- BOOTSTRAP STYLES-->
-  <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+  <link href="assets/css/bootstrap.css" rel="stylesheet" />
   <!-- FONTAWESOME STYLES-->
-  <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+  <link href="assets/css/font-awesome.css" rel="stylesheet" />
   <!-- MORRIS CHART STYLES-->
-  <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+  <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
   <!-- CUSTOM STYLES-->
-  <link href="../assets/css/custom.css" rel="stylesheet" />
+  <link href="assets/css/custom.css" rel="stylesheet" />
   <!-- GOOGLE FONTS-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -31,40 +31,40 @@
       padding: 15px 50px 5px 50px;
       float: right;
       font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-      <a href="../controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+      <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
       <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
           <li class="text-center">
-            <img src="../assets/img/scrum.png" class="user-image img-responsive"/>
+            <img src="assets/img/scrum.png" class="user-image img-responsive"/>
           </li> 
 
           <li  >
-            <a  href="../view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+            <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
           </li>
 
           <li  >
-            <a   href="../view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+            <a   href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
           </li>
 
 
           <li  >
-            <a class="active-menu" href="../view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+            <a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
           </li>   
 
           <li>
             <a href="#"><i class="fa fa-sitemap fa-3x" ></i> Sprints <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               <li>
-                <a href="../view/sprint.php">Sprint 1</a>
+                <a href="view/sprint.php">Sprint 1</a>
               </li>
               <li>
-                <a href="../view/sprint.php">Sprint 2</a>
+                <a href="view/sprint.php">Sprint 2</a>
               </li>
               <li>
-                <a href="../view/sprint.php">Sprint 3</a>
+                <a href="view/sprint.php">Sprint 3</a>
               </li>
             </ul>
           </li> 
@@ -80,7 +80,7 @@
           <div class="col-md-12">
            <h2>Planning</h2>   
            <h5>Now you have to make the planning of your project. </h5>
-           <a href="../view/helpplanning.php" class="btn btn-info">How to make a planning</a>
+           <a href="view/helpplanning.php" class="btn btn-info">How to make a planning</a>
             <!--   Kitchen Sink -->
        <div style="margin-top: 10px;">
         <div class="panel panel-default">
@@ -112,7 +112,7 @@
                       <td>Done</td>
                       <td>
                         <fieldset disabled="disabled">
-                        <a href="../view/updatesprint.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                        <a href="view/updatesprint.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
                         </fieldset>
                       </td>
                       <td>
@@ -138,7 +138,7 @@
                       
                       <td>
                           <fieldset disabled="disabled">
-                          <a href="../view/updateproject.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                          <a href="view/updateproject.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
                           </fieldset>    
                       </td>
                       <td>
@@ -162,7 +162,7 @@
                       <td>14</td>
                       <td>To do</td>
                       <td>
-                        <a href="../view/updateproject.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                        <a href="view/updateproject.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
                       </td>
                       <td>
                         <button class="btn btn-success"><i class="fa "></i> Tasks</button>
@@ -187,7 +187,7 @@
 
            <div class="row">
             <div class="col-md-12">
-              <a href="../view/addsprint.php" class="btn btn-success">Add new sprint</a>
+              <a href="view/addsprint.php" class="btn btn-success">Add new sprint</a>
             </div>
           </div> 
         </div>
@@ -200,16 +200,16 @@
 <!-- /. WRAPPER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
-<script src="../assets/js/jquery-1.10.2.js"></script>
+<script src="assets/js/jquery-1.10.2.js"></script>
 <!-- BOOTSTRAP SCRIPTS -->
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 <!-- METISMENU SCRIPTS -->
-<script src="../assets/js/jquery.metisMenu.js"></script>
+<script src="assets/js/jquery.metisMenu.js"></script>
 <!-- MORRIS CHART SCRIPTS -->
-<script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="../assets/js/morris/morris.js"></script>
+<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="assets/js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
-<script src="../assets/js/custom.js"></script>
+<script src="assets/js/custom.js"></script>
 
 
 </body>
