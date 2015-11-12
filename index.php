@@ -1,143 +1,39 @@
 <?php
-//*
-//include 'Controller/userStoryController.php';
-//*/
-//include 'Controller/ProjectController.php';
-//include 'Controller/userStoryController.php';
+require_once('Controller/ProjectController.php');
+require_once('Controller/userStoryController.php');
+require_once('Controller/userController.php');
 
-//$Controller = new ProjectController();
-//$Controller2 = new UserStoryController();
-
+$userController = new UserController();
+$projectController = new ProjectController();
+$userStoryController = new UserStoryController();
 
 if(isset($_GET["p"]))
     switch ($_GET["p"]) {
-        case 'home'             : {
-                                    include 'Controller/UserController.php';
-                                    $Controller = new UserController();
-                                    $Controller->home();
-                                }break;
+        case 'home'                  :$userController->Controller->home();break;
+        case 'authentify'            :$userController->authentify();break;
+        case 'logout'                :$userController->logout();break;
+        case 'registerView'          :$userController->registerView();break;
+        case 'register'              :$userController->register($_POST);break;
+        case 'loginView'             :$userController->loginView();break;
+        case 'login'                 :$userController->login($_POST);break;
 
-        case 'authentify'       : {
-                                    include 'Controller/UserController.php';
-                                    $Controller = new UserController();
-                                    $Controller->authentify();
-                                }break;
+        case 'insertProject'         :$projectController->insertProject($_POST);  break;
+        case 'updateProject'         :$projectController->updateProject($_POST);    break;
+        case 'removeProject'         :$projectController->removeProject($_GET["IDPROJECT"],$_GET["IDUSER"]);  break;
+        case 'newProject'            :$projectController->newProject();  break;
+        case 'updateViewProject'     :$projectController->updateProject($_GET["IDPROJECT"]);  break;
+        case 'showProjects'          :$projectController->showAll($_GET["IDUSER"]);break;
 
-        case 'logout'           : {
-                                    include 'Controller/UserController.php';
-                                    $Controller = new UserController();
-                                    $Controller->logout();
-                                }break;
+        case 'insert'                :$userStoryController->insert($_POST); break;
+        case 'update'                :$userStoryController->update($_POST); break;
+        case 'remove'                :$userStoryController->remove($_GET["IDUSERSTORY"], $_GET["IDPROJECT"], $_GET["IDUSER"]); 
+        case 'new'                   :$userStoryController->newUserStory();                         break;
+        case 'updateView'            :$userStoryController->updateUserStory($_GET["IDUSERSTORY"],$_GET["IDUSER"]);   break;
+        case 'showUS'                :$userStoryController->showall($_GET["IDPROJECT"]);break; 
+        case 'helpbacklog'           :$userStoryController->showall($_GET["IDPROJECT"]);break; 
 
-        case 'registerView'     : {
-                                    include 'Controller/UserController.php';
-                                    $Controller = new UserController();
-                                    $Controller->registerView();
-                                }break;
-
-        case 'register'         : {
-                                    include 'Controller/UserController.php';
-                                    $Controller = new UserController();
-                                    $Controller->register($_POST);
-                                }break;
-
-        case 'loginView'        : {
-                                    include 'Controller/UserController.php';
-                                    $Controller = new UserController();
-                                    $Controller->loginView();
-                                }break;
-
-        case 'login'            : {
-                                    include 'Controller/UserController.php';
-                                    $Controller = new UserController();
-                                    $Controller->login($_POST);
-                                }break;
-
-    	case 'insertProject'    : {
-                                    include 'Controller/ProjectController.php';
-                                    $Controller = new ProjectController();
-                                    $Controller->insertProject($_POST); 
-                                }break;
-
-        case 'updateProject'   : {
-                                    include 'Controller/ProjectController.php';
-                                    $Controller = new ProjectController();
-                                    $Controller->update($_POST); 
-                                }break;
-
-        case 'removeProject'   : {
-                                    include 'Controller/ProjectController.php';
-                                    $Controller = new ProjectController();
-                                    $Controller->removeProject($_GET["IDPROJECT"],$_GET["IDUSER"]); 
-                                }break;
-
-        case 'newProject' 		: {
-                                    include 'Controller/ProjectController.php';
-                                    $Controller = new ProjectController();
-                                    $Controller->newProject(); 
-                                }break;
-
-        case 'updateViewProject'   : {
-                                        include 'Controller/ProjectController.php';
-                                        $Controller = new ProjectController();
-                                        $Controller->updateProject($_GET["IDPROJECT"]); 
-                                    }break;
-
-        case 'showProjects'			: {
-                                        include 'Controller/ProjectController.php';
-                                        $Controller = new ProjectController();
-                                        $Controller->showAll($_GET["IDUSER"]);
-                                    }break;
-        //*
-        case 'insert'   : {
-                            include 'Controller/userStoryController.php';
-                            $Controller = new UserStoryController();
-                            $Controller->insert($_POST); 
-                        }break;
-
-        case 'update'   : {
-                            include 'Controller/userStoryController.php';
-                            $Controller = new UserStoryController();
-                            $Controller->update($_POST); 
-                        }break;
-
-        case 'remove'   : {
-                            include 'Controller/userStoryController.php';
-                            $Controller = new UserStoryController();
-                            $Controller->remove($_GET["IDUSERSTORY"], $_GET["IDPROJECT"], $_GET["IDUSER"]); 
-                        }break;
-
-        case 'new' 		: {
-                            include 'Controller/userStoryController.php';
-                            $Controller = new UserStoryController();
-                            $Controller->newUserStory(); 
-                        }break;
-        
-        case 'updateView': {
-                            include 'Controller/userStoryController.php';
-                            $Controller = new UserStoryController();
-                            $Controller->updateUserStory($_GET["IDUSERSTORY"], $_GET["IDUSER"]); 
-                        }break;
-        
-        case 'showUS': {
-                        include 'Controller/userStoryController.php';
-                        $Controller = new UserStoryController();
-                        $Controller->showall($_GET["IDPROJECT"]);
-                    }break;
-
-        case 'helpbacklog': {
-                        include 'Controller/userStoryController.php';
-                        $Controller = new UserStoryController();
-                        $Controller->showHelpBacklog($_GET["IDUSER"], $_GET["IDPROJECT"]);
-                        echo "yep";
-                    }break; 
-        //*/
-        default : {
-                    include 'Controller/ProjectController.php';
-                    $Controller = new ProjectController();
-                    $Controller->showAll(); 
-                }break;
-    }
-else {
-        include 'View/home.php';
+        default :   include 'view/home.php'; break;    
+    
+    }else {
+        include 'view/home.php';
     }

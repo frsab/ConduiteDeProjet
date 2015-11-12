@@ -1,5 +1,5 @@
 <?php
-include 'Model.php';
+require_once('Model.php');
 class UserStory extends Model {
     function __construct() {
         $this->db= Model::getInstance()->db;

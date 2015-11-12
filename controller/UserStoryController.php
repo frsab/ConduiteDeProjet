@@ -1,8 +1,7 @@
 <?php
 
-
-include 'model/userstory.php';
-include 'Controller.php';
+require_once('model/userstory.php');
+require_once('Controller.php');
 
 class UserStoryController extends Controller {
 

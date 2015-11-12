@@ -41,7 +41,7 @@
                         <img src="assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
                     <li  >
-                        <a  class="active-menu"  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  class="active-menu"  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
                 </li>  
             </ul>

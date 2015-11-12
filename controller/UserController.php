@@ -1,8 +1,7 @@
 <?php
 
-include 'model/userModel.php';
-//include("config/connect.php");
-include 'Controller.php';
+require_once('model/userModel.php');
+require_once('Controller.php');
 
 class UserController extends Controller{
 
