@@ -67,7 +67,7 @@
            <h2>Backlog</h2>   
            <h5>You must begin by your backlog project. </h5>
 
-           <a href="view/helpbacklog.php" class="btn btn-info">How to make a backlog</a>
+           <a href="/ConduiteDeProjet/?p=helpbacklog&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-info">How to make a backlog</a>
 
          </div>
        </div> 

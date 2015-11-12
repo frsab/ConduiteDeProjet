@@ -54,5 +54,8 @@ class UserStoryController extends Controller {
         include "view/updateus.php";
     }
 
+    public function showHelpBacklog($IDUSER, $IDPROJECT){
+        include "view/helpbacklog.php";
+    }
 
 }

@@ -116,13 +116,20 @@ if(isset($_GET["p"]))
         case 'updateView': {
                             include 'Controller/userStoryController.php';
                             $Controller = new UserStoryController();
-                            $Controller->updateUserStory($_GET["IDUSERSTORY"],$_GET["IDUSER"]); 
+                            $Controller->updateUserStory($_GET["IDUSERSTORY"], $_GET["IDUSER"]); 
                         }break;
         
         case 'showUS': {
                         include 'Controller/userStoryController.php';
                         $Controller = new UserStoryController();
                         $Controller->showall($_GET["IDPROJECT"]);
+                    }break;
+
+        case 'helpbacklog': {
+                        include 'Controller/userStoryController.php';
+                        $Controller = new UserStoryController();
+                        $Controller->showHelpBacklog($_GET["IDUSER"], $_GET["IDPROJECT"]);
+                        echo "yep";
                     }break; 
         //*/
         default : {
