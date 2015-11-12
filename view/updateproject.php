@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrum Project Manager</title>
- <!-- BOOTSTRAP STYLES-->
+  <!-- BOOTSTRAP STYLES-->
   <link href="assets/css/bootstrap.css" rel="stylesheet" />
   <!-- FONTAWESOME STYLES-->
   <link href="assets/css/font-awesome.css" rel="stylesheet" />
@@ -30,7 +30,7 @@
             <div style="color: white;
             padding: 15px 50px 5px 50px;
             float: right;
-            font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
+            font-size: 16px;"><!--  Last access : 18 october 2015 &nbsp; --> 
             <a href="view/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
         <!-- /. NAV TOP  -->
@@ -40,71 +40,58 @@
                     <li class="text-center">
                         <img src="assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
+                    
 
                     <li  >
-                        <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  class="active-menu"  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
 
-                    <li  >
-                        <a class="active-menu"  href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
-                    </li>
 
-                    <li  >
-                        <a href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
-                    </li>   
-                </ul>
+                </li>  
+            </ul>
 
-            </div>
-            
-        </nav>  
+        </div>
 
-
-        <div id="page-wrapper" >
-            <div id="page-inner">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Form Elements -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Update an user story
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                  <div style="margin-top: 10px;">
+    </nav>  
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Update a project
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div style="margin-top: 10px;">
                                     <div class="col-md-6">
-                                        <form role="form" name="updateUSphp" method="POST" action="/ConduiteDeProjet/?p=update">
-                                            <input type="hidden" name="IDUSER" value="<?php echo $_GET["IDUSER"];/*Added by MS*/ ?>"/>
-                                            <input type="hidden" name="IDPROJECT" value="<?php echo $_GET["IDPROJECT"];/*Added by MS*/ ?>"/>
-                                            <input type="hidden" name="IDUSERSTORY" value="<?php echo $_GET["IDUSERSTORY"]; ?>"/>
+                                        <form role="form" name="updateProject" method="POST" action="/ConduiteDeProjet/?p=updateProject">
+                                            <input type="hidden" name="IDPROJECT" value="<?php echo $_GET["IDPROJECT"]; ?>"/>
+                                            <input type="hidden" name="IDUSER" value="<?php echo $_GET["IDUSER"]; ?>"/>
+                                            <div class="form-group">
+                                                <label>Project Name</label>
+                                                <input class="form-control" placeholder="Please enter your project Name" name="projectName" value="<?php echo htmlentities($Project->NAME); ?>" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Number of colaborators</label>
+                                                <input class="form-control" placeholder="Please enter the number of colaborator" name="nbColaborators" value="<?php echo htmlentities($Project->NBCOLABORATORS); ?>" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Project Status</label>
+                                                <input class="form-control" placeholder="Please enter your project status" name="status" value="<?php echo htmlentities($Project->STATUS); ?>" />
+                                            </div>
 
                                             <div class="form-group">
-                                                <label>User story</label>
-                                                <input  class="form-control" type="text" placeholder="Please enter your US" 
-                                                    name="DESCRIPTION" 
-                                                    value="<?php echo htmlentities($userstory->DESCRIPTION); ?>"/>                                       
+                                                <label>Description</label>
+                                                <textarea class="form-control" placeholder="Please enter a description" rows="5" name= "description" value="<?php echo htmlentities($Project->DESCRIPTION); ?>" ></textarea>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Cost</label> 
-                                                <input class="form-control" type="text" placeholder="Please enter your US"  
-                                                    name="COST" 
-                                                    value="<?php echo htmlentities($userstory->COST); ?>"/>                                     
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Priority</label>
-                                                <input  class="form-control" type="text" placeholder="Please enter your US" 
-                                                    name="PRIORITY" 
-                                                    value="<?php echo htmlentities($userstory->PRIORITY); ?>"/>                                     
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Status</label>
-                                                <input  class="form-control" type="text" placeholder="Please enter your US" 
-                                                    name="ETAT" 
-                                                    value="<?php echo htmlentities($userstory->ETAT); ?>"/>                                     
-                                            </div>
+
                                             <div class= "row">
                                                 <div class="col-md-6">
                                                     <input type="submit" class="btn btn-success" name="update" value="Update"/>
-                                                    <a href="/ConduiteDeProjet/?p=showUS&IDPROJECT=<?php echo $_GET["IDPROJECT"];?>" class="btn btn-danger">Cancel</a>    
+                                                    <a href="/ConduiteDeProjet/?p=showProjects" class="btn btn-danger">Cancel</a>
                                                 </div>
                                             </div>
                                         </form>
@@ -115,12 +102,11 @@
                     </div>
                 </div>
             </div>
-        </div>
 
         <!-- /. PAGE INNER  -->
-    </div>
+        </div>
     <!-- /. PAGE WRAPPER  -->
-</div>   
+    </div>   
 <!-- /. WRAPPER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->

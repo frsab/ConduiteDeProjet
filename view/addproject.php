@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrum Project Manager</title>
- <!-- BOOTSTRAP STYLES-->
+  <!-- BOOTSTRAP STYLES-->
   <link href="assets/css/bootstrap.css" rel="stylesheet" />
   <!-- FONTAWESOME STYLES-->
   <link href="assets/css/font-awesome.css" rel="stylesheet" />
@@ -40,87 +40,68 @@
                     <li class="text-center">
                         <img src="assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
-
                     <li  >
-                        <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  class="active-menu"  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
+                </li>  
+            </ul>
 
-                    <li  >
-                        <a class="active-menu"  href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
-                    </li>
+        </div>
 
-                    <li  >
-                        <a href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
-                    </li>   
-                </ul>
-
-            </div>
-            
-        </nav>  
-
-
-        <div id="page-wrapper" >
-            <div id="page-inner">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Form Elements -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Update an user story
-                            </div>
+    </nav>  
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Add a project
+                        </div>
+                        <form role="form" name="registration" method="POST" action="/ConduiteDeProjet/?p=insertProject">
                             <div class="panel-body">
                                 <div class="row">
-                                  <div style="margin-top: 10px;">
-                                    <div class="col-md-6">
-                                        <form role="form" name="updateUSphp" method="POST" action="/ConduiteDeProjet/?p=update">
+                                    <div style="margin-top: 10px;">
+                                        <div class="col-md-6">
                                             <input type="hidden" name="IDUSER" value="<?php echo $_GET["IDUSER"];/*Added by MS*/ ?>"/>
-                                            <input type="hidden" name="IDPROJECT" value="<?php echo $_GET["IDPROJECT"];/*Added by MS*/ ?>"/>
-                                            <input type="hidden" name="IDUSERSTORY" value="<?php echo $_GET["IDUSERSTORY"]; ?>"/>
 
                                             <div class="form-group">
-                                                <label>User story</label>
-                                                <input  class="form-control" type="text" placeholder="Please enter your US" 
-                                                    name="DESCRIPTION" 
-                                                    value="<?php echo htmlentities($userstory->DESCRIPTION); ?>"/>                                       
+                                                <label>Project Name</label>
+                                                <input class="form-control" placeholder="Please enter your project Name" name="projectName" value="<?php if(isset($_POST['projectName'])) { echo htmlentities($_POST['projectName']);}?>" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Cost</label> 
-                                                <input class="form-control" type="text" placeholder="Please enter your US"  
-                                                    name="COST" 
-                                                    value="<?php echo htmlentities($userstory->COST); ?>"/>                                     
+                                                <label>Number of colaborators</label>
+                                                <input class="form-control" placeholder="Please enter the number of colaborator" name="nbColaborators" value="<?php if(isset($_POST['nbColaborators'])) { echo htmlentities($_POST['nbColaborators']);}?>" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Priority</label>
-                                                <input  class="form-control" type="text" placeholder="Please enter your US" 
-                                                    name="PRIORITY" 
-                                                    value="<?php echo htmlentities($userstory->PRIORITY); ?>"/>                                     
+                                                <label>Project Status</label>
+                                                <input class="form-control" placeholder="Please enter your project status" name="status" value="<?php if(isset($_POST['status'])) { echo htmlentities($_POST['status']);}?>" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Status</label>
-                                                <input  class="form-control" type="text" placeholder="Please enter your US" 
-                                                    name="ETAT" 
-                                                    value="<?php echo htmlentities($userstory->ETAT); ?>"/>                                     
+                                                <label>Description</label>
+                                                <textarea class="form-control" placeholder="Please enter a description" rows="5" name="description" value="<?php if(isset($_POST['description'])) { echo htmlentities($_POST['description']);}?>" ></textarea>
                                             </div>
+
                                             <div class= "row">
                                                 <div class="col-md-6">
-                                                    <input type="submit" class="btn btn-success" name="update" value="Update"/>
-                                                    <a href="/ConduiteDeProjet/?p=showUS&IDPROJECT=<?php echo $_GET["IDPROJECT"];?>" class="btn btn-danger">Cancel</a>    
+                                                    <input type="submit" class="btn btn-success" name="register" value="Add"/>
+                                                    <a href="/ConduiteDeProjet/?p=showProjects" class="btn btn-danger">Cancel</a>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </div>
+                </div>       
             </div>
-        </div>
 
         <!-- /. PAGE INNER  -->
-    </div>
+        </div>
     <!-- /. PAGE WRAPPER  -->
-</div>   
+    </div>   
 <!-- /. WRAPPER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
