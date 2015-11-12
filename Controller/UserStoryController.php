@@ -1,15 +1,14 @@
 <?php
 
+require_once('GlobalController.php');
 
-include 'model/userstory.php';
-include 'Controller.php';
 
-class UserStoryController extends Controller {
 
-    private $model;
+class UserStoryController {
+
 
     function __construct(){
-       $this->model = new UserStory();
+
     }
     public function showAll($IDPROJECT){
         $userstory_s = $this->model->selectAll($IDPROJECT);

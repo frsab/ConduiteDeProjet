@@ -1,15 +1,12 @@
 <?php
+require_once('GlobalController.php');
 
-include 'model/userModel.php';
-//include("config/connect.php");
-include 'Controller.php';
 
-class UserController extends Controller{
+class UserController {
 
-    private $model;
 
     function __construct(){
-       $this->model = new User();
+
     }
     
     public function home(){   
@@ -37,7 +34,7 @@ class UserController extends Controller{
     /*
     /if(strlen($username)<3){
         $error ="User name is too short.";
-    }
+    }-
     else if(strlen($password)<6){
         $error="Password must be longer than 8 characters.";
     }

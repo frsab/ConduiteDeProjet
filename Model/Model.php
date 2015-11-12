@@ -1,6 +1,5 @@
 <?php
-
-include "config/config.php";
+require_once("config/config.php");
 
 class Model {
 
