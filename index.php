@@ -24,8 +24,8 @@ if(isset($_GET["p"]))
 	case 'update' 				 :$controller->$userStoryController->update($_POST); break;
 	case 'remove' 				 :$controller->$userStoryController->remove($_GET["IDUSERSTORY"], $_GET["IDPROJECT"], $_GET["IDUSER"]); 
 	case 'new' 					 :$controller->$userStoryController->newUserStory();                         break;
-	case 'updateView'	 : $controller->$userStoryController->updateUserStory($_GET["IDUSERSTORY"],$_GET["IDUSER"]);   break;
-	case 'showUS': $controller->showall($_GET["IDPROJECT"]);break; 
+	case 'updateView'	 		 :$controller->$userStoryController->updateUserStory($_GET["IDUSERSTORY"],$_GET["IDUSER"]);   break;
+	case 'showUS'				 :$controller->$userStoryController->showall($_GET["IDPROJECT"]);break; 
 
 	default :   $controller->showAll(); break;    
 	}
