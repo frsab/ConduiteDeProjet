@@ -9,7 +9,7 @@ class GlobalController {
     private  $userController;
     private  $userStoryController;
     private  $projretController;
-   private  $sprintController;
+    public  $sprintController;
     
 
     function __construct(){
@@ -19,6 +19,7 @@ class GlobalController {
        $this->projectController=new ProjectController();
        $this->sprintController=new SprintController();
     }
+
 
 
 }
