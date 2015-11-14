@@ -21,7 +21,6 @@ class SprintController {
 	public function remove(){
 	    include "view/sprint.php";
 	} 
-
 	
 }
 
