@@ -1,6 +1,6 @@
 <?php
-include 'Model.php';
-class SprintModel extends Model {
+
+class SprintModel  {
     function __construct() {
         $this->db= Model::getInstance()->db;
     }
@@ -9,6 +9,9 @@ class SprintModel extends Model {
         $query = $this->db->prepare('SELECT * FROM userstory WHERE IDSPRINT = :IDSPRINT');
         $query->execute(array("IDSPRINT" => $IDSPRINT));
         return $query->fetch(PDO::FETCH_OBJ);
+    }
+    function selectAlll(){
+        echo "selectAll();";
     }
     function selectAll($IDPROJECT){
         $query = $this->db->prepare('SELECT * FROM userstory WHERE IDPROJECT = :IDPROJECT');

@@ -49,6 +49,12 @@
           <li>
             <a href="#"><i class="fa fa-sitemap fa-3x" ></i> Sprints <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
+              <?php foreach ($sprint_s as $sprint) { ?>
+              <li>
+                <a href="../view/sprint.php"><?php echo $sprint->NUMERO; ?></a>
+              </li>
+
+              <?php } ?>
               <li>
                 <a href="../view/sprint.php">Sprint 1</a>
               </li>
