@@ -13,7 +13,6 @@ class SprintController {
 	public function showAll(){
 		
 		$sprint_s = Model::getInstance()->sprintModel->selectAll();
-		//$controller->sprintController->showAll();
 	    include "view/sprint.php";
 	}
 

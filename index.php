@@ -35,5 +35,5 @@ if(isset($_GET["p"])){
 	}	
 }
 else {
-	$controller->sprintController->showAll();
+	$controller->sprintController->insert();
      }

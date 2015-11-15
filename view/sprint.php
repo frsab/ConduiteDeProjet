@@ -49,9 +49,11 @@
           <li>
             <a href="#"><i class="fa fa-sitemap fa-3x" ></i> Sprints <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
+
               <?php foreach ($sprint_s as $sprint) { ?>
               <li>
-                <a href="../view/sprint.php">Sprint <?php echo $sprint->NUMERO; ?></a>
+              
+                <a href="/ConduiteDeProjet/?p=showSprintUS">Sprint <?php echo $sprint->NUMERO; ?></a>
               </li>
 
               <?php } ?>
