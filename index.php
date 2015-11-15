@@ -29,7 +29,9 @@ if(isset($_GET["p"])){
 			case 'insertSprint' 			 	 :$controller->sprintController->insert(); break;
 			case 'updateSprint' 				 :$controller->sprintController->update(); break;
 			case 'removeSprint' 				 :$controller->sprintController->remove(); break;
-			case 'showSprint'					 :$controller->sprintController->showAll();break; 
+			case 'showSprint'					 :$controller->sprintController->showAll();break;
+			case 'ajouterSprint'				 :$controller->sprintController->ajouterSprint($_POST);break; 
+
 
 			default 							 :$controller->sprintController->showAll(); break;
 	}	

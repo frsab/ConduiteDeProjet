@@ -68,26 +68,30 @@
                         <div class="panel-heading">
                             Add a sprint
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                              <div style="margin-top: 10px;">
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                    <label>Sprint Abstract</label>
-                                    <input class="form-control" placeholder="Please enter your sprint abstract" />
-                                </div>
-                                
+                        <form role="form" name="registration" method="POST" action="/ConduiteDeProjet/?p=ajouterSprint">
+                                <div class="panel-body">
+                                    <div class="row">
+                                      <div style="margin-top: 10px;">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                                <label>Sprint Abstract</label>
+                                                <input id="SPRINT_ABSTRACT" class="form-control" placeholder="Please enter your sprint abstract" 
+                                                name="SPRINT_ABSTRACT" 
+                                                value="<?php if(isset($_POST['SPRINT_ABSTRACT'])) { echo htmlentities($_POST['SPRINT_ABSTRACT']);}?>" />                                      
+                                        </div>
 
-                                <div class= "row">
-                                    <div class="col-md-6">
-                                        <a href="../view/planning.php" class="btn btn-danger">Cancel</a>
-                                        <a href="../view/planning.php" class="btn btn-success">Add</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                        <div class= "row">
+                                            <div class="col-md-6">
+                                              <input type="submit" class="btn btn-success" name="addSprint" value="AddSprint"/>
+                                              <a href="/ConduiteDeProjet/?p=showSprintt" class="btn btn-danger">Cancel</a>                     
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+                       
             </div>
         </div>
     </div>

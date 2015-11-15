@@ -27,6 +27,12 @@ class SprintController {
 	public function remove(){
 	    include "view/sprint.php";
 	} 
-	
+
+	 public function ajouterSprint($data){
+        $SPRINT_ABSTRACT = $data["SPRINT_ABSTRACT"];
+        
+		echo Model::getInstance()->sprintModel->insert($SPRINT_ABSTRACT);
+        header("Location: /ConduiteDeProjet");
+	}
 }
 
