@@ -1,21 +1,19 @@
 <?php
 //require_once('GlobalController.php');
-require_once('model/sprintModel.php');
+//require_once('model/sprintModel.php');
+require_once('model/Model.php');
 class SprintController {
-	private $sprintModel;//= new sprintModel();
+	//private $modelSprint;//= new sprintModel();
 
     function __construct(){
-		 $sprintModel= new sprintModel();
+		 //$modelSprint= $model;//new sprintModel();
 	
     }
 
 	public function showAll(){
-		if(!is_object($this->sprintModel))
-			{echo"<font color='red' size='5'> this-_sprintModel N EST PAS UN OBJET</font>";}
-	if(!is_object($this))
-			{echo"<font color='red' size='5'>$this->sprintModel N EST PAS UN OBJET</font>";}
-		//$sprint_s= $this->sprintModel->selectAll();
-
+		
+		$sprint_s = Model::getInstance()->sprintModel->selectAll();
+		//$controller->sprintController->showAll();
 	    include "view/sprint.php";
 	}
 
