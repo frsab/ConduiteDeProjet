@@ -17,7 +17,7 @@ class GlobalController {
        $this->userController=new UserController();
        $this->userStoryController=new UserStoryController();
        $this->projectController=new ProjectController();
-       $this->sprintController=new SprintController($this->model);
+       $this->sprintController=new SprintController();
     }
 
 
