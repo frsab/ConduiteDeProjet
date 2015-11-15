@@ -51,19 +51,11 @@
             <ul class="nav nav-second-level">
               <?php foreach ($sprint_s as $sprint) { ?>
               <li>
-                <a href="../view/sprint.php"><?php echo $sprint->NUMERO; ?></a>
+                <a href="../view/sprint.php">Sprint <?php echo $sprint->NUMERO; ?></a>
               </li>
 
               <?php } ?>
-              <li>
-                <a href="../view/sprint.php">Sprint 1</a>
-              </li>
-              <li>
-                <a href="../view/sprint.php">Sprint 2</a>
-              </li>
-              <li>
-                <a href="../view/sprint.php">Sprint 3</a>
-              </li>
+              
             </ul>
           </li> 
         </ul>
