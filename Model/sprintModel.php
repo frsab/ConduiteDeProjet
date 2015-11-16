@@ -6,13 +6,32 @@ class SprintModel   {
         $this->bd= $db;
     }
 	
+    
+    public function deleteSprint($IDSPRINT){
+        echo "j'essaye de supprimer la ligne dont l'identifiant est  : $IDSPRINT";
+            try{ 
+                $sql="DELETE * FROM SPRINT WHERE IDSPRINT = $IDSPRINT";
+                $this->bd->exec($sql);
+                echo "Record deleted successfully";
+            
+            }catch (Exception $e){
+                echo "echecs suppression de la ligne dont l'identifiant est  : $IDSPRINT";
+                return 0;
+            }
+    }
+
     public function select($IDSPRINT){
         $query = $this->db->prepare('SELECT * FROM sprint WHERE IDSPRINT = :IDSPRINT');
         $query->execute(array("IDSPRINT" => $IDSPRINT));
         return $query->fetch(PDO::FETCH_OBJ);
     }
+    public function select_us_sprint($IDSPRINT){
+        $query = $this->bd->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = :IDSPRINT');
+        $query->execute();//array("IDSPRINT" => $IDSPRINT));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function selectAll(){
-        echo "selectAll();";
         //SPRINT(`IDSPRINT`, `NUMERO`, `DATEDEBUT`, `DATEFIN`)
         $query = $this->bd->prepare('SELECT * FROM SPRINT');
         $query->execute();

@@ -26,16 +26,24 @@ if(isset($_GET["p"])){
 			case 'updateView'	 		 :$controller->userStoryController->updateUserStory($_GET["IDUSERSTORY"],$_GET["IDUSER"]);   break;
 			case 'showUS'				 :$controller->userStoryController->showall($_GET["IDPROJECT"]);break; 
 */
+
+
+
+
+			case 'deleteSprint' 			     :$controller->sprintController->deleteSprint($_GET["IDSPRINT"]); break;
+			case 'updateUsSprint' 			     :$controller->sprintController->updateUsSprint($_GET["IDSPRINT"]); break;
+			case 'addSprint' 			 	     :$controller->sprintController->addSprint(); break;
 			case 'insertSprint' 			 	 :$controller->sprintController->insert(); break;
 			case 'updateSprint' 				 :$controller->sprintController->update(); break;
 			case 'removeSprint' 				 :$controller->sprintController->remove(); break;
 			case 'showSprint'					 :$controller->sprintController->showAll();break;
 			case 'ajouterSprint'				 :$controller->sprintController->ajouterSprint($_POST);break; 
+			case 'showSprintUs'				 	 :$controller->sprintController->showSprintUs($_POST);break; 
 
 
 			default 							 :$controller->sprintController->showAll(); break;
 	}	
 }
 else {
-	$controller->sprintController->insert();
+	$controller->sprintController->addSprint();
      }

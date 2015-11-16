@@ -10,9 +10,38 @@ class SprintController {
 	
     }
 
+
+	public function deleteSprint($IDSPRINT){
+		echo "Model::getInstance()->sprintModel->deleteSprint($IDSPRINT);";
+				Model::getInstance()->sprintModel->deleteSprint($IDSPRINT);
+
+        header("Location: /ConduiteDeProjet");
+
+
+		
+	 //   include "view/updatesprint.php";
+	}
+
+	public function updateUsSprint(){
+		
+		//$sprint_s = Model::getInstance()->sprintModel->selectAll();
+	    include "view/updatesprint.php";
+	}
+	public function addSprint(){
+		
+		$sprint_s = Model::getInstance()->sprintModel->selectAll();
+	    include "view/planning.php";
+	}
 	public function showAll(){
 		
 		$sprint_s = Model::getInstance()->sprintModel->selectAll();
+	    include "view/sprint.php";
+	}
+
+	public function showSprintUs($IDSPRINT){
+		$sprint_s = Model::getInstance()->sprintModel->selectAll();
+		$userstory_sprint_s = Model::getInstance()->sprintModel->select_us_sprint($IDSPRINT);
+		
 	    include "view/sprint.php";
 	}
 

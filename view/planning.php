@@ -86,7 +86,7 @@
         <div class="panel panel-default">
 
           <div class="panel-heading">
-            User stories list
+            Sprint list
           </div>
           <div class="panel-body">
 
@@ -98,82 +98,39 @@
                   <tr>
                     <th>#</th>
                     <th>Sprint resume</th>
-                    <th>Total difficulty</th>
-                    <th>Status</th>
+                    <th>Date Début</th>
+                    <th>Date fin programmée</th>
 
                   </tr>
                 </thead>
-
                 <tbody>
+              <?php foreach ($sprint_s as $sprint) { ?>
                   <tr>
-                      <td>1</td>
-                      <td>Sprint about blabla..</td>
-                      <td>12</td>
-                      <td>Done</td>
+                      <td><?php echo $sprint->NUMERO; ?></td>
+                      <td><?php echo $sprint->SPRINT_ABSTRACT; ?></td>
+                      <td><?php echo $sprint->DATEDEBUT; ?></td>
+                      <td><?php echo $sprint->DATEFIN; ?></td>
                       <td>
-                        <fieldset disabled="disabled">
-                        <a href="view/updatesprint.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
-                        </fieldset>
+                        <a href="/ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=<?php echo $sprint->IDSPRINT;?>" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
                       </td>
+
                       <td>
-                        <fieldset disabled="disabled">
                         <button class="btn btn-success"><i class="fa "></i> Tasks</button>
-                        </fieldset>
                       </td>
+
                       <td>
-                        <fieldset disabled="disabled">
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                        </fieldset>
+                        <form method="POST" action="/ConduiteDeProjet/?p=deleteSprint&IDSPRINT=<?php echo $sprint->IDSPRINT;?>" enctype="multipart/form-data" role="form">
+                            <button  class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                        </form>
                       </td>
                       <td>
                         <button class="btn btn-warning"><i class="fa "></i> Kanban</button>
                       </td>                     
                     </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sprint about blabla..</td>
-                      <td>10</td>
-                      <td>On going</td>
-                      
-                      
-                      <td>
-                          <fieldset disabled="disabled">
-                          <a href="view/updateproject.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
-                          </fieldset>    
-                      </td>
-                      <td>
-                        <fieldset disabled="disabled">
-                        <button class="btn btn-success"><i class="fa "></i> Tasks</button>
-                        </fieldset>
-                      </td>
-                      <td>
-                        <fieldset disabled="disabled">
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                        </fieldset>
-                      </td>
-                      
-                      <td>
-                        <button class="btn btn-warning"><i class="fa "></i> Kanban</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Sprint about blabla..</td>
-                      <td>14</td>
-                      <td>To do</td>
-                      <td>
-                        <a href="view/updateproject.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
-                      </td>
-                      <td>
-                        <button class="btn btn-success"><i class="fa "></i> Tasks</button>
-                      </td>
-                     <td>
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning"><i class="fa "></i> Kanban</button>
-                      </td>                     
-                    </tr>
+                <?php } ?>
+
+
+
                 </tbody>
               </table>
            
