@@ -30,23 +30,28 @@
             <div style="color: white;
             padding: 15px 50px 5px 50px;
             float: right;
-            font-size: 16px;"><!--  Last access : 18 october 2015 &nbsp; --> 
-            <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
+            <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
-                        <img src="assets/img/scrum.png" class="user-image img-responsive"/>
+                        <img src="../assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
-                    
+                    <li  >
+                        <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                    </li>
 
                     <li  >
-                        <a  class="active-menu"  href="projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a   href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
                     </li>
 
 
+                    <li  >
+                        <a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+                    </li>   
                 </li>  
             </ul>
 
@@ -61,34 +66,22 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Update a project
+                            Add a sprint
                         </div>
                         <div class="panel-body">
                             <div class="row">
                               <div style="margin-top: 10px;">
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <label>Project Name</label>
-                                    <input class="form-control" placeholder="Please enter your project Name" />
+                                    <label>Sprint Abstract</label>
+                                    <input class="form-control" placeholder="Please enter your sprint abstract" />
                                 </div>
-                                <div class="form-group">
-                                    <label>Number of colaborators</label>
-                                    <input class="form-control" placeholder="Please enter the number of colaborator" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Project Status</label>
-                                    <input class="form-control" placeholder="Please enter your project status" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea class="form-control" placeholder="Please enter a description" rows="5"></textarea>
-                                </div>
+                                
 
                                 <div class= "row">
                                     <div class="col-md-6">
-                                        <a href="projectlist.php" class="btn btn-danger">Cancel</a>
-                                        <a href="projectlist.php" class="btn btn-success">Update</a>
+                                        <a href="view/planning.php" class="btn btn-danger">Cancel</a>
+                                        <a href="view/planning.php" class="btn btn-success">Add</a>
                                     </div>
                                 </div>
                             </div>

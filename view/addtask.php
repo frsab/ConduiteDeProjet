@@ -1,49 +1,3 @@
-<?php 
-
-include("connect.php");
-include("functions.php");
-if(!isset($_SESSION['nameproject'])){
-    header('Location:login.php');
-    exit();
-}
-
-$error="";
-if (isset($_POST['submit'])) {
-    
-    $project_name=$_POST['project_name'];
-    $colab_nbr=$_POST['colab_nbr'];
-    $project_status=$_POST['project_status'];
-    $description=$_POST['description'];
-    $iduser=$_SESSION['nameproject'];
-   $a=iduser($iduser,$con);
-
-    
-    if(strlen($project_name)<3){
-        $error ="User name is too short.";
-    }
-    
-    else if(name_project_exists1($project_name,$con)){
-        $error="User name already exists.";
-    }
-    
-
-
-    
-    else{
-        
-          
-        $insertQuery="INSERT INTO project(IDUSER,NAME,NBCOLABORATORS,STATUS,DESCRIPTION)
-        VALUES('$a','$project_name','$colab_nbr','$project_status','$description')";
-        if(mysqli_query($con,$insertQuery)){
-
-                $error="You are succefully registred.";
-
-
-        }
-
-    }
-}
-?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -77,7 +31,7 @@ if (isset($_POST['submit'])) {
             padding: 15px 50px 5px 50px;
             float: right;
             font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-            <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -87,8 +41,17 @@ if (isset($_POST['submit'])) {
                         <img src="assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
                     <li  >
-                        <a  class="active-menu"  href="projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
+
+                    <li  >
+                        <a   href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+                    </li>
+
+
+                    <li  >
+                        <a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+                    </li>   
                 </li>  
             </ul>
 
@@ -103,42 +66,30 @@ if (isset($_POST['submit'])) {
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Add a project
+                            Add a Task
                         </div>
                         <div class="panel-body">
-			<form method="POST" action="addproject.php" enctype="multipart/form-data" role="form"><br/>
-                <div id="error"><font color="red"><?php echo $error ?></font></div><br/>
                             <div class="row">
                               <div style="margin-top: 10px;">
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <label>Project Name</label>
-                                    <input class="form-control" name="project_name" placeholder="Please enter your project Name" />
+                                    <label>Task Abstract</label>
+                                    <input class="form-control" placeholder="Please enter your abstract task" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Number of colaborators</label>
-                                    <input class="form-control" name="colab_nbr" placeholder="Please enter the number of colaborator" />
+                                    <label>Task Cost</label>
+                                    <input class="form-control" placeholder="Please enter the task cost" />
                                 </div>
-                                <div class="form-group">
-                                    <label>Project Status</label>
-                                    <input class="form-control" name="project_status" placeholder="Please enter your project status" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea class="form-control" name="description" placeholder="Please enter a description" rows="5"></textarea>
-                                </div>
+                            
 
                                 <div class= "row">
                                     <div class="col-md-6">
-                                        <a href="projectlist.php" class="btn btn-danger">Cancel</a>
-                                        
-				<input class="btn btn-success" name="submit" value="add" type="submit" />
+                                        <a href="view/sprinttasks.php" class="btn btn-danger">Cancel</a>
+                                        <a href="view/sprinttasks.php" class="btn btn-success">Add</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-		</form>
                     </div>
                 </div>
             </div>

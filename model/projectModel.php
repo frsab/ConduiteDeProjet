@@ -1,17 +1,10 @@
 <?php
-include 'Model.php';
+require_once('Model.php');
 
 class Project extends Model {
     
     function __construct() {
-        parent::__construct();
-    }
-	
-	
-	function selectIdUserBayName($NAME){
-        $query = $this->db->prepare('SELECT iduser FROM user WHERE username = :NAME');
-        $query->execute(array("NAME" => $NAME));
-        return $query->fetch(PDO::FETCH_ASSOC);
+        $this->db= Model::getInstance()->db;
     }
 	
     function select($IDPROJECT){
@@ -20,21 +13,15 @@ class Project extends Model {
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    function selectAll(){
-        $query = $this->db->prepare('SELECT * FROM PROJECT');
-        $query->execute();
-        return $query->fetchAll(PDO::FETCH_OBJ);
-    }
-	function selectAllByUser($IDUSER){
+    function selectAll($IDUSER){
         $query = $this->db->prepare('SELECT * FROM PROJECT WHERE IDUSER = :IDUSER');
-        $query->execute(array("IDUSER" => $IDUSER));
+        $query->execute(array("IDUSER" => $IDUSER));/*array("IDUSER" => $IDUSER)*/
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     function insert($IDUSER, $NAME , $NBCOLABORATORS, $STATUS, $DESCRIPTION){
 	    $query = $this->db->prepare('INSERT INTO PROJECT (IDPROJECT, IDUSER, NAME, NBCOLABORATORS, STATUS, DESCRIPTION) 
                                                 VALUES (NULL, :IDUSER, :NAME, :NBCOLABORATORS, :STATUS, :DESCRIPTION)');
-		
         return $query->execute(array(
             "IDUSER"=>$IDUSER,
             "NAME"=>$NAME,
@@ -75,7 +62,6 @@ class Project extends Model {
         try{
             $req = $this->db->prepare("DELETE FROM PROJECT WHERE IDPROJECT = :IDPROJECT");
             $result = $req->execute(array("IDPROJECT" => $IDPROJECT));
-            return $result;
         }catch (Exception $e){
             return 0;
         }

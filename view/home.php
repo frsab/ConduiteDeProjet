@@ -25,13 +25,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Home</a> 
+        <a class="navbar-brand" href="home.php">SPM</a> 
       </div>
-      <div style="color: white;
-      padding: 15px 50px 5px 50px;
-      float: right;
-      font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-      <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
@@ -39,19 +34,19 @@
         <ul class="nav" id="main-menu">
           <li class="text-center">
             <img src="assets/img/scrum.png" class="user-image img-responsive"/>
-          </li> 
-
-          <li  >
-            <a  href="projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
-          </li>
-
-          <li  >
-            <a   href="backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
           </li>
 
 
+          <li>
+            <a class="active-menu"  href="/ConduiteDeProjet/?p=home"><i class="fa fa-home fa-3x"></i> Welcome</a>
+          </li>
+
           <li  >
-            <a class="active-menu" href="planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+            <a  href="/ConduiteDeProjet/?p=registerView"><i class="fa fa-laptop fa-3x"></i> Sign up </a>
+          </li>
+
+          <li  >
+            <a  href="/ConduiteDeProjet/?p=loginView"><i class="fa fa-user fa-3x"></i> Login </a>
           </li>   
         </ul>
 
@@ -63,9 +58,10 @@
       <div id="page-inner">
         <div class="row">
           <div class="col-md-12">
-           <h2>Planning</h2>   
-           <h5>Now you have to make the planning of your project. </h5>
-           <h3>COMING SOON!</h3>
+           <h2>Scrum Project Manager</h2>   
+           <h5>Welcome to Scrm Project Manager, the "best" website to manage your Scrum projects. </h5>
+
+           <h3>Please sign up or log in.</h3>
          </div>
        </div>         
      </div>
@@ -90,3 +86,4 @@
 
 </body>
 </html>
+

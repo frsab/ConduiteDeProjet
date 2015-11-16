@@ -1,8 +1,9 @@
-<?php 
-include("connect.php");
-include("functions.php");
+<?php
+/* 
+include("config/connect.php");
+include("Model/userModel.php");
 if(logged_in()){
-				header("location:/scrum/?p=showProjects");
+				header("location:/ConduiteDeProjet/?p=showProjects");
 
 	exit();
 }
@@ -23,7 +24,7 @@ if (isset($_POST['submit'])) {
 			if($checkBox =="on"){
 				setcookie("nameproject",$nameproject,time()+3600);
 			}
-			header("location:/scrum/?p=showProjects");
+			header("location:/ConduiteDeProjet/?p=showProjects");
 		}
 
 	}		
@@ -31,6 +32,7 @@ if (isset($_POST['submit'])) {
 		$error="This user name does not exists.";
 	}
 }
+//*/
 ?>
 
 
@@ -68,16 +70,17 @@ if (isset($_POST['submit'])) {
 						<strong>   Enter Details To Login </strong>  
 					</div>
 					<div class="panel-body">
-						<div id="error"><font color="red"><?php echo $error ?></font></div>
-						<form method="POST" action="/scrum/?p=authentify" enctype="multipart/form-data" role="form">
+					
+						<div id="error"><font color="red"><?php if(isset($_GET['error'])) echo $_GET['error'] ?></font></div>
+						<form method="POST" action="/ConduiteDeProjet/?p=login" enctype="multipart/form-data" role="form">
 							<br />
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-								<input type="text" name="nameproject" class="form-control" placeholder="Your Username " />
+								<input type="text" name="username" class="form-control" placeholder="Your Username " value="<?php if(isset($_POST['username'])) { echo htmlentities($_POST['username']);}?>"/>
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-								<input type="password" name="password" class="form-control"  placeholder="Your Password" />
+								<input type="password" name="password" class="form-control"  placeholder="Your Password" value="<?php if(isset($_POST['password'])) { echo htmlentities($_POST['password']);}?>" />
 							</div>
 							<div class="form-group">
 								<label class="checkbox-inline">
@@ -90,7 +93,7 @@ if (isset($_POST['submit'])) {
 
 							<input class="btn btn-primary" name="submit" type="submit" value="Login now" />
 							<hr />
-							Not register ? <a href="/scrum/?p=register" >click here </a> 
+							Not register ? <a href="/ConduiteDeProjet/?p=registerView" >click here </a> 
 						</form>
 					</div>
 

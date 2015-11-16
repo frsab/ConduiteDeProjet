@@ -1,39 +1,40 @@
 <?php
-/*
-include 'Model/userstory.php';
-include 'Controller/userStoryControler.php';
-include 'Controller/ProjectControler.php';
-include 'Model/projectModel.php';
-//*/
-include 'Controler/Projectcontroler.php';
-include 'Model/ProjectModel.php';
+require_once('Controller/ProjectController.php');
+require_once('Controller/userStoryController.php');
+require_once('Controller/userController.php');
 
-$controller = new ProjectControler();
-//$controller2 = new ProjectControler();
-
+$userController = new UserController();
+$projectController = new ProjectController();
+$userStoryController = new UserStoryController();
 
 if(isset($_GET["p"]))
     switch ($_GET["p"]) {
-    	case 'insertProject'   : $controller->insertProject($_POST); break;
-        case 'updateProject'   : $controller->update($_POST); break;
-        case 'removeProject'   : $controller->removeProject($_GET["IDPROJECT"]); break;
-        case 'newProject' 		: $controller->newProject(); break;
-        case 'updateviewProject'   : $controller->updateProject($_GET["IDPROJECT"]); break;
-        case 'showProjects'			: $controller->showAll();break;
-		case 'authentify'			: $controller->authentify();break;
-		case 'logout'			: $controller->logout();break;
-		case 'register'			: $controller->register();break;
-		case 'login'			: $controller->login();break;
-        /*
-        case 'insert'   : $controller->insert($_POST); break;
-        case 'update'   : $controller->update($_POST); break;
-        case 'remove'   : $controller->remove($_GET["IDUSERSTORY"]); break;
-        case 'new' 		: $controller->newUserStory(); break;
-        case 'updateview'   : $controller->updateUserStory($_GET["IDUSERSTORY"]); break;
-        //*/
 		
-		
-        default : $controller->showAll(); break;
+        case 'home'                  :$userController->home();break;
+        case 'authentify'            :$userController->authentify();break;
+        case 'logout'                :$userController->logout();break;
+        case 'registerView'          :$userController->registerView();break;
+        case 'register'              :$userController->register($_POST);break;
+        case 'loginView'             :$userController->loginView();break;
+        case 'login'                 :$userController->login($_POST);break;
+
+        case 'insertProject'         :$projectController->insertProject($_POST);  break;
+        case 'updateProject'         :$projectController->update($_POST);    break;
+        case 'removeProject'         :$projectController->removeProject($_GET["IDPROJECT"],$_GET["IDUSER"]);  break;
+        case 'newProject'            :$projectController->newProject();  break;
+        case 'updateViewProject'     :$projectController->updateProject($_GET["IDPROJECT"]);  break;
+        case 'showProjects'          :$projectController->showAll($_GET["IDUSER"]);break;
+
+        case 'insert'                :$userStoryController->insert($_POST); break;
+        case 'update'                :$userStoryController->update($_POST); break;
+        case 'remove'                :$userStoryController->remove($_GET["IDUSERSTORY"], $_GET["IDPROJECT"], $_GET["IDUSER"]); 
+        case 'new'                   :$userStoryController->newUserStory();                         break;
+        case 'updateView'            :$userStoryController->updateUserStory($_GET["IDUSERSTORY"],$_GET["IDUSER"]);   break;
+        case 'showUS'                :$userStoryController->showall($_GET["IDPROJECT"]);break; 
+        case 'helpbacklog'           :$userStoryController->showHelpBacklog($_GET["IDUSER"], $_GET["IDPROJECT"]);break; 
+
+        default :   include 'view/home.php'; break;    
+    
+    }else {
+        include 'view/home.php';
     }
-//else $controller->showAll();
-else $controller->login();
