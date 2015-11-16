@@ -9,7 +9,8 @@ $userStoryController = new UserStoryController();
 
 if(isset($_GET["p"]))
     switch ($_GET["p"]) {
-        case 'home'                  :$userController->Controller->home();break;
+		
+        case 'home'                  :$userController->home();break;
         case 'authentify'            :$userController->authentify();break;
         case 'logout'                :$userController->logout();break;
         case 'registerView'          :$userController->registerView();break;
@@ -18,7 +19,7 @@ if(isset($_GET["p"]))
         case 'login'                 :$userController->login($_POST);break;
 
         case 'insertProject'         :$projectController->insertProject($_POST);  break;
-        case 'updateProject'         :$projectController->updateProject($_POST);    break;
+        case 'updateProject'         :$projectController->update($_POST);    break;
         case 'removeProject'         :$projectController->removeProject($_GET["IDPROJECT"],$_GET["IDUSER"]);  break;
         case 'newProject'            :$projectController->newProject();  break;
         case 'updateViewProject'     :$projectController->updateProject($_GET["IDPROJECT"]);  break;

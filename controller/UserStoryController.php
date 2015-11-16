@@ -1,9 +1,8 @@
 <?php
 
 require_once('model/userstory.php');
-require_once('Controller.php');
 
-class UserStoryController extends Controller {
+class UserStoryController {
 
     private $model;
 

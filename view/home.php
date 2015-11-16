@@ -38,7 +38,7 @@
 
 
           <li>
-            <a class="active-menu"  href="home.php"><i class="fa fa-home fa-3x"></i> Welcome</a>
+            <a class="active-menu"  href="/ConduiteDeProjet/?p=home"><i class="fa fa-home fa-3x"></i> Welcome</a>
           </li>
 
           <li  >

@@ -70,7 +70,8 @@ if (isset($_POST['submit'])) {
 						<strong>   Enter Details To Login </strong>  
 					</div>
 					<div class="panel-body">
-						<div id="error"><font color="red"><?php /*echo $error */?></font></div>
+					
+						<div id="error"><font color="red"><?php if(isset($_GET['error'])) echo $_GET['error'] ?></font></div>
 						<form method="POST" action="/ConduiteDeProjet/?p=login" enctype="multipart/form-data" role="form">
 							<br />
 							<div class="form-group input-group">
@@ -92,7 +93,7 @@ if (isset($_POST['submit'])) {
 
 							<input class="btn btn-primary" name="submit" type="submit" value="Login now" />
 							<hr />
-							Not register ? <a href="/ConduiteDeProjet/?p=register" >click here </a> 
+							Not register ? <a href="/ConduiteDeProjet/?p=registerView" >click here </a> 
 						</form>
 					</div>
 

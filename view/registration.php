@@ -90,11 +90,11 @@ if (isset($_POST['submit'])) {
 							<br />
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-								<input type="text" name="nameproject" class="form-control" placeholder="Desired Username" value="<?php if(isset($_POST['nameproject'])) { echo htmlentities($_POST['nameproject']);}?>" />
+								<input type="text" name="username" class="form-control" placeholder="Desired Username" value="<?php if(isset($_POST['username'])) { echo htmlentities($_POST['nameproject']);}?>" />
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon">@</span>
-								<input type="text" name="emailproject" class="form-control" placeholder="Your Email" value="<?php if(isset($_POST['emailproject'])) { echo htmlentities($_POST['emailproject']);}?>" />
+								<input type="text" name="email" class="form-control" placeholder="Your Email" value="<?php if(isset($_POST['email'])) { echo htmlentities($_POST['emailproject']);}?>" />
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
 							
 							<input class="btn btn-success" name ="submit" type="submit" />
 							<hr />
-							Already Registered ?  <a href="/ConduiteDeProjet/?p=login" >Login here</a>
+							Already Registered ?  <a href="/ConduiteDeProjet/?p=loginView" >Login here</a>
 						</form>
 					</div>
 

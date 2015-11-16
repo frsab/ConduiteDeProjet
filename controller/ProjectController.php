@@ -1,9 +1,8 @@
 <?php
 
 require_once('model/projectModel.php');
-require_once('Controller.php');
 
-class ProjectController extends Controller{
+class ProjectController {
 
     private $model;
 

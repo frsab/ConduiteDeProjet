@@ -31,7 +31,7 @@
 			padding: 15px 50px 5px 50px;
 			float: right;
 			font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-			<a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+			<a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
 		</nav>   
 		<!-- /. NAV TOP  -->
 		<nav class="navbar-default navbar-side" role="navigation">
