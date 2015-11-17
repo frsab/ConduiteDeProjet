@@ -86,7 +86,7 @@
         <div class="panel panel-default">
 
           <div class="panel-heading">
-            User stories list
+            Sprint list
           </div>
           <div class="panel-body">
 
@@ -97,101 +97,40 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Sprint abstract</th>
-                    <th>Total difficulty</th>
-                  
+                    <th>Sprint resume</th>
+                    <th>Date Début</th>
+                    <th>Date fin programmée</th>
 
                   </tr>
                 </thead>
-
                 <tbody>
-                  <tr class="success">
-                      <td>0</td>
-                      <td>Sprint about techno</td>
-                      <td>0</td>
+              <?php foreach ($sprint_s as $sprint) { ?>
+                  <tr>
+                      <td><?php echo $sprint->NUMERO; ?></td>
+                      <td><?php echo $sprint->SPRINT_ABSTRACT; ?></td>
+                      <td><?php echo $sprint->DATEDEBUT; ?></td>
+                      <td><?php echo $sprint->DATEFIN; ?></td>
                       <td>
-                        <fieldset disabled="disabled">
-                        <a href="view/updatesprint.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
-                        </fieldset>
+                        <a href="/ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=<?php echo $sprint->IDSPRINT;?>" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                      </td>
+
+                      <td>
+                        <button class="btn btn-success"><i class="fa "></i> Tasks</button>
+                      </td>
+
+                      <td>
+                        <form method="POST" action="/ConduiteDeProjet/?p=deleteSprint&IDSPRINT=<?php echo $sprint->IDSPRINT;?>" enctype="multipart/form-data" role="form">
+                            <button  class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                        </form>
                       </td>
                       <td>
-                        <fieldset disabled="disabled">
-                        <a href="view/sprinttasks.php" class="btn btn-success"><i class="fa "></i> Tasks</a>
-                        </fieldset>
-                      </td>
-                      <td>
-                        <fieldset disabled="disabled">
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                        </fieldset>
-                      </td>
-                      <td>
-                        <a href="view/sprintkanban.php" class="btn btn-warning"><i class="fa "></i> Kanban</a>
+                        <button class="btn btn-warning"><i class="fa "></i> Kanban</button>
                       </td>                     
                     </tr>
-                  <tr class="success">
-                      <td>1</td>
-                      <td>Sprint about connexion</td>
-                      <td>12</td>
-                      <td>
-                        <fieldset disabled="disabled">
-                        <a href="view/updatesprint.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
-                        </fieldset>
-                      </td>
-                      <td>
-                        <fieldset disabled="disabled">
-                        <a href="view/sprinttasks.php" class="btn btn-success"><i class="fa "></i> Tasks</a>
-                        </fieldset>
-                      </td>
-                      <td>
-                        <fieldset disabled="disabled">
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                        </fieldset>
-                      </td>
-                      <td>
-                        <a href="view/sprintkanban.php" class="btn btn-warning"><i class="fa "></i> Kanban</a>
-                      </td>                     
-                    </tr>
-                    <tr class="warning">
-                      <td>2</td>
-                      <td>Sprint about backlog</td>
-                      <td>10</td>           
-                      <td>
-                          <fieldset disabled="disabled">
-                          <a href="view/updatesprint.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
-                          </fieldset>    
-                      </td>
-                      <td>
-                        <fieldset disabled="disabled">
-                        <a href="view/sprinttasks.php" class="btn btn-success"><i class="fa "></i> Tasks</a>
-                        </fieldset>
-                      </td>
-                      <td>
-                        <fieldset disabled="disabled">
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                        </fieldset>
-                      </td>
-                      
-                      <td>
-                        <a href="view/sprintkanban.php" class="btn btn-warning"><i class="fa "></i> Kanban</a>
-                      </td>
-                    </tr>
-                    <tr class="danger">
-                      <td>3</td>
-                      <td>Sprint about planning</td>
-                      <td>14</td>
-                      <td>
-                        <a href="view/updatesprint.php" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
-                      </td>
-                      <td>
-                        <a href="view/sprinttasks.php" class="btn btn-success"><i class="fa "></i> Tasks</a>
-                      </td>
-                     <td>
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                      </td>
-                      <td>
-                        <a href="view/sprintkanban.php" class="btn btn-warning"><i class="fa "></i> Kanban</a>
-                      </td>                     
-                    </tr>
+                <?php } ?>
+
+
+
                 </tbody>
               </table>
            

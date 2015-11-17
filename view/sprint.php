@@ -49,15 +49,16 @@
           <li>
             <a href="#"><i class="fa fa-sitemap fa-3x" ></i> Sprints <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
+
+              <?php foreach ($sprint_s as $sprint) { ?>
               <li>
-                <a href="view/sprint.php">Sprint 1</a>
+              
+                <a href="/ConduiteDeProjet/?p=showSprintUs&IDSPRINT=<?php echo $sprint->NUMERO; ?>">Sprint <?php echo $sprint->NUMERO; ?></a>
+            
               </li>
-              <li>
-                <a href="view/sprint.php">Sprint 2</a>
-              </li>
-              <li>
-                <a href="view/sprint.php">Sprint 3</a>
-              </li>
+
+              <?php } ?>
+              
             </ul>
           </li> 
         </ul>
@@ -108,37 +109,29 @@
                                 <th>Priority</th>
                                 <th>Cost</th>
                                 <th>Status</th>
+                                <th>Sprint</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>US1</td>
-                                <td>12</td>
-                                <td>12</td>
-                                <td>TODO</td>
+                            <?php foreach ($userstory_sprint_s as $userstory) { ?>
+                            <tr>
+                                <td><?php echo $userstory->IDUSERSTORY; ?></td>
+                                <td><?php echo $userstory->DESCRIPTION; ?></td>
+                                <td><?php echo $userstory->PRIORITY; ?></td>
+                                <td><?php echo $userstory->COST; ?></td>
+                                <td><?php echo $userstory->ETAT; ?></td>
+                                <td><?php echo $userstory->IDSPRINT; ?></td>
                               </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>US2</td>
-                                <td>21</td>
-                                <td>21</td>
-                                <td>TODO</td>
-                              </tr>
-                              <tr>
-                                <td>3</td>
-                                <td>US3</td>
-                                <td>33</td>
-                                <td>44</td>
-                                <td>TODO</td>
-                              </tr>
-                              <tr>
-                                <td>4</td>
-                                <td>US4</td>
-                                <td>23</td>
-                                <td>44</td>
-                                <td>TODO</td>
-                              </tr>
+                            <li>
+
+                            <a href="/ConduiteDeProjet/?p=showSprintUs&IDSPRINT=<?php echo $sprint->NUMERO; ?>">Sprint <?php echo $sprint->NUMERO; ?></a>
+                            ?p=showUS
+                            </li>
+
+                            <?php } ?>
+
+                              
+                              
                             </tbody>
                           </table>
                         </div>
@@ -275,6 +268,7 @@
       <!-- CUSTOM SCRIPTS -->
       <script src="assets/js/custom.js"></script>
 
+   
 
-    </body>
-    </html>
+</body>
+</html>
