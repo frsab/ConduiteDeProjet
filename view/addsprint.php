@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrum Project Manager</title>
   <!-- BOOTSTRAP STYLES-->
@@ -17,28 +17,28 @@
 </head>
 <body>
     <div id="wrapper">
-        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">SPM</a> 
-            </div>
-            <div style="color: white;
-            padding: 15px 50px 5px 50px;
-            float: right;
-            font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-            <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
-        </nav>   
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">SPM</a> 
+      </div>
+      <div style="color: white;
+      padding: 15px 50px 5px 50px;
+      float: right;
+      font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
+      <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+    </nav>   
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
-                        <img src="../assets/img/scrum.png" class="user-image img-responsive"/>
+                        <img src="assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
                     <li  >
                         <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
@@ -68,26 +68,30 @@
                         <div class="panel-heading">
                             Add a sprint
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                              <div style="margin-top: 10px;">
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                    <label>Sprint Abstract</label>
-                                    <input class="form-control" placeholder="Please enter your sprint abstract" />
-                                </div>
-                                
+                        <form role="form" name="registration" method="POST" action="/ConduiteDeProjet/?p=ajouterSprint">
+                                <div class="panel-body">
+                                    <div class="row">
+                                      <div style="margin-top: 10px;">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                                <label>Sprint Abstract</label>
+                                                <input id="SPRINT_ABSTRACT" class="form-control" placeholder="Please enter your sprint abstract" 
+                                                name="SPRINT_ABSTRACT" 
+                                                value="<?php if(isset($_POST['SPRINT_ABSTRACT'])) { echo htmlentities($_POST['SPRINT_ABSTRACT']);}?>" />                                      
+                                        </div>
 
-                                <div class= "row">
-                                    <div class="col-md-6">
-                                        <a href="view/planning.php" class="btn btn-danger">Cancel</a>
-                                        <a href="view/planning.php" class="btn btn-success">Add</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                        <div class= "row">
+                                            <div class="col-md-6">
+                                              <input type="submit" class="btn btn-success" name="addSprint" value="AddSprint"/>
+                                              <a href="/ConduiteDeProjet/?p=showSprintt" class="btn btn-danger">Cancel</a>                     
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+                       
             </div>
         </div>
     </div>
