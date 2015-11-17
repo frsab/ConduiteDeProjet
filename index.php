@@ -2,10 +2,12 @@
 require_once('Controller/ProjectController.php');
 require_once('Controller/userStoryController.php');
 require_once('Controller/userController.php');
+require_once('Controller/SprintController.php');
 
 $userController = new UserController();
 $projectController = new ProjectController();
 $userStoryController = new UserStoryController();
+$sprintController = new SprintController();
 
 if(isset($_GET["p"]))
     switch ($_GET["p"]) {
@@ -32,6 +34,16 @@ if(isset($_GET["p"]))
         case 'updateView'            :$userStoryController->updateUserStory($_GET["IDUSERSTORY"],$_GET["IDUSER"]);   break;
         case 'showUS'                :$userStoryController->showall($_GET["IDPROJECT"]);break; 
         case 'helpbacklog'           :$userStoryController->showHelpBacklog($_GET["IDUSER"], $_GET["IDPROJECT"]);break; 
+
+        case 'deleteSprint'          :$sprintController->deleteSprint($_GET["IDSPRINT"]); break;
+        case 'updateUsSprint'        :$sprintController->updateUsSprint($_GET["IDSPRINT"]); break;
+        case 'addSprint'             :$sprintController->addSprint(); break;
+        case 'insertSprint'          :$sprintController->insert(); break;
+        case 'updateSprint'          :$sprintController->update(); break;
+        case 'removeSprint'          :$sprintController->remove(); break;
+        case 'showSprint'            :$sprintController->showAll();break;
+        case 'ajouterSprint'         :$sprintController->ajouterSprint($_POST);break; 
+        case 'showSprintUs'          :$sprintController->showSprintUs($_POST);break; 
 
         default :   include 'view/home.php'; break;    
     
