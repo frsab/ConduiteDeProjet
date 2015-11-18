@@ -1,10 +1,9 @@
 <?php
-require_once('model.php');
 
-class SprintModel extends Model{
-    
-    public function __construct() {
-        $this->db= Model::getInstance()->db;
+class SprintModel   {
+    private $bd;
+    public function __construct($db) {
+        $this->bd= $db;
     }
 	
     

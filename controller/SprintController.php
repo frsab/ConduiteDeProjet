@@ -1,17 +1,19 @@
 <?php
-require_once('model/sprintModel.php');
-
+//require_once('GlobalController.php');
+//require_once('model/sprintModel.php');
+require_once('model/Model.php');
 class SprintController {
-	private $modelSprint;
+	//private $modelSprint;//= new sprintModel();
 
     function __construct(){
-		$modelSprint= new sprintModel();
+		 //$modelSprint= $model;//new sprintModel();
+	
     }
 
 
 	public function deleteSprint($IDSPRINT){
-		echo "$this->sprintModel->deleteSprint($IDSPRINT);";
-				$this->sprintModel->deleteSprint($IDSPRINT);
+		echo "Model::getInstance()->sprintModel->deleteSprint($IDSPRINT);";
+				Model::getInstance()->sprintModel->deleteSprint($IDSPRINT);
 
         header("Location: /ConduiteDeProjet");
 
@@ -22,23 +24,23 @@ class SprintController {
 
 	public function updateUsSprint(){
 		
-		//$sprint_s = $this->sprintModel->selectAll();
+		//$sprint_s = Model::getInstance()->sprintModel->selectAll();
 	    include "view/updatesprint.php";
 	}
 	public function addSprint(){
 		
-		$sprint_s = $this->sprintModel->selectAll();
+		$sprint_s = Model::getInstance()->sprintModel->selectAll();
 	    include "view/planning.php";
 	}
 	public function showAll(){
 		
-		$sprint_s = $this->sprintModel->selectAll();
+		$sprint_s = Model::getInstance()->sprintModel->selectAll();
 	    include "view/sprint.php";
 	}
 
 	public function showSprintUs($IDSPRINT){
-		$sprint_s = $this->sprintModel->selectAll();
-		$userstory_sprint_s = $this->sprintModel->select_us_sprint($IDSPRINT);
+		$sprint_s = Model::getInstance()->sprintModel->selectAll();
+		$userstory_sprint_s = Model::getInstance()->sprintModel->select_us_sprint($IDSPRINT);
 		
 	    include "view/sprint.php";
 	}
@@ -58,7 +60,7 @@ class SprintController {
 	 public function ajouterSprint($data){
         $SPRINT_ABSTRACT = $data["SPRINT_ABSTRACT"];
         
-		echo $this->sprintModel->insert($SPRINT_ABSTRACT);
+		echo Model::getInstance()->sprintModel->insert($SPRINT_ABSTRACT);
         header("Location: /ConduiteDeProjet");
 	}
 }

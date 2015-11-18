@@ -1,13 +1,14 @@
 <?php
 
-require_once('model/userstory.php');
+require_once('GlobalController.php');
+
+
 
 class UserStoryController {
 
-    private $model;
 
     function __construct(){
-       $this->model = new UserStory();
+
     }
     public function showAll($IDPROJECT){
         $userstory_s = $this->model->selectAll($IDPROJECT);
@@ -52,8 +53,5 @@ class UserStoryController {
         include "view/updateus.php";
     }
 
-    public function showHelpBacklog($IDUSER, $IDPROJECT){
-        include "view/helpbacklog.php";
-    }
 
 }

@@ -31,7 +31,7 @@
             padding: 15px 50px 5px 50px;
             float: right;
             font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-            <a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <a href="view/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -41,11 +41,11 @@
                         <img src="assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
                     <li  >
-                        <a  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
 
                     <li  >
-                        <a class="active-menu"  href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+                        <a class="active-menu"  href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
                     </li>
 
                     <li  >
@@ -76,9 +76,9 @@
                                             <input type="hidden" name="IDUSER" value="<?php echo $_GET["IDUSER"];/*Added by MS*/ ?>"/>
 
                                             <label>User story</label>
-                                            <input id="DESCRIPTION" class="form-control" placeholder="Please enter your US" 
-                                                name="DESCRIPTION" 
-                                                value="<?php if(isset($_POST['DESCRIPTION'])) { echo htmlentities($_POST['DESCRIPTION']);}?>" />                                      
+                                            <input id="DISCRIPTION" class="form-control" placeholder="Please enter your US" 
+                                                name="DISCRIPTION" 
+                                                value="<?php if(isset($_POST['DISCRIPTION'])) { echo htmlentities($_POST['DISCRIPTION']);}?>" />                                      
                                         </div>
 
                                         <div class="form-group">
@@ -103,7 +103,7 @@
                                         <div class= "row">
                                             <div class="col-md-6">
                                               <input type="submit" class="btn btn-success" name="register" value="Add"/>
-                                              <a href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-danger">Cancel</a>                     
+                                              <a href="/ConduiteDeProjet/?p=showUS&IDPROJECT=<?php echo $_GET["IDPROJECT"];?>" class="btn btn-danger">Cancel</a>                     
                                           </div>
                                       </div>
                                   </div>

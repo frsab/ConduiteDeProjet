@@ -1,13 +1,13 @@
 <?php
 
-require_once('model/projectModel.php');
+require_once('GlobalController.php');
+
+//include 'Controller.php';
 
 class ProjectController {
 
-    private $model;
 
     function __construct(){
-       $this->model = new Project();
     }
 
     public function newProject(){
@@ -26,7 +26,7 @@ class ProjectController {
         //include "View/projectList.php";
     
 
-        $Project_s = $this->model->selectAll($IDUSER);
+        $Project_s = $super->model->selectAll($IDUSER);
         //voir avec antoine la location
         include "view/projectList.php";
     }

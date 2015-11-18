@@ -1,5 +1,5 @@
 <?php
-require_once('model.php');
+include 'Model.php';
 
 class Project extends Model {
     
@@ -62,6 +62,7 @@ class Project extends Model {
         try{
             $req = $this->db->prepare("DELETE FROM PROJECT WHERE IDPROJECT = :IDPROJECT");
             $result = $req->execute(array("IDPROJECT" => $IDPROJECT));
+            return $result;
         }catch (Exception $e){
             return 0;
         }

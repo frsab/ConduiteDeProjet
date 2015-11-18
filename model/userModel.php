@@ -1,5 +1,5 @@
 <?php
-require_once('model.php');
+require_once('Model.php');
 
 class User extends Model {
     
@@ -24,43 +24,34 @@ class User extends Model {
         $query = $this->db->prepare('SELECT iduser FROM user WHERE username = :NAME');
         $query->execute(array("NAME" => $NAME));
         return $query->fetch();
-    }
-    
-	function selectPassUserByName($NAME){
-        $query = $this->db->prepare('SELECT PASSWORD FROM user WHERE username = :NAME');
-        $query->execute(array("NAME" => $NAME));
-        return $query->fetch();
-    }	
+    }   
 
-    function name_project_exists($USERNAME){
-		 $query = $this->db->prepare('SELECT IDUSER FROM user WHERE USERNAME=:NAME');
-         $query->execute(array("NAME" => $USERNAME));
-        if( $query->rowCount() == 1){
-            return true;
-        }else 
-            return false;
-    }
-	
-	/**
-	* a réctifier si vous en aurez besoin
- 	*/
-    function name_project_exists1($project_name){
-        $result =mysqli_query( $this->db,"SELECT IDPROJECT FROM project WHERE NAME='$project_name'");
+    function name_project_exists($name_project,$con){
+        $result =mysqli_query($con,"SELECT IDUSER FROM user WHERE USERNAME='$name_project'");
         if(mysqli_num_rows($result) == 1){
             return true;
         }else 
             return false;
     }
-        function email_exists($email_project){
-            $result =mysqli_query( $this->db,"SELECT IDUSER FROM user WHERE MAIL='$email_project'");
+    function name_project_exists1($project_name,$con){
+        $result =mysqli_query($con,"SELECT IDPROJECT FROM project WHERE NAME='$project_name'");
+        if(mysqli_num_rows($result) == 1){
+            return true;
+        }else 
+            return false;
+    }
+        function email_exists($email_project,$con){
+            $result =mysqli_query($con,"SELECT IDUSER FROM user WHERE MAIL='$email_project'");
             if(mysqli_num_rows($result) == 1){
                 return true;
             }
             else return false;
 
         }
-        function iduser($name_project){
-            $result =mysqli_query( $this->db,"SELECT IDUSER FROM user WHERE USERNAME='$name_project'");
+        function iduser($name_project,$con){
+            $result =mysqli_query($con,"SELECT IDUSER FROM user WHERE USERNAME='$name_project'");
+            
+            
             return $result;
         }
         
