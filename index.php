@@ -1,8 +1,8 @@
 <?php
-require_once('Controller/ProjectController.php');
-require_once('Controller/userStoryController.php');
-require_once('Controller/userController.php');
-require_once('Controller/SprintController.php');
+require_once('controller/ProjectController.php');
+require_once('controller/UserStoryController.php');
+require_once('controller/UserController.php');
+require_once('controller/SprintController.php');
 
 $userController = new UserController();
 $projectController = new ProjectController();
