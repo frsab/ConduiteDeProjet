@@ -9,7 +9,7 @@
   <!-- FONTAWESOME STYLES-->
   <link href="assets/css/font-awesome.css" rel="stylesheet" />
   <!-- MORRIS CHART STYLES-->
-  <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+  <link href="=assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
   <!-- CUSTOM STYLES-->
   <link href="assets/css/custom.css" rel="stylesheet" />
   <!-- GOOGLE FONTS-->
@@ -31,7 +31,7 @@
       padding: 15px 50px 5px 50px;
       float: right;
       font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-      <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+      <a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
@@ -42,32 +42,29 @@
           </li> 
 
           <li  >
-            <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+            <a  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
           </li>
 
           <li  >
-            <a   href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+            <a   href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-edit fa-3x"></i> Backlog</a>
           </li>
 
 
           <li  >
-            <a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+            <a class="active-menu" href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-calendar fa-3x"></i> Planning</a>
           </li>   
-
+          <?php if($sprint_s != null) { ?>
           <li>
             <a href="#"><i class="fa fa-sitemap fa-3x" ></i> Sprints <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
-              <li>
-                <a href="view/sprint.php">Sprint 1</a>
-              </li>
-              <li>
-                <a href="view/sprint.php">Sprint 2</a>
-              </li>
-              <li>
-                <a href="view/sprint.php">Sprint 3</a>
-              </li>
+              <?php foreach ($sprint_s as $sprint) { ?>
+                <li>
+                  <a href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $sprint->IDPROJECT; ?>"><?php echo $sprint->SPRINT_ABSTRACT; ?></a>
+                </li>
+              <?php } ?>
             </ul>
-          </li> 
+          </li>
+          <?php } ?> 
         </ul>
 
       </div>
@@ -80,7 +77,7 @@
           <div class="col-md-12">
            <h2>Planning</h2>   
            <h5>Now you have to make the planning of your project. </h5>
-           <a href="view/helpplanning.php" class="btn btn-info">How to make a planning</a>
+           <a href="/ConduiteDeProjet/?p=helpSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-info">How to make a planning</a>
             <!--   Kitchen Sink -->
        <div style="margin-top: 10px;">
         <div class="panel panel-default">
@@ -119,10 +116,12 @@
                       </td>
 
                       <td>
-                        <form method="POST" action="/ConduiteDeProjet/?p=deleteSprint&IDSPRINT=<?php echo $sprint->IDSPRINT;?>" enctype="multipart/form-data" role="form">
-                            <button  class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                        </form>
-                      </td>
+                      <a href="/ConduiteDeProjet/?p=deleteSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT; ?>" class= "btn btn-danger">
+                        <i class=" fa fa-pencil "></i> 
+                        remove
+                      </a>
+
+                    </td>
                       <td>
                         <button class="btn btn-warning"><i class="fa "></i> Kanban</button>
                       </td>                     
@@ -144,7 +143,7 @@
 
            <div class="row">
             <div class="col-md-12">
-              <a href="view/addsprint.php" class="btn btn-success">Add new sprint</a>
+              <a href="/ConduiteDeProjet/?p=addSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-success">Add new sprint</a>
             </div>
           </div> 
         </div>

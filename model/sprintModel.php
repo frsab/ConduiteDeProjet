@@ -10,11 +10,10 @@ class SprintModel extends Model{
     
     public function deleteSprint($IDSPRINT){
         echo "j'essaye de supprimer la ligne dont l'identifiant est  : $IDSPRINT";
-            try{ 
-                $sql="DELETE * FROM SPRINT WHERE IDSPRINT = $IDSPRINT";
-                $this->bd->exec($sql);
-                echo "Record deleted successfully";
-            
+            try{
+                $req = $this->db->prepare("DELETE FROM SPRINT WHERE IDSPRINT = :IDSPRINT");
+                $result = $req->execute(array("IDSPRINT" => $IDSPRINT));
+                return $result;
             }catch (Exception $e){
                 echo "echecs suppression de la ligne dont l'identifiant est  : $IDSPRINT";
                 return 0;
@@ -27,24 +26,26 @@ class SprintModel extends Model{
         return $query->fetch(PDO::FETCH_OBJ);
     }
     public function select_us_sprint($IDSPRINT){
-        $query = $this->bd->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = :IDSPRINT');
+        $query = $this->db->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = :IDSPRINT');
         $query->execute();//array("IDSPRINT" => $IDSPRINT));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function selectAll(){
+    public function selectAll($IDPROJECT){
         //SPRINT(`IDSPRINT`, `NUMERO`, `DATEDEBUT`, `DATEFIN`)
-        $query = $this->bd->prepare('SELECT * FROM SPRINT');
-        $query->execute();
+        $query = $this->db->prepare('SELECT * FROM SPRINT WHERE IDPROJECT = :IDPROJECT');
+        $query->execute(array("IDPROJECT" => $IDPROJECT));
         return $query->fetchAll(PDO::FETCH_OBJ);
 
     }
 
-    function insert($SPRINT_ABSTRACT){
+    function insert($SPRINT_ABSTRACT, $IDPROJECT){
 
-       $query = $this->bd->prepare('INSERT INTO SPRINT (IDSPRINT, NUMERO, SPRINT_ABSTRACT) VALUES (NULL, 5, :SPRINT_ABSTRACT)');
+       $query = $this->db->prepare('INSERT INTO SPRINT (IDSPRINT, IDPROJECT, NUMERO, SPRINT_ABSTRACT) 
+                                                VALUES (NULL,:IDPROJECT, 5 , :SPRINT_ABSTRACT)');
 //     'INSERT INTO USERSTORY VALUES (null, :DISCRIPTION, :PRIORITY, :COST, :ETAT)');
         return $query->execute(array(
+           "IDPROJECT" =>$IDPROJECT,
            "SPRINT_ABSTRACT"=>$SPRINT_ABSTRACT
         ));
     }    

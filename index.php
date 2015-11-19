@@ -35,15 +35,16 @@ if(isset($_GET["p"]))
         case 'showUS'                :$userStoryController->showall($_GET["IDPROJECT"]);break; 
         case 'helpbacklog'           :$userStoryController->showHelpBacklog($_GET["IDUSER"], $_GET["IDPROJECT"]);break; 
 
-        case 'deleteSprint'          :$sprintController->deleteSprint($_GET["IDSPRINT"]); break;
+        case 'deleteSprint'          :$sprintController->deleteSprint($_GET["IDSPRINT"], $_GET["IDPROJECT"], $_GET["IDUSER"]); break;
         case 'updateUsSprint'        :$sprintController->updateUsSprint($_GET["IDSPRINT"]); break;
         case 'addSprint'             :$sprintController->addSprint(); break;
         case 'insertSprint'          :$sprintController->insert(); break;
         case 'updateSprint'          :$sprintController->update(); break;
         case 'removeSprint'          :$sprintController->remove(); break;
-        case 'showSprint'            :$sprintController->showAll();break;
+        case 'showSprint'            :$sprintController->showAll($_GET["IDPROJECT"]);break;
         case 'ajouterSprint'         :$sprintController->ajouterSprint($_POST);break; 
-        case 'showSprintUs'          :$sprintController->showSprintUs($_POST);break; 
+        case 'showSprintUs'          :$sprintController->showSprintUs($_POST);break;
+        case 'helpSprint'            :$sprintController->showHelpSprint($_GET["IDUSER"], $_GET["IDPROJECT"]);break;  
 
         default :   include 'view/home.php'; break;    
     

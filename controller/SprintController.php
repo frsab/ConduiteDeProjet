@@ -2,38 +2,31 @@
 require_once('model/sprintModel.php');
 
 class SprintController {
-	private $modelSprint;
+	private $sprintModel;
 
     function __construct(){
-		$modelSprint= new sprintModel();
+		$this->sprintModel= new SprintModel();
     }
 
 
-	public function deleteSprint($IDSPRINT){
-		echo "$this->sprintModel->deleteSprint($IDSPRINT);";
-				$this->sprintModel->deleteSprint($IDSPRINT);
-
-        header("Location: /ConduiteDeProjet");
-
-
-		
+	public function deleteSprint($IDSPRINT, $IDPROJECT, $IDUSER){
+		$this->sprintModel->deleteSprint($IDSPRINT);
+		header("Location: /ConduiteDeProjet/?p=showSprint&IDUSER=".$IDUSER."&IDPROJECT=".$IDPROJECT);
 	 //   include "view/updatesprint.php";
 	}
 
-	public function updateUsSprint(){
-		
+	public function updateUsSprint(){	
 		//$sprint_s = $this->sprintModel->selectAll();
 	    include "view/updatesprint.php";
 	}
-	public function addSprint(){
-		
-		$sprint_s = $this->sprintModel->selectAll();
-	    include "view/planning.php";
+
+	public function addSprint(){	
+	    include "view/addsprint.php";
 	}
-	public function showAll(){
-		
-		$sprint_s = $this->sprintModel->selectAll();
-	    include "view/sprint.php";
+
+	public function showAll($IDPROJECT){
+		$sprint_s = $this->sprintModel->selectAll($IDPROJECT);
+	    include "view/planning.php";
 	}
 
 	public function showSprintUs($IDSPRINT){
@@ -56,10 +49,16 @@ class SprintController {
 	} 
 
 	 public function ajouterSprint($data){
+	 	$IDPROJECT = $data["IDPROJECT"];
+	 	$IDUSER= $data["IDUSER"];
         $SPRINT_ABSTRACT = $data["SPRINT_ABSTRACT"];
-        
-		echo $this->sprintModel->insert($SPRINT_ABSTRACT);
-        header("Location: /ConduiteDeProjet");
+		echo $this->sprintModel->insert($SPRINT_ABSTRACT, $IDPROJECT);
+        header("Location: /ConduiteDeProjet/?p=showSprint&IDUSER=".$IDUSER."&IDPROJECT=".$IDPROJECT);
 	}
+
+	public function showHelpSprint($IDUSER, $IDPROJECT){
+        include "view/helpplanning.php";
+    }
+
 }
 

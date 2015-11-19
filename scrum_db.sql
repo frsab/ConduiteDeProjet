@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2015 at 09:34 PM
+-- Generation Time: Nov 19, 2015 at 10:17 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   PRIMARY KEY (`IDPROJECT`),
   KEY `AK_IDENTIFIANT_1` (`IDPROJECT`),
   KEY `FK_ASSOCIATIONUSERPROJECT` (`IDUSER`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `project`
@@ -46,7 +46,8 @@ INSERT INTO `project` (`IDPROJECT`, `IDUSER`, `NAME`, `NBCOLABORATORS`, `STATUS`
 (25, 1, 'PDP', 4, 'DONE', 'M1'),
 (30, 1, 'PED', 4, 'TODO', 'M2'),
 (31, 1, 'MEAN', 3, 'TODO', 'WEB'),
-(35, 7, 'PED', 4, 'TODO', 'EQW');
+(36, 9, 'PED', 1, 'TODO', 'M2'),
+(37, 7, 'PDP', 4, 'DONE', 'MASTER1');
 
 -- --------------------------------------------------------
 
@@ -56,19 +57,23 @@ INSERT INTO `project` (`IDPROJECT`, `IDUSER`, `NAME`, `NBCOLABORATORS`, `STATUS`
 
 CREATE TABLE IF NOT EXISTS `sprint` (
   `IDSPRINT` int(11) NOT NULL AUTO_INCREMENT,
+  `IDPROJECT` int(11) NOT NULL,
   `NUMERO` int(11) DEFAULT NULL,
+  `SPRINT_ABSTRACT` varchar(100) NOT NULL,
   `DATEDEBUT` datetime DEFAULT NULL,
   `DATEFIN` datetime DEFAULT NULL,
   PRIMARY KEY (`IDSPRINT`),
-  KEY `AK_IDENTIFIANT_1` (`IDSPRINT`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  KEY `AK_IDENTIFIANT_1` (`IDSPRINT`),
+  KEY `IDPROJECT` (`IDPROJECT`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `sprint`
 --
 
-INSERT INTO `sprint` (`IDSPRINT`, `NUMERO`, `DATEDEBUT`, `DATEFIN`) VALUES
-(1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `sprint` (`IDSPRINT`, `IDPROJECT`, `NUMERO`, `SPRINT_ABSTRACT`, `DATEDEBUT`, `DATEFIN`) VALUES
+(1, 37, 1, 'SPRINT1', NULL, NULL),
+(10, 37, 5, 'SPRINT2', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -101,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`IDUSER`),
   KEY `AK_IDENTIFIANT_1` (`IDUSER`),
   KEY `AK_IDENTIFIANT_2` (`IDUSER`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `user`
@@ -114,7 +119,10 @@ INSERT INTO `user` (`IDUSER`, `USERNAME`, `MAIL`, `PASSWORD`, `REGISTRATIONDATE`
 (4, 'salim3', 'm@s', '006d2143154327a64d86a264aea225f3', 'November,11 2015'),
 (5, 'salim3', 'salim@s.fr', '006d2143154327a64d86a264aea225f3', 'November,12 2015'),
 (6, 'test1', 'test@test', '006d2143154327a64d86a264aea225f3', 'November,12 2015'),
-(7, 'test3', 'a@a', '8ad8757baa8564dc136c1e07507f4a98', 'November,12 2015');
+(7, 'test3', 'a@a', '8ad8757baa8564dc136c1e07507f4a98', 'November,12 2015'),
+(8, 'm.salim92@hotmail.fr', 'm.salim92@hotmail.fr', '22d7fe8c185003c98f97e5d6ced420c7', 'November,13 2015'),
+(9, 'salimmoudache', 'salim@gmail.com', '22d7fe8c185003c98f97e5d6ced420c7', 'November,16 2015'),
+(10, 'salimmoudache', 'salim@gmail.com', '9b9bbd8d15d37ace5d6293942cfb0050', 'November,16 2015');
 
 -- --------------------------------------------------------
 
@@ -134,16 +142,7 @@ CREATE TABLE IF NOT EXISTS `userstory` (
   KEY `AK_IDENTIFIANT_1` (`IDUSERSTORY`),
   KEY `FK_ASSOCIATIONPROJETUSERSTORY` (`IDPROJECT`),
   KEY `FK_ASSOCIATIONUSERSTORYSPRINT` (`IDSPRINT`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
-
---
--- Dumping data for table `userstory`
---
-
-INSERT INTO `userstory` (`IDUSERSTORY`, `IDPROJECT`, `IDSPRINT`, `DESCRIPTION`, `PRIORITY`, `COST`, `ETAT`) VALUES
-(3, 25, 1, 'us1', 1, 1, 'TODO'),
-(5, 31, 1, '', 6, 5, '12345'),
-(6, 35, 1, NULL, 2, 2, '0');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Constraints for dumped tables
@@ -154,6 +153,12 @@ INSERT INTO `userstory` (`IDUSERSTORY`, `IDPROJECT`, `IDSPRINT`, `DESCRIPTION`, 
 --
 ALTER TABLE `project`
   ADD CONSTRAINT `FK_ASSOCIATIONUSERPROJECT` FOREIGN KEY (`IDUSER`) REFERENCES `user` (`IDUSER`);
+
+--
+-- Constraints for table `sprint`
+--
+ALTER TABLE `sprint`
+  ADD CONSTRAINT `sprint_ibfk_1` FOREIGN KEY (`IDPROJECT`) REFERENCES `project` (`IDPROJECT`);
 
 --
 -- Constraints for table `task`
