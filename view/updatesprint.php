@@ -84,14 +84,15 @@
                                         </tr>
                                     </thead>
                                    <tbody>
-                                        <?php foreach ($notAssignedUserStory as $s) { ?>
+                                   <?php $notAssignedUserStory=Model::getInstance()->sprintModel->select_us_NotAssigned_sprint(); ?>
+                                        <?php foreach ($notAssignedUserStory as $sprint) { ?>
                                         <tr>
-                                           <td><?php echo $s->IDUSERSTORY; ?></td>
-                                          <td><?php echo $s->DESCRIPTION; ?></td>
-                                          <td><?php echo $s->PRIORITY; ?></td>
-                                          <td><?php echo $s->COST; ?></td>
+                                           <td><?php echo $sprint->IDUSERSTORY; ?></td>
+                                          <td><?php echo $sprint->DESCRIPTION; ?></td>
+                                          <td><?php echo $sprint->PRIORITY; ?></td>
+                                          <td><?php echo $sprint->COST; ?></td>
                                           <td>
-                                              <form role="form" name="updateProject" method="POST" action="/ConduiteDeProjet/?p=moveUsToSprintUS&IDSPRINT=<?php echo $s->IDSPRINT;?>&IDUSERSTORY=<?php echo $s->IDUSERSTORY;?>">
+                                              <form role="form" name="updateProject" method="POST" action="/ConduiteDeProjet/?p=moveUsToSprintUS&IDSPRINT=<?php echo $sprint->IDSPRINT;?>&IDUSERSTORY=<?php echo $sprint->IDUSERSTORY;?>">
                                                    <input type="submit" class="btn btn-success" name="addSprint" value="Move to Left"/>
                                               </form>
                                           </td>
@@ -122,15 +123,16 @@
                                         </tr>
                                     </thead>
                                    <tbody>
-
-                                        <?php foreach ($assignedUserStory as $sprint) { ?>
+     
+                                   <?php  $assignedUserStory=Model::getInstance()->sprintModel->select_us_sprint_id($_GET['IDSPRINT']); ?>
+                                        <?php foreach ($assignedUserStory as $sprint1) { ?>
                                         <tr>
-                                           <td><?php echo $sprint->IDUSERSTORY; ?></td>
-                                          <td><?php echo $sprint->DESCRIPTION; ?></td>
-                                          <td><?php echo $sprint->PRIORITY; ?></td>
-                                          <td><?php echo $sprint->COST; ?></td>
+                                           <td><?php echo $sprint1->IDUSERSTORY; ?></td>
+                                          <td><?php echo $sprint1->DESCRIPTION; ?></td>
+                                          <td><?php echo $sprint1->PRIORITY; ?></td>
+                                          <td><?php echo $sprint1->COST; ?></td>
                                           <td>
-                                              <form role="form" name="updateProject" method="POST" action="/ConduiteDeProjet/?p=moveUsToNotAssignedUS&IDSPRINT=<?php echo $sprint->IDSPRINT;?>&IDUSERSTORY=<?php echo $sprint->IDUSERSTORY;?>">
+                                              <form role="form" name="updateProject" method="POST" action="/ConduiteDeProjet/?p=moveUsToNotAssignedUS&IDSPRINT=<?php echo $sprint1->IDSPRINT;?>&IDUSERSTORY=<?php echo $sprint1->IDUSERSTORY;?>">
                                                    <input type="submit" class="btn btn-success" name="addSprint" value="Move to Right"/>
                                               </form>
                                           </td>

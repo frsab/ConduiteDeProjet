@@ -68,8 +68,10 @@ class SprintController {
 	}
 
 	public function updateSprint($IDSPRINT){
-		$notAssignedUserStory=Model::getInstance()->sprintModel->select_us_NotAssigned_sprint();
-		$assignedUserStory=Model::getInstance()->sprintModel->select_us_sprint_id($IDSPRINT);
+		$IDSPRIN=$IDSPRINT;
+		//$assignedUserStory=Model::getInstance()->sprintModel->select_us_sprint_id($IDSPRINT);
+		//$notAssignedUserStory=Model::getInstance()->sprintModel->select_us_NotAssigned_sprint();
+//		$assignedUserStory=Model::getInstance()->sprintModel->select_us_sprint_id($IDSPRINT);
 		
 	    include "view/updatesprint.php";
 	}

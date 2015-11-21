@@ -32,7 +32,10 @@ class SprintModel   {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
     public function select_us_sprint_id($IDSPRINT){
-        $query = $this->bd->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = :IDSPRINT');
+        //echo "id de ton sprint est $IDSPRINT";
+        $sql="SELECT * FROM USERSTORY WHERE IDSPRINT = $IDSPRINT";
+        echo $sql;
+        $query = $this->bd->prepare($sql);
         $query->execute();//array("IDSPRINT" => $IDSPRINT));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
