@@ -1,7 +1,7 @@
 <?php
 //require_once('GlobalController.php');
 //require_once('model/sprintModel.php');
-require_once('model/Model.php');
+require_once('model/Model.php'); 
 class SprintController {
 	//private $modelSprint;//= new sprintModel();
 

@@ -113,14 +113,16 @@
                       <td>
                         <a href="/ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=<?php echo $spr->IDSPRINT;?>" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
                       </td>
-
+       
                       <td>
-                        <button class="btn btn-success"><i class="fa "></i> Tasks</button>
+                        <form method="POST" action="/ConduiteDeProjet/?p=ListTask&IDSPRINT=<?php echo $spr->IDSPRINT;?>" enctype="multipart/form-data" role="form">
+                                <input type="submit" class="btn btn-success" name="Tasks" value="Tasks"/>
+                </form>
                       </td>
 
                       <td>
                         <form method="POST" action="/ConduiteDeProjet/?p=deleteSprint&IDSPRINT=<?php echo $spr->IDSPRINT;?>" enctype="multipart/form-data" role="form">
-                            <button  class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                            <input type="submit" class="btn btn-danger" name="Delete" value="Delete"/>
                         </form>
                       </td>
                       <td>

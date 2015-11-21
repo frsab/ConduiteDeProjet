@@ -1,6 +1,7 @@
 <?php
 require_once("config/config.php");
 require_once('model/sprintModel.php');
+require_once('model/taskModel.php');
 //require_once("model/sprintModel.php");
 
 class Model {
@@ -8,6 +9,7 @@ class Model {
     private static $instance=null;
     public $db;
     public $sprintModel;
+    public $taskModel;
 
 
     public function __construct() {
@@ -17,6 +19,7 @@ class Model {
         	die($e->getMessage());
         }
         $this->sprintModel=new SprintModel($this->db);
+        $this->taskModel=new TaskModel($this->db);
 
     }
 public static  function getInstance(){

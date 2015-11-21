@@ -49,6 +49,15 @@ if(isset($_GET["p"]))
            case 'moveUsToNotAssignedUS'          :$controller->sprintController->moveUsToNotAssignedUS($_GET["IDUSERSTORYNotAssignedUS"],$_GET["IDSPRINTNotAssignedUS"]);break;
            case 'moveUsToSprintUS'               :$controller->sprintController->moveUsToSprintUS($_GET["IDUSERSTORY"],$_GET["IDSPRINT"]);break;
             case 'ajouterSprint'                 :$controller->sprintController->ajouterSprint($_POST);break; 
+            
+            case 'ListTask'                :$controller->taskController->ListTask($_GET["IDSPRINT"]);break; 
+            case 'addTask'                 :$controller->taskController->addTask($_GET["IDSPRINT"]);break; 
+            case 'updateTask'              :$controller->taskController->updateTask($_GET["IDTASK"]);break; 
+            case 'delete'                  :$controller->taskController->deleteTask($_GET["IDTASK"]);break; 
+            case 'ajouterTask'                  :$controller->taskController->ajouterTask($_POST);break; 
+
+
+            
         default :   include 'view/home.php'; break;    
     
     }else {

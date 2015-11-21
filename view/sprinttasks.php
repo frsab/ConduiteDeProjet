@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrum Project Manager</title>
   <!-- BOOTSTRAP STYLES-->
-  <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+  <link href="assets/css/bootstrap.css" rel="stylesheet" />
   <!-- FONTAWESOME STYLES-->
-  <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+  <link href="assets/css/font-awesome.css" rel="stylesheet" />
   <!-- MORRIS CHART STYLES-->
-  <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+  <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
   <!-- CUSTOM STYLES-->
-  <link href="../assets/css/custom.css" rel="stylesheet" />
+  <link href="assets/css/custom.css" rel="stylesheet" />
   <!-- GOOGLE FONTS-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -84,50 +84,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr >
-                    <td>1</td>
-                    <td>Task 1</td>
-                    <td>3</td>
-                    <td>
-                      <a href="../view/updatetask.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                    </td>
-                    <td>
-                      <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                    </td>                   
-                  </tr>
-                  <tr >
-                    <td>2</td>
-                    <td>Task 2</td>
-                    <td>2,5</td>
-                    <td>
-                      <a href="../view/updatetask.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                    </td>
-                    <td>
-                      <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                    </td>                   
-                  </tr>
-                  <tr >
-                    <td>3</td>
-                    <td>Task 3</td>
-                    <td>1,5</td>
-                    <td>
-                      <a href="../view/updatetask.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                    </td>
-                    <td>
-                      <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                    </td>                   
-                  </tr>
-                  <tr >
-                    <td>4</td>
-                    <td>Task 4</td>
-                    <td>4</td>
-                    <td>                      
-                      <a href="../view/updatetask.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>                
-                    </td>
-                    <td>                       
-                      <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                    </td>                   
-                  </tr>
+                 
+              
+                 <?php if (is_array($task_s) || is_object($task_s)) ?>
+                 <?php { ?>
+                   <?php foreach ($task_s as $task) { ?>
+                              <tr>
+                                  <td><?php echo $task->IDTASK; ?></td>
+                                  <td><?php echo $task->DESCRIPTION; ?></td>
+                                  <td><?php echo $task->Cost_Man_Day; ?></td>
+                      <td>
+                        <a href="/ConduiteDeProjet?p=UpdateTask" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
+                      </td>
+                      <td>
+                        <a href="/ConduiteDeProjet?p=DeleteTaskFromSprint" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                      </td>                   
+                    </tr>  
+                    <?php } ?>
+                 <?php } ?>
+ 
                 </tbody>
               </table>
 
@@ -140,8 +115,11 @@
       <div class="row">
 
         <div class="col-md-12">
-          <a href="../view/addtask.php" class="btn btn-success">Add a task</a>
-
+        <?php //echo ";$_POST["IDSPRINT"]"?>
+        <?php //echo ";$_GET["IDSPRINT"]"?>
+                 <form method="POST" action="/ConduiteDeProjet/?p=addTask&IDSPRINTPOST=$_POST["IDSPRINT"]&IDSPRINTGET=<?php $_GET["IDSPRINT"];?>" enctype="multipart/form-data" role="form">
+                                <input type="submit" class="btn btn-success" name="Tasks" value="add a Tasks"/>
+                </form>
         </div>
 
       </div> 
