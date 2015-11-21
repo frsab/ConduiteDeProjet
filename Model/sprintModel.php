@@ -20,13 +20,24 @@ class SprintModel   {
             }
     }
 
-    public function select($IDSPRINT){
-        $query = $this->db->prepare('SELECT * FROM sprint WHERE IDSPRINT = :IDSPRINT');
+    public function selectSprint(){
+        $query = $this->bd->prepare('SELECT * FROM sprint');// WHERE IDSPRINT = :IDSPRINT');
         $query->execute(array("IDSPRINT" => $IDSPRINT));
         return $query->fetch(PDO::FETCH_OBJ);
     }
-    public function select_us_sprint($IDSPRINT){
+//    public function select_us_sprint($IDSPRINT){
+    public function select_us_sprint(){
+        $query = $this->bd->prepare('SELECT * FROM USERSTORY');// WHERE IDSPRINT = :IDSPRINT');
+        $query->execute();//array("IDSPRINT" => $IDSPRINT));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function select_us_sprint_id($IDSPRINT){
         $query = $this->bd->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = :IDSPRINT');
+        $query->execute();//array("IDSPRINT" => $IDSPRINT));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+   public function select_us_NotAssigned_sprint(){
+        $query = $this->bd->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = -1');
         $query->execute();//array("IDSPRINT" => $IDSPRINT));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

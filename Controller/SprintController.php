@@ -10,7 +10,20 @@ class SprintController {
 	
     }
 
+	public function showPlanning(){
+		$sprint_s = Model::getInstance()->sprintModel->selectAll();
+	 
+	//	$sprint_s = Model::getInstance()->sprintModel->selectSprint();
+//		$userstory_sprint_s = Model::getInstance()->sprintModel->select_us_sprint($IDSPRINT);
+	    include "view/planning.php";
+	}
 
+	public function showAllSprintBacklog(){
+		
+		$sprint_s = Model::getInstance()->sprintModel->selectAll();
+	    $userstory_sprint_s=Model::getInstance()->sprintModel->select_us_sprint();
+	    include "view/sprint.php";
+	}
 	public function deleteSprint($IDSPRINT){
 		echo "Model::getInstance()->sprintModel->deleteSprint($IDSPRINT);";
 				Model::getInstance()->sprintModel->deleteSprint($IDSPRINT);
@@ -29,14 +42,19 @@ class SprintController {
 	}
 	public function addSprint(){
 		
-		$sprint_s = Model::getInstance()->sprintModel->selectAll();
-	    include "view/planning.php";
+	//	$sprint_s = Model::getInstance()->sprintModel->selectAll();
+	    include "view/addsprint.php";
 	}
-	public function showAll(){
+
+
+	public function showSprintTasks(){
+
 		
 		$sprint_s = Model::getInstance()->sprintModel->selectAll();
-	    include "view/sprint.php";
+	    $userstory_sprint_s=Model::getInstance()->sprintModel->select_us_sprint();
+	    include "view/sprinttasks.php";
 	}
+
 
 	public function showSprintUs($IDSPRINT){
 		$sprint_s = Model::getInstance()->sprintModel->selectAll();
@@ -49,7 +67,10 @@ class SprintController {
 	    include "view/addsprint.php";
 	}
 
-	public function update(){
+	public function updateSprint($IDSPRINT){
+		$notAssignedUserStory=Model::getInstance()->sprintModel->select_us_NotAssigned_sprint();
+		$assignedUserStory=Model::getInstance()->sprintModel->select_us_sprint_id($IDSPRINT);
+		
 	    include "view/updatesprint.php";
 	}
 
@@ -59,7 +80,6 @@ class SprintController {
 
 	 public function ajouterSprint($data){
         $SPRINT_ABSTRACT = $data["SPRINT_ABSTRACT"];
-        
 		echo Model::getInstance()->sprintModel->insert($SPRINT_ABSTRACT);
         header("Location: /ConduiteDeProjet");
 	}
