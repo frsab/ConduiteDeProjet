@@ -92,7 +92,7 @@
                                           <td><?php echo $sprint->PRIORITY; ?></td>
                                           <td><?php echo $sprint->COST; ?></td>
                                           <td>
-                                              <form role="form" name="updateProject" method="POST" action="/ConduiteDeProjet/?p=moveUsToSprintUS&IDSPRINT=<?php echo $sprint->IDSPRINT;?>&IDUSERSTORY=<?php echo $sprint->IDUSERSTORY;?>">
+                                              <form role="form" name="moveUsToSprintUS" method="POST" action="/ConduiteDeProjet/?p=moveUsToSprintUS&IDSPRINT=<?php echo $_GET['IDSPRINT'];?>&IDUSERSTORY=<?php echo $sprint->IDUSERSTORY;?>">
                                                    <input type="submit" class="btn btn-success" name="addSprint" value="Move to Left"/>
                                               </form>
                                           </td>
@@ -132,7 +132,7 @@
                                           <td><?php echo $sprint1->PRIORITY; ?></td>
                                           <td><?php echo $sprint1->COST; ?></td>
                                           <td>
-                                              <form role="form" name="updateProject" method="POST" action="/ConduiteDeProjet/?p=moveUsToNotAssignedUS&IDSPRINT=<?php echo $sprint1->IDSPRINT;?>&IDUSERSTORY=<?php echo $sprint1->IDUSERSTORY;?>">
+                                              <form role="form" name="moveUsToNotAssignedUS" method="POST" action="/ConduiteDeProjet/?p=moveUsToNotAssignedUS&IDSPRINTNotAssignedUS=<?php echo $sprint1->IDSPRINT;?>&IDUSERSTORYNotAssignedUS=<?php echo $sprint1->IDUSERSTORY;?>">
                                                    <input type="submit" class="btn btn-success" name="addSprint" value="Move to Right"/>
                                               </form>
                                           </td>
@@ -156,7 +156,7 @@
             <div class= "row">
                 <div style="margin-top: 10px;">
                 <div class="col-md-6">
-                    <a href="../view/planning.php" class="btn btn-success">Back</a>
+                    <a href="/ConduiteDeProjet?p=showPlanning" class="btn btn-success">Back</a>
                 </div>
                 </div>
             </div>

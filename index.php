@@ -12,7 +12,6 @@ $sprintController = new SprintController();
 
 if(isset($_GET["p"]))
     switch ($_GET["p"]) {
-/*		
         case 'home'                  :$userController->home();break;
         case 'authentify'            :$userController->authentify();break;
         case 'logout'                :$userController->logout();break;
@@ -36,16 +35,6 @@ if(isset($_GET["p"]))
         case 'showUS'                :$userStoryController->showall($_GET["IDPROJECT"]);break; 
         case 'helpbacklog'           :$userStoryController->showHelpBacklog($_GET["IDUSER"], $_GET["IDPROJECT"]);break; 
 
-        case 'deleteSprint'          :$sprintController->deleteSprint($_GET["IDSPRINT"]); break;
-        case 'updateUsSprint'        :$sprintController->updateUsSprint($_GET["IDSPRINT"]); break;
-        case 'addSprint'             :$sprintController->addSprint(); break;
-        case 'insertSprint'          :$sprintController->insert(); break;
-        case 'updateSprint'          :$sprintController->update(); break;
-        case 'removeSprint'          :$sprintController->remove(); break;
-        case 'showSprint'            :$sprintController->showAll();break;
-        case 'ajouterSprint'         :$sprintController->ajouterSprint($_POST);break; 
-        case 'showSprintUs'          :$sprintController->showSprintUs($_POST);break; 
-*/
 
             case 'showSprintBacklog'             :$controller->sprintController->showAllSprintBacklog();break;
             case 'showPlanning'                  :$controller->sprintController->showplanning();break;
@@ -57,19 +46,11 @@ if(isset($_GET["p"]))
             case 'removeSprint'                  :$controller->sprintController->remove(); break;
             case 'showSprint'                    :$controller->sprintController->showAll();break;
             case 'SprintBacklog'                 :$controller->sprintController->showAll();break;
-           case 'moveUsToNotAssignedUS'          :$controller->sprintController->moveUsToNotAssignedUS();break;
-           case 'moveUsToSprintUS'               :$controller->sprintController->moveUsToSprintUS();break;
+           case 'moveUsToNotAssignedUS'          :$controller->sprintController->moveUsToNotAssignedUS($_GET["IDUSERSTORYNotAssignedUS"],$_GET["IDSPRINTNotAssignedUS"]);break;
+           case 'moveUsToSprintUS'               :$controller->sprintController->moveUsToSprintUS($_GET["IDUSERSTORY"],$_GET["IDSPRINT"]);break;
             case 'ajouterSprint'                 :$controller->sprintController->ajouterSprint($_POST);break; 
-            default                              :$controller->sprintController->showplanning(); break;
-       
-}
-else {
-   $controller->sprintController-> showplanning();
-     }
-
-     /*
         default :   include 'view/home.php'; break;    
     
     }else {
         include 'view/home.php';
-    }*/
+    }

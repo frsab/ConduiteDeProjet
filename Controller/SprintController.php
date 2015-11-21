@@ -24,6 +24,22 @@ class SprintController {
 	    $userstory_sprint_s=Model::getInstance()->sprintModel->select_us_sprint();
 	    include "view/sprint.php";
 	}
+	public function moveUsToNotAssignedUS($IDUSERSTORY,$IDSPRINT){
+		echo "moveUsToNotAssignedUS($IDUSERSTORY,$IDSPRINT)";
+		$sprint_s = Model::getInstance()->sprintModel->update_userStory_idSprint($IDUSERSTORY,-1);
+		header("location:".  $_SERVER['HTTP_REFERER']); 
+		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
+	}
+	public function moveUsToSprintUS($IDUSERSTORY,$IDSPRINT){
+		echo "moveUsToSprintUS($IDUSERSTORY,$IDSPRINT)";
+		$sprint_s = Model::getInstance()->sprintModel->update_userStory_idSprint($IDUSERSTORY,$IDSPRINT);
+		header("location:".  $_SERVER['HTTP_REFERER']); 
+		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
+	
+	}
+
+
+
 	public function deleteSprint($IDSPRINT){
 		echo "Model::getInstance()->sprintModel->deleteSprint($IDSPRINT);";
 				Model::getInstance()->sprintModel->deleteSprint($IDSPRINT);
