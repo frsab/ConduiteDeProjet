@@ -20,12 +20,16 @@ class TaskModel   {
         return $query->fetch(PDO::FETCH_OBJ);
 */
     }
-     function insertTask($DISCRIPTION,$COST){
+            //  insertTask($DESCRIPTION,$COST,$IDSPRINT)    
+     public function insertTask($DESCRIPTION,$COST,$IDSPRINT){
 
 
-       $query = $this->bd->prepare('INSERT INTO TASK (IDTASK, IDSPRINT, DESCRIPTION, ETAT, Cost_Man_Day) VALUES (NULL, 5, :DESCRIPTION,NULL, :COST)');
+       $query = $this->bd->prepare('INSERT INTO TASK (IDTASK, IDSPRINT, DESCRIPTION, ETAT, Cost_Man_Day) VALUES (NULL, :IDSPRINT, :DESCRIPTION,NULL, :COST)');
         return $query->execute(array(
-           "SPRINT_ABSTRACT"=>$SPRINT_ABSTRACT
+          // "SPRINT_ABSTRACT"=>$SPRINT_ABSTRACT
+           "IDSPRINT"=>$IDSPRINT,
+            "DESCRIPTION"=>$DESCRIPTION,
+            "COST"=>$COST
         ));
     }    
 

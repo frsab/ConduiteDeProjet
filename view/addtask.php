@@ -74,21 +74,23 @@
                                       <div style="margin-top: 10px;">
                                         <div class="col-md-6">
                                           <div class="form-group">
-                                            <label>Task Abstract</label>
-                                            <input class="form-control" placeholder="Please enter your abstract task" />
-                                        </div>
-                                        <div class="form-group">
+                                          <input type="hidden" name="IDSPRINT" value="<?php echo $_GET["IDSPRINT"];?>"/>
+                                          <label>Task Abstract</label>
+                                            <input id="ABSTRACT_TASK" class="form-control" placeholder="Please enter your abstract task"   name="ABSTRACT_TASK" />                                      
+                                           </div>
+                                          <div class="form-group">
                                             <label>Task Cost</label>
-                                            <input class="form-control" placeholder="Please enter the task cost" />
-                                        </div>
-                                    
-
-                                        <div class= "row">
+                                            <input id="COST" class="form-control" placeholder="Please enter the task cost"   name="COST" />                                      
+                          
+                                          </div>
+ 
+                                          <div class= "row">
                                             <div class="col-md-6">
                                                 <input type="submit" class="btn btn-success" name="addSprint" value="Add Task"/>
                                               <a href="/ConduiteDeProjet/?p=ListTask" class="btn btn-danger">Cancel</a>     
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

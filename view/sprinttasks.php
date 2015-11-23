@@ -117,7 +117,7 @@
         <div class="col-md-12">
         <?php //echo ";$_POST["IDSPRINT"]"?>
         <?php //echo ";$_GET["IDSPRINT"]"?>
-                 <form method="POST" action="/ConduiteDeProjet/?p=addTask&IDSPRINTPOST=$_POST["IDSPRINT"]&IDSPRINTGET=<?php $_GET["IDSPRINT"];?>" enctype="multipart/form-data" role="form">
+                 <form method="POST" action="/ConduiteDeProjet/?p=addTask&IDSPRINT=<?php echo "$id";?>" enctype="multipart/form-data" role="form">
                                 <input type="submit" class="btn btn-success" name="Tasks" value="add a Tasks"/>
                 </form>
         </div>
