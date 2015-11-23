@@ -1,9 +1,10 @@
 <?php
+require_once('Controller/GlobalController.php');
 require_once('controller/ProjectController.php');
 require_once('controller/UserStoryController.php');
 require_once('controller/UserController.php');
 require_once('controller/SprintController.php');
-
+$controller = new GlobalController();
 $userController = new UserController();
 $projectController = new ProjectController();
 $userStoryController = new UserStoryController();
@@ -34,7 +35,7 @@ if(isset($_GET["p"]))
         case 'updateView'            :$userStoryController->updateUserStory($_GET["IDUSERSTORY"],$_GET["IDUSER"]);   break;
         case 'showUS'                :$userStoryController->showall($_GET["IDPROJECT"]);break; 
         case 'helpbacklog'           :$userStoryController->showHelpBacklog($_GET["IDUSER"], $_GET["IDPROJECT"]);break; 
-
+/*
         case 'deleteSprint'          :$sprintController->deleteSprint($_GET["IDSPRINT"]); break;
         case 'updateUsSprint'        :$sprintController->updateUsSprint($_GET["IDSPRINT"]); break;
         case 'addSprint'             :$sprintController->addSprint(); break;
@@ -44,6 +45,26 @@ if(isset($_GET["p"]))
         case 'showSprint'            :$sprintController->showAll();break;
         case 'ajouterSprint'         :$sprintController->ajouterSprint($_POST);break; 
         case 'showSprintUs'          :$sprintController->showSprintUs($_POST);break; 
+*/
+        case 'showSprintBacklog'             :$controller->sprintController->showAllSprintBacklog();break;
+        case 'showPlanning'                  :$controller->sprintController->showplanning();break;
+        case 'deleteSprint'                  :$controller->sprintController->deleteSprint($_GET["IDSPRINT"]); break;
+        case 'updateUsSprint'                :$controller->sprintController->updateUsSprint($_GET["IDSPRINT"]); break;
+        case 'addSprint'                     :$controller->sprintController->addSprint(); break;
+        case 'insertSprint'                  :$controller->sprintController->insert(); break;
+        case 'updateSprint'                  :$controller->sprintController->updateSprint(); break;
+        case 'removeSprint'                  :$controller->sprintController->remove(); break;
+        case 'showSprint'                    :$controller->sprintController->showAll();break;
+        case 'SprintBacklog'                 :$controller->sprintController->showAll();break;
+        case 'moveUsToNotAssignedUS'          :$controller->sprintController->moveUsToNotAssignedUS($_GET["IDUSERSTORYNotAssignedUS"],$_GET["IDSPRINTNotAssignedUS"]);break;
+        case 'moveUsToSprintUS'               :$controller->sprintController->moveUsToSprintUS($_GET["IDUSERSTORY"],$_GET["IDSPRINT"]);break;
+        case 'ajouterSprint'                 :$controller->sprintController->ajouterSprint($_POST);break; 
+
+        case 'ListTask'                :$controller->taskController->ListTask($_GET["IDSPRINT"]);break; 
+        case 'addTask'                 :$controller->taskController->addTask($_GET["IDSPRINT"]);break; 
+        case 'updateTask'              :$controller->taskController->updateTask($_GET["IDTASK"]);break; 
+        case 'delete'                  :$controller->taskController->deleteTask($_GET["IDTASK"]);break; 
+        case 'ajouterTask'                  :$controller->taskController->ajouterTask($_POST);break; 
 
         default :   include 'view/home.php'; break;    
     
