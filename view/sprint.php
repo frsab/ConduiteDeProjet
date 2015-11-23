@@ -122,12 +122,6 @@
                                 <td><?php echo $userstory->ETAT; ?></td>
                                 <td><?php echo $userstory->IDSPRINT; ?></td>
                               </tr>
-                            <li>
-
-                            <a href="/ConduiteDeProjet/?p=showSprintUs&IDSPRINT=<?php echo $sprint->NUMERO; ?>">Sprint <?php echo $sprint->NUMERO; ?></a>
-                            ?p=showUS
-                            </li>
-
                             <?php } ?>
 
                               

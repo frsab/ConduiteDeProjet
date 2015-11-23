@@ -104,23 +104,25 @@
                   </tr>
                 </thead>
                 <tbody>
-              <?php foreach ($sprint_s as $sprint) { ?>
-                  <tr>
-                      <td><?php echo $sprint->NUMERO; ?></td>
-                      <td><?php echo $sprint->SPRINT_ABSTRACT; ?></td>
-                      <td><?php echo $sprint->DATEDEBUT; ?></td>
-                      <td><?php echo $sprint->DATEFIN; ?></td>
+              <?php foreach ($sprint_s as $spr) { ?>
+                    <tr>
+                      <td><?php echo $spr->NUMERO; ?></td>
+                      <td><?php echo $spr->SPRINT_ABSTRACT; ?></td>
+                      <td><?php echo $spr->DATEDEBUT; ?></td>
+                      <td><?php echo $spr->DATEFIN; ?></td>
                       <td>
-                        <a href="/ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=<?php echo $sprint->IDSPRINT;?>" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                        <a href="/ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=<?php echo $spr->IDSPRINT;?>" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                      </td>
+       
+                      <td>
+                        <form method="POST" action="/ConduiteDeProjet/?p=ListTask&IDSPRINT=<?php echo $spr->IDSPRINT;?>" enctype="multipart/form-data" role="form">
+                                <input type="submit" class="btn btn-success" name="Tasks" value="Tasks"/>
+                </form>
                       </td>
 
                       <td>
-                        <button class="btn btn-success"><i class="fa "></i> Tasks</button>
-                      </td>
-
-                      <td>
-                        <form method="POST" action="/ConduiteDeProjet/?p=deleteSprint&IDSPRINT=<?php echo $sprint->IDSPRINT;?>" enctype="multipart/form-data" role="form">
-                            <button  class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                        <form method="POST" action="/ConduiteDeProjet/?p=deleteSprint&IDSPRINT=<?php echo $spr->IDSPRINT;?>" enctype="multipart/form-data" role="form">
+                            <input type="submit" class="btn btn-danger" name="Delete" value="Delete"/>
                         </form>
                       </td>
                       <td>
@@ -141,12 +143,13 @@
       </div>
       <!-- End  Kitchen Sink -->
 
-
-           <div class="row">
-            <div class="col-md-12">
-              <a href="view/addsprint.php" class="btn btn-success">Add new sprint</a>
-            </div>
-          </div> 
+          <form role="form" name="updateProject" method="POST" action="/ConduiteDeProjet/?p=addSprint">
+                   <div class="row">
+                      <div class="col-md-12">
+                        <input type="submit" class="btn btn-success" name="addSprint" value="Add new sprint"/>
+                      </div>
+                    </div> 
+          </form>
         </div>
       </div>         
     </div>

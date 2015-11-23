@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrum Project Manager</title>
   <!-- BOOTSTRAP STYLES-->
-  <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+  <link href="assets/css/bootstrap.css" rel="stylesheet" />
   <!-- FONTAWESOME STYLES-->
-  <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+  <link href="assets/css/font-awesome.css" rel="stylesheet" />
   <!-- MORRIS CHART STYLES-->
-  <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+  <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
   <!-- CUSTOM STYLES-->
-  <link href="../assets/css/custom.css" rel="stylesheet" />
+  <link href="assets/css/custom.css" rel="stylesheet" />
   <!-- GOOGLE FONTS-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -68,30 +68,35 @@
                         <div class="panel-heading">
                             Add a Task
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                              <div style="margin-top: 10px;">
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                    <label>Task Abstract</label>
-                                    <input class="form-control" placeholder="Please enter your abstract task" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Task Cost</label>
-                                    <input class="form-control" placeholder="Please enter the task cost" />
-                                </div>
-                            
+                        <form role="form" name="addTask" method="POST" action="/ConduiteDeProjet/?p=ajouterTask">
+                                <div class="panel-body">
+                                    <div class="row">
+                                      <div style="margin-top: 10px;">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                          <input type="hidden" name="IDSPRINT" value="<?php echo $_GET["IDSPRINT"];?>"/>
+                                          <label>Task Abstract</label>
+                                            <input id="ABSTRACT_TASK" class="form-control" placeholder="Please enter your abstract task"   name="ABSTRACT_TASK" />                                      
+                                           </div>
+                                          <div class="form-group">
+                                            <label>Task Cost</label>
+                                            <input id="COST" class="form-control" placeholder="Please enter the task cost"   name="COST" />                                      
+                          
+                                          </div>
+ 
+                                          <div class= "row">
+                                            <div class="col-md-6">
+                                                <input type="submit" class="btn btn-success" name="addSprint" value="Add Task"/>
+                                              <a href="/ConduiteDeProjet/?p=ListTask" class="btn btn-danger">Cancel</a>     
+                                            </div>
+                                        </div>
 
-                                <div class= "row">
-                                    <div class="col-md-6">
-                                        <a href="../view/sprinttasks.php" class="btn btn-danger">Cancel</a>
-                                        <a href="../view/sprinttasks.php" class="btn btn-success">Add</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        </form>
+
             </div>
         </div>
     </div>

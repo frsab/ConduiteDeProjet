@@ -20,13 +20,39 @@ class SprintModel   {
             }
     }
 
-    public function select($IDSPRINT){
-        $query = $this->db->prepare('SELECT * FROM sprint WHERE IDSPRINT = :IDSPRINT');
+    public function selectSprint(){
+        $query = $this->bd->prepare('SELECT * FROM sprint');// WHERE IDSPRINT = :IDSPRINT');
         $query->execute(array("IDSPRINT" => $IDSPRINT));
         return $query->fetch(PDO::FETCH_OBJ);
     }
-    public function select_us_sprint($IDSPRINT){
-        $query = $this->bd->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = :IDSPRINT');
+//    public function select_us_sprint($IDSPRINT){
+    public function select_us_sprint(){
+        $query = $this->bd->prepare('SELECT * FROM USERSTORY');// WHERE IDSPRINT = :IDSPRINT');
+        $query->execute();//array("IDSPRINT" => $IDSPRINT));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function select_us_sprint_id($IDSPRINT){
+        //echo "id de ton sprint est $IDSPRINT";
+        $sql="SELECT * FROM USERSTORY WHERE IDSPRINT = $IDSPRINT";
+        echo $sql;
+        $query = $this->bd->prepare($sql);
+        $query->execute();//array("IDSPRINT" => $IDSPRINT));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function update_userStory_idSprint($IDUSERSTORY,$IDSPRINT){
+
+        echo "id de ton sprint est $IDSPRINT";
+        $sql="UPDATE USERSTORY SET  IDSPRINT = $IDSPRINT WHERE IDUSERSTORY=$IDUSERSTORY ";
+        //UPDATE userstory SET IDSPRINT`=[value-3] WHERE 1
+        echo $sql;
+        $query = $this->bd->prepare($sql);
+        $query->execute();//array("IDSPRINT" => $IDSPRINT));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+   public function select_us_NotAssigned_sprint(){
+        $query = $this->bd->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = -1');
         $query->execute();//array("IDSPRINT" => $IDSPRINT));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

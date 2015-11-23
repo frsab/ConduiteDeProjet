@@ -16,7 +16,7 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    <div id="wrapper">
+  <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -80,24 +80,24 @@
                                             <th>US Description</th>
                                             <th>Priority</th>
                                             <th>Cost</th>
-                                            <th>Status</th>
+                                            
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                   <tbody>
+                                   <?php $notAssignedUserStory=Model::getInstance()->sprintModel->select_us_NotAssigned_sprint(); ?>
+                                        <?php foreach ($notAssignedUserStory as $sprint) { ?>
                                         <tr>
-                                            <td>2</td>
-                                            <td>US2</td>
-                                            <td>21</td>
-                                            <td>21</td>
-                                            <td>TODO</td>
+                                           <td><?php echo $sprint->IDUSERSTORY; ?></td>
+                                          <td><?php echo $sprint->DESCRIPTION; ?></td>
+                                          <td><?php echo $sprint->PRIORITY; ?></td>
+                                          <td><?php echo $sprint->COST; ?></td>
+                                          <td>
+                                              <form role="form" name="moveUsToSprintUS" method="POST" action="/ConduiteDeProjet/?p=moveUsToSprintUS&IDSPRINT=<?php echo $_GET['IDSPRINT'];?>&IDUSERSTORY=<?php echo $sprint->IDUSERSTORY;?>">
+                                                   <input type="submit" class="btn btn-success" name="addSprint" value="Move to Left"/>
+                                              </form>
+                                          </td>
                                         </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>US3</td>
-                                            <td>33</td>
-                                            <td>44</td>
-                                            <td>TODO</td>
-                                        </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -119,17 +119,25 @@
                                             <th>US Description</th>
                                             <th>Priority</th>
                                             <th>Cost</th>
-                                            <th>Status</th>
+                                            
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr >
-                                            <td>1</td>
-                                            <td>US1</td>
-                                            <td>12</td>
-                                            <td>12</td>
-                                            <td>TODO</td>
+                                   <tbody>
+     
+                                   <?php  $assignedUserStory=Model::getInstance()->sprintModel->select_us_sprint_id($_GET['IDSPRINT']); ?>
+                                        <?php foreach ($assignedUserStory as $sprint1) { ?>
+                                        <tr>
+                                           <td><?php echo $sprint1->IDUSERSTORY; ?></td>
+                                          <td><?php echo $sprint1->DESCRIPTION; ?></td>
+                                          <td><?php echo $sprint1->PRIORITY; ?></td>
+                                          <td><?php echo $sprint1->COST; ?></td>
+                                          <td>
+                                              <form role="form" name="moveUsToNotAssignedUS" method="POST" action="/ConduiteDeProjet/?p=moveUsToNotAssignedUS&IDSPRINTNotAssignedUS=<?php echo $sprint1->IDSPRINT;?>&IDUSERSTORYNotAssignedUS=<?php echo $sprint1->IDUSERSTORY;?>">
+                                                   <input type="submit" class="btn btn-success" name="addSprint" value="Move to Right"/>
+                                              </form>
+                                          </td>
                                         </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -138,17 +146,17 @@
                 </div>
                 
             </div>
-            <div class= "row">
+            <!-- <div class= "row">
                 <div style="margin-top: 10px;">
                 <div class="col-md-6">
                     <button class="btn btn-info">Move the US selected to the other side</button>
                 </div>
             </div>
-            </div>
+            </div> -->
             <div class= "row">
                 <div style="margin-top: 10px;">
                 <div class="col-md-6">
-                    <a href="../view/planning.php" class="btn btn-success">Back</a>
+                    <a href="/ConduiteDeProjet?p=showPlanning" class="btn btn-success">Back</a>
                 </div>
                 </div>
             </div>
@@ -169,6 +177,7 @@
 <script src="../assets/js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="../assets/js/custom.js"></script>
+
 
 
 </body>

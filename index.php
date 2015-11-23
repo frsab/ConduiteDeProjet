@@ -12,7 +12,11 @@ $sprintController = new SprintController();
 
 if(isset($_GET["p"]))
     switch ($_GET["p"]) {
+<<<<<<< HEAD
 		
+=======
+        
+>>>>>>> refs/remotes/origin/devFS
         case 'home'                  :$userController->home();break;
         case 'authentify'            :$userController->authentify();break;
         case 'logout'                :$userController->logout();break;
