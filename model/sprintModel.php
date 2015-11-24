@@ -48,5 +48,32 @@ class SprintModel extends Model{
            "IDPROJECT" =>$IDPROJECT,
            "SPRINT_ABSTRACT"=>$SPRINT_ABSTRACT
         ));
-    }    
+    }  
+
+    public function select_us_sprint_id($IDSPRINT, $IDPROJECT){
+        //echo "id de ton sprint est $IDSPRINT";
+        $query = $this->db->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = :IDSPRINT AND IDPROJECT = :IDPROJECT');
+        $query->execute(array(
+            "IDSPRINT" => $IDSPRINT,
+            "IDPROJECT" =>$IDPROJECT
+        ));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }  
+
+    public function select_us_NotAssigned_sprint(){
+        $query = $this->db->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = 1');
+        $query->execute();//array("IDSPRINT" => $IDSPRINT));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function update_userStory_idSprint($IDUSERSTORY,$IDSPRINT){
+        echo "id de ton sprint est $IDSPRINT";
+        $sql="UPDATE USERSTORY SET  IDSPRINT = $IDSPRINT WHERE IDUSERSTORY=$IDUSERSTORY ";
+        //UPDATE userstory SET IDSPRINT`=[value-3] WHERE 1
+        echo $sql;
+        $query = $this->db->prepare($sql);
+        $query->execute();//array("IDSPRINT" => $IDSPRINT));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

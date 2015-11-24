@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8" />
+   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrum Project Manager</title>
   <!-- BOOTSTRAP STYLES-->
@@ -16,7 +16,7 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    <div id="wrapper">
+  <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -31,7 +31,7 @@
             padding: 15px 50px 5px 50px;
             float: right;
             font-size: 16px;"><!--  Last access : 18 october 2015 &nbsp; --> 
-            <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <a href="../controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -43,16 +43,16 @@
                     
 
                     <li  >
-                        <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  href="../view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
 
                     <li  >
-                        <a   href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+                        <a   href="../view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
                     </li>
 
 
                     <li  >
-                        <a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+                        <a class="active-menu" href="../view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
                     </li>   
 
 
@@ -83,25 +83,21 @@
                                             
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                   <tbody>
+                                   <?php $notAssignedUserStory=$this->sprintModel->select_us_NotAssigned_sprint(); ?>
+                                        <?php foreach ($notAssignedUserStory as $sprint) { ?>
                                         <tr>
-                                            <td>2</td>
-                                            <td>US2</td>
-                                            <td>21</td>
-                                            <td>21</td>
-                                            <td> 
-                                                <button class="btn btn-info">Move Right</a>
-                                            </td>
+                                           <td><?php echo $sprint->IDUSERSTORY; ?></td>
+                                          <td><?php echo $sprint->DESCRIPTION; ?></td>
+                                          <td><?php echo $sprint->PRIORITY; ?></td>
+                                          <td><?php echo $sprint->COST; ?></td>
+                                          <td>
+                                              <form role="form" name="moveUsToSprintUS" method="POST" action="/ConduiteDeProjet/?p=moveUsToSprintUS&IDSPRINT=<?php echo $_GET['IDSPRINT'];?>&IDUSERSTORY=<?php echo $sprint->IDUSERSTORY;?>">
+                                                   <input type="submit" class="btn btn-success" name="addSprint" value="Move to Left"/>
+                                              </form>
+                                          </td>
                                         </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>US3</td>
-                                            <td>33</td>
-                                            <td>44</td>
-                                            <td> 
-                                                <button class="btn btn-info">Move Right</a>
-                                            </td>
-                                        </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -126,25 +122,22 @@
                                             
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr >
-                                            <td>1</td>
-                                            <td>US1</td>
-                                            <td>12</td>
-                                            <td>12</td>
-                                            <td> 
-                                                <button class="btn btn-info">Move Left</a>
-                                            </td>
+                                   <tbody>
+     
+                                   <?php  $assignedUserStory=$this->sprintModel->select_us_sprint_id($_GET['IDSPRINT'], $_GET['IDPROJECT']); ?>
+                                        <?php foreach ($assignedUserStory as $sprint1) { ?>
+                                        <tr>
+                                           <td><?php echo $sprint1->IDUSERSTORY; ?></td>
+                                          <td><?php echo $sprint1->DESCRIPTION; ?></td>
+                                          <td><?php echo $sprint1->PRIORITY; ?></td>
+                                          <td><?php echo $sprint1->COST; ?></td>
+                                          <td>
+                                              <form role="form" name="moveUsToNotAssignedUS" method="POST" action="/ConduiteDeProjet/?p=moveUsToNotAssignedUS&IDSPRINTNotAssignedUS=<?php echo $sprint1->IDSPRINT;?>&IDUSERSTORYNotAssignedUS=<?php echo $sprint1->IDUSERSTORY;?>">
+                                                   <input type="submit" class="btn btn-success" name="addSprint" value="Move to Right"/>
+                                              </form>
+                                          </td>
                                         </tr>
-                                        <tr >
-                                            <td>4</td>
-                                            <td>US4</td>
-                                            <td>12</td>
-                                            <td>12</td>
-                                            <td> 
-                                                <button class="btn btn-info">Move Left</a>
-                                            </td>
-                                        </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -163,7 +156,7 @@
             <div class= "row">
                 <div style="margin-top: 10px;">
                 <div class="col-md-6">
-                    <a href="../view/planning.php" class="btn btn-success">Back</a>
+                    <a href="/ConduiteDeProjet?p=showPlanning" class="btn btn-success">Back</a>
                 </div>
                 </div>
             </div>
@@ -184,6 +177,7 @@
 <script src="assets/js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="assets/js/custom.js"></script>
+
 
 
 </body>

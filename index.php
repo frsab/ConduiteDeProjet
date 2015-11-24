@@ -3,11 +3,13 @@ require_once('Controller/ProjectController.php');
 require_once('Controller/userStoryController.php');
 require_once('Controller/userController.php');
 require_once('Controller/SprintController.php');
+require_once('Controller/TaskController.php');
 
 $userController = new UserController();
 $projectController = new ProjectController();
 $userStoryController = new UserStoryController();
 $sprintController = new SprintController();
+$taskController = new TaskController();
 
 if(isset($_GET["p"]))
     switch ($_GET["p"]) {
@@ -43,8 +45,17 @@ if(isset($_GET["p"]))
         case 'removeSprint'          :$sprintController->remove(); break;
         case 'showSprint'            :$sprintController->showAll($_GET["IDPROJECT"]);break;
         case 'ajouterSprint'         :$sprintController->ajouterSprint($_POST);break; 
-        case 'showSprintUs'          :$sprintController->showSprintUs($_POST);break;
-        case 'helpSprint'            :$sprintController->showHelpSprint($_GET["IDUSER"], $_GET["IDPROJECT"]);break;  
+        case 'showSprintUs'          :$sprintController->showSprintUs();break;
+        case 'helpSprint'            :$sprintController->showHelpSprint($_GET["IDUSER"], $_GET["IDPROJECT"]);break;
+        //new added
+        case 'moveUsToNotAssignedUS' :$sprintController->moveUsToNotAssignedUS($_GET["IDUSERSTORYNotAssignedUS"],$_GET["IDSPRINTNotAssignedUS"]);break;
+        case 'moveUsToSprintUS'      :$sprintController->moveUsToSprintUS($_GET["IDUSERSTORY"],$_GET["IDSPRINT"]);break;
+            
+        case 'ListTask'              :$taskController->ListTask($_GET["IDSPRINT"]);break; 
+        case 'addTask'               :$taskController->addTask($_GET["IDSPRINT"]);break; 
+        case 'updateTask'            :$taskController->updateTask($_GET["IDTASK"]);break; 
+        case 'delete'                :$taskController->deleteTask($_GET["IDTASK"]);break; 
+        case 'ajouterTask'           :$taskController->ajouterTask($_POST);break;   
 
         default :   include 'view/home.php'; break;    
     

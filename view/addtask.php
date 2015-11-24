@@ -31,7 +31,7 @@
             padding: 15px 50px 5px 50px;
             float: right;
             font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-            <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <a href="../controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -41,16 +41,16 @@
                         <img src="assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
                     <li  >
-                        <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  href="../view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
 
                     <li  >
-                        <a   href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+                        <a   href="../view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
                     </li>
 
 
                     <li  >
-                        <a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+                        <a class="active-menu" href="../view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
                     </li>   
                 </li>  
             </ul>
@@ -68,30 +68,35 @@
                         <div class="panel-heading">
                             Add a Task
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                              <div style="margin-top: 10px;">
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                    <label>Task Abstract</label>
-                                    <input class="form-control" placeholder="Please enter your abstract task" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Task Cost</label>
-                                    <input class="form-control" placeholder="Please enter the task cost" />
-                                </div>
-                            
+                        <form role="form" name="addTask" method="POST" action="/ConduiteDeProjet/?p=ajouterTask">
+                                <div class="panel-body">
+                                    <div class="row">
+                                      <div style="margin-top: 10px;">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                          <input type="hidden" name="IDSPRINT" value="<?php echo $_GET["IDSPRINT"];?>"/>
+                                          <label>Task Abstract</label>
+                                            <input id="ABSTRACT_TASK" class="form-control" placeholder="Please enter your abstract task"   name="ABSTRACT_TASK" />                                      
+                                           </div>
+                                          <div class="form-group">
+                                            <label>Task Cost</label>
+                                            <input id="COST" class="form-control" placeholder="Please enter the task cost"   name="COST" />                                      
+                          
+                                          </div>
+ 
+                                          <div class= "row">
+                                            <div class="col-md-6">
+                                                <input type="submit" class="btn btn-success" name="addSprint" value="Add Task"/>
+                                              <a href="/ConduiteDeProjet/?p=ListTask" class="btn btn-danger">Cancel</a>     
+                                            </div>
+                                        </div>
 
-                                <div class= "row">
-                                    <div class="col-md-6">
-                                        <a href="view/sprinttasks.php" class="btn btn-danger">Cancel</a>
-                                        <a href="view/sprinttasks.php" class="btn btn-success">Add</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        </form>
+
             </div>
         </div>
     </div>
@@ -103,16 +108,16 @@
 <!-- /. WRAPPER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
-<script src="assets/js/jquery-1.10.2.js"></script>
+<script src="../assets/js/jquery-1.10.2.js"></script>
 <!-- BOOTSTRAP SCRIPTS -->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
 <!-- METISMENU SCRIPTS -->
-<script src="assets/js/jquery.metisMenu.js"></script>
+<script src="../assets/js/jquery.metisMenu.js"></script>
 <!-- MORRIS CHART SCRIPTS -->
-<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="assets/js/morris/morris.js"></script>
+<script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="../assets/js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
-<script src="assets/js/custom.js"></script>
+<script src="../assets/js/custom.js"></script>
 
 
 </body>

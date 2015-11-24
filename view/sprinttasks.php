@@ -31,7 +31,7 @@
       padding: 15px 50px 5px 50px;
       float: right;
       font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-      <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+      <a href="../controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
@@ -42,15 +42,15 @@
           </li> 
 
           <li  >
-            <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+            <a  href="../view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
           </li>
 
           <li  >
-            <a   href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+            <a   href="../view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
           </li>
 
           <li  >
-            <a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+            <a class="active-menu" href="../view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
           </li>    
         </ul>
 
@@ -63,7 +63,7 @@
         <div class="row">
           <div class="col-md-12">
            <h2>Tasks List</h2>   
-           <a href="view/helptasks.php" class="btn btn-info">How to make a tasks list</a>
+           <a href="../view/helptasks.php" class="btn btn-info">How to make a tasks list</a>
          </div>
        </div> 
        <!--   Kitchen Sink -->
@@ -84,50 +84,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr >
-                    <td>1</td>
-                    <td>Task 1</td>
-                    <td>3</td>
-                    <td>
-                      <a href="view/updatetask.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                    </td>
-                    <td>
-                      <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                    </td>                   
-                  </tr>
-                  <tr >
-                    <td>2</td>
-                    <td>Task 2</td>
-                    <td>2,5</td>
-                    <td>
-                      <a href="view/updatetask.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                    </td>
-                    <td>
-                      <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                    </td>                   
-                  </tr>
-                  <tr >
-                    <td>3</td>
-                    <td>Task 3</td>
-                    <td>1,5</td>
-                    <td>
-                      <a href="view/updatetask.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                    </td>
-                    <td>
-                      <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                    </td>                   
-                  </tr>
-                  <tr >
-                    <td>4</td>
-                    <td>Task 4</td>
-                    <td>4</td>
-                    <td>                      
-                      <a href="view/updatetask.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>                
-                    </td>
-                    <td>                       
-                      <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                    </td>                   
-                  </tr>
+                 
+              
+                 <?php if (is_array($task_s) || is_object($task_s)) ?>
+                 <?php { ?>
+                   <?php foreach ($task_s as $task) { ?>
+                              <tr>
+                                  <td><?php echo $task->IDTASK; ?></td>
+                                  <td><?php echo $task->DESCRIPTION; ?></td>
+                                  <td><?php echo $task->Cost_Man_Day; ?></td>
+                      <td>
+                        <a href="/ConduiteDeProjet?p=UpdateTask" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
+                      </td>
+                      <td>
+                        <a href="/ConduiteDeProjet?p=DeleteTaskFromSprint" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                      </td>                   
+                    </tr>  
+                    <?php } ?>
+                 <?php } ?>
+ 
                 </tbody>
               </table>
 
@@ -140,8 +115,11 @@
       <div class="row">
 
         <div class="col-md-12">
-          <a href="view/addtask.php" class="btn btn-success">Add a task</a>
-
+        <?php //echo ";$_POST["IDSPRINT"]"?>
+        <?php //echo ";$_GET["IDSPRINT"]"?>
+                 <form method="POST" action="/ConduiteDeProjet/?p=addTask&IDSPRINT=<?php echo "$id";?>" enctype="multipart/form-data" role="form">
+                                <input type="submit" class="btn btn-success" name="Tasks" value="add a Tasks"/>
+                </form>
         </div>
 
       </div> 
@@ -152,16 +130,16 @@
   <!-- /. WRAPPER  -->
   <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
   <!-- JQUERY SCRIPTS -->
-  <script src="assets/js/jquery-1.10.2.js"></script>
+  <script src="../assets/js/jquery-1.10.2.js"></script>
   <!-- BOOTSTRAP SCRIPTS -->
-  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
   <!-- METISMENU SCRIPTS -->
-  <script src="assets/js/jquery.metisMenu.js"></script>
+  <script src="../assets/js/jquery.metisMenu.js"></script>
   <!-- MORRIS CHART SCRIPTS -->
-  <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-  <script src="assets/js/morris/morris.js"></script>
+  <script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
+  <script src="../assets/js/morris/morris.js"></script>
   <!-- CUSTOM SCRIPTS -->
-  <script src="assets/js/custom.js"></script>
+  <script src="../assets/js/custom.js"></script>
 
 
 </body>

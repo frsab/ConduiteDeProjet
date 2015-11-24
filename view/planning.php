@@ -59,7 +59,7 @@
             <ul class="nav nav-second-level">
               <?php foreach ($sprint_s as $sprint) { ?>
                 <li>
-                  <a href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $sprint->IDPROJECT; ?>"><?php echo $sprint->SPRINT_ABSTRACT; ?></a>
+                  <a href="/ConduiteDeProjet/?p=showSprintUs&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $sprint->IDPROJECT; ?>"><?php echo $sprint->SPRINT_ABSTRACT; ?></a>
                 </li>
               <?php } ?>
             </ul>
@@ -108,11 +108,12 @@
                       <td><?php echo $sprint->DATEDEBUT; ?></td>
                       <td><?php echo $sprint->DATEFIN; ?></td>
                       <td>
-                        <a href="/ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=<?php echo $sprint->IDSPRINT;?>" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                        <a href="/ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=<?php echo $sprint->IDSPRINT;?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
                       </td>
 
                       <td>
-                        <button class="btn btn-success"><i class="fa "></i> Tasks</button>
+                        <form method="POST" action="/ConduiteDeProjet/?p=ListTask&IDSPRINT=<?php echo $sprint->IDSPRINT;?>" enctype="multipart/form-data" role="form">
+                        <input type="submit" class="btn btn-success" name="Tasks" value="Tasks"/>
                       </td>
 
                       <td>

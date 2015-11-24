@@ -60,5 +60,20 @@ class SprintController {
         include "view/helpplanning.php";
     }
 
+    public function moveUsToSprintUS($IDUSERSTORY,$IDSPRINT){
+		echo "moveUsToSprintUS($IDUSERSTORY,$IDSPRINT)";
+		$sprint_s = $this->sprintModel->update_userStory_idSprint($IDUSERSTORY,$IDSPRINT);
+		header("location:".  $_SERVER['HTTP_REFERER']); 
+		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
+	
+	}
+
+	public function moveUsToNotAssignedUS($IDUSERSTORY,$IDSPRINT){
+		echo "moveUsToNotAssignedUS($IDUSERSTORY,$IDSPRINT)";
+		$sprint_s = $this->sprintModel->update_userStory_idSprint($IDUSERSTORY,1);
+		header("location:".  $_SERVER['HTTP_REFERER']); 
+		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
+	}
+
 }
 
