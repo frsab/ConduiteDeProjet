@@ -45,7 +45,7 @@ if(isset($_GET["p"]))
         case 'removeSprint'          :$sprintController->remove(); break;
         case 'showSprint'            :$sprintController->showAll($_GET["IDPROJECT"]);break;
         case 'ajouterSprint'         :$sprintController->ajouterSprint($_POST);break; 
-        case 'showSprintUs'          :$sprintController->showSprintUs();break;
+        case 'showSprintUs'          :$sprintController->showSprintUs($_GET["IDSPRINT"]);break;
         case 'helpSprint'            :$sprintController->showHelpSprint($_GET["IDUSER"], $_GET["IDPROJECT"]);break;
         //new added
         case 'moveUsToNotAssignedUS' :$sprintController->moveUsToNotAssignedUS($_GET["IDUSERSTORYNotAssignedUS"],$_GET["IDSPRINTNotAssignedUS"]);break;

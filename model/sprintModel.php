@@ -60,9 +60,9 @@ class SprintModel extends Model{
         return $query->fetchAll(PDO::FETCH_OBJ);
     }  
 
-    public function select_us_NotAssigned_sprint(){
-        $query = $this->db->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = 1');
-        $query->execute();//array("IDSPRINT" => $IDSPRINT));
+    public function select_us_NotAssigned_sprint($IDPROJECT){
+        $query = $this->db->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = 1 AND IDPROJECT = :IDPROJECT');
+        $query->execute(array("IDPROJECT" =>$IDPROJECT));//array("IDSPRINT" => $IDSPRINT));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 

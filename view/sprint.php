@@ -124,7 +124,7 @@
                               </tr>
                             <li>
 
-                            <a href="/ConduiteDeProjet/?p=showSprintUs&IDSPRINT=<?php echo $sprint->NUMERO; ?>">Sprint <?php echo $sprint->NUMERO; ?></a>
+                            <a href="/ConduiteDeProjet/?p=showSprintUs&IDSPRINT=<?php echo $sprint->IDSPRINT; ?>">Sprint <?php echo $sprint->NUMERO; ?></a>
                             ?p=showUS
                             </li>
 

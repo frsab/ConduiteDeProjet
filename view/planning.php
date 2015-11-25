@@ -59,7 +59,7 @@
             <ul class="nav nav-second-level">
               <?php foreach ($sprint_s as $sprint) { ?>
                 <li>
-                  <a href="/ConduiteDeProjet/?p=showSprintUs&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $sprint->IDPROJECT; ?>"><?php echo $sprint->SPRINT_ABSTRACT; ?></a>
+                  <a href="/ConduiteDeProjet/?p=showSprintUs&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $sprint->IDPROJECT; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT; ?>"><?php echo $sprint->SPRINT_ABSTRACT; ?></a>
                 </li>
               <?php } ?>
             </ul>
@@ -93,22 +93,16 @@
               <table class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>Sprint resume</th>
-                    <th>Date Début</th>
-                    <th>Date fin programmée</th>
 
                   </tr>
                 </thead>
                 <tbody>
               <?php foreach ($sprint_s as $sprint) { ?>
                   <tr>
-                      <td><?php echo $sprint->NUMERO; ?></td>
                       <td><?php echo $sprint->SPRINT_ABSTRACT; ?></td>
-                      <td><?php echo $sprint->DATEDEBUT; ?></td>
-                      <td><?php echo $sprint->DATEFIN; ?></td>
                       <td>
-                        <a href="/ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=<?php echo $sprint->IDSPRINT;?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+                        <a href="/ConduiteDeProjet/?p=updateUsSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT;?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
                       </td>
 
                       <td>

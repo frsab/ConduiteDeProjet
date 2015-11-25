@@ -15,8 +15,9 @@ class SprintController {
 	 //   include "view/updatesprint.php";
 	}
 
-	public function updateUsSprint(){	
+	public function updateUsSprint($IDUSER){	
 		//$sprint_s = $this->sprintModel->selectAll();
+		$IDUSER=$IDUSER;
 	    include "view/updatesprint.php";
 	}
 
