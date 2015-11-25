@@ -31,7 +31,7 @@
       padding: 15px 50px 5px 50px;
       float: right;
       font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-      <a href="../controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+      <a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
@@ -42,15 +42,15 @@
           </li> 
 
           <li  >
-            <a  href="../view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+            <a  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
           </li>
 
           <li  >
-            <a   href="../view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+            <a   href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-edit fa-3x"></i> Backlog</a>
           </li>
 
           <li  >
-            <a class="active-menu" href="../view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+            <a class="active-menu" href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-calendar fa-3x"></i> Planning</a>
           </li>    
         </ul>
 
@@ -63,7 +63,7 @@
         <div class="row">
           <div class="col-md-12">
            <h2>Tasks List</h2>   
-           <a href="../view/helptasks.php" class="btn btn-info">How to make a tasks list</a>
+           <a href="/ConduiteDeProjet/?p=helptTasks&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDSPRINT=<?php echo $_GET["IDSPRINT"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-info">How to make a tasks list</a>
          </div>
        </div> 
        <!--   Kitchen Sink -->
@@ -118,7 +118,7 @@
         <?php //echo ";$_POST["IDSPRINT"]"?>
         <?php //echo ";$_GET["IDSPRINT"]"?>
                  <form method="POST" action="/ConduiteDeProjet/?p=addTask&IDSPRINT=<?php echo "$id";?>" enctype="multipart/form-data" role="form">
-                                <input type="submit" class="btn btn-success" name="Tasks" value="add a Tasks"/>
+                                <input type="submit" class="btn btn-success" name="Tasks" value="add a Task"/>
                 </form>
         </div>
 

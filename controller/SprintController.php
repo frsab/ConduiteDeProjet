@@ -30,10 +30,9 @@ class SprintController {
 	    include "view/planning.php";
 	}
 
-	public function showSprintUs($IDSPRINT){
-		$sprint_s = $this->sprintModel->selectAll();
+	public function showSprintUs($IDSPRINT, $IDPROJECT){
+		$sprint_s = $this->sprintModel->selectAll($IDPROJECT);
 		$userstory_sprint_s = $this->sprintModel->select_us_sprint($IDSPRINT);
-		
 	    include "view/sprint.php";
 	}
 
@@ -53,7 +52,7 @@ class SprintController {
 	 	$IDPROJECT = $data["IDPROJECT"];
 	 	$IDUSER= $data["IDUSER"];
         $SPRINT_ABSTRACT = $data["SPRINT_ABSTRACT"];
-		echo $this->sprintModel->insert($SPRINT_ABSTRACT, $IDPROJECT);
+		$this->sprintModel->insert($SPRINT_ABSTRACT, $IDPROJECT);
         header("Location: /ConduiteDeProjet/?p=showSprint&IDUSER=".$IDUSER."&IDPROJECT=".$IDPROJECT);
 	}
 
@@ -62,7 +61,6 @@ class SprintController {
     }
 
     public function moveUsToSprintUS($IDUSERSTORY,$IDSPRINT){
-		echo "moveUsToSprintUS($IDUSERSTORY,$IDSPRINT)";
 		$sprint_s = $this->sprintModel->update_userStory_idSprint($IDUSERSTORY,$IDSPRINT);
 		header("location:".  $_SERVER['HTTP_REFERER']); 
 		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
@@ -70,7 +68,6 @@ class SprintController {
 	}
 
 	public function moveUsToNotAssignedUS($IDUSERSTORY,$IDSPRINT){
-		echo "moveUsToNotAssignedUS($IDUSERSTORY,$IDSPRINT)";
 		$sprint_s = $this->sprintModel->update_userStory_idSprint($IDUSERSTORY,1);
 		header("location:".  $_SERVER['HTTP_REFERER']); 
 		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";

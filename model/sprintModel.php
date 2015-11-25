@@ -9,7 +9,6 @@ class SprintModel extends Model{
 	
     
     public function deleteSprint($IDSPRINT){
-        echo "j'essaye de supprimer la ligne dont l'identifiant est  : $IDSPRINT";
             try{
                 $req = $this->db->prepare("DELETE FROM SPRINT WHERE IDSPRINT = :IDSPRINT");
                 $result = $req->execute(array("IDSPRINT" => $IDSPRINT));
@@ -27,7 +26,7 @@ class SprintModel extends Model{
     }
     public function select_us_sprint($IDSPRINT){
         $query = $this->db->prepare('SELECT * FROM USERSTORY WHERE IDSPRINT = :IDSPRINT');
-        $query->execute();//array("IDSPRINT" => $IDSPRINT));
+        $query->execute(array("IDSPRINT" => $IDSPRINT));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 

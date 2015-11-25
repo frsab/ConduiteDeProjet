@@ -38,7 +38,7 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
-                        <img src="assets/img/scrum.png" class="user-image img-responsive"/>
+                        <img src="../assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
                     <li  >
                         <a  href="../view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>

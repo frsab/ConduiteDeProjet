@@ -45,7 +45,7 @@ if(isset($_GET["p"]))
         case 'removeSprint'          :$sprintController->remove(); break;
         case 'showSprint'            :$sprintController->showAll($_GET["IDPROJECT"]);break;
         case 'ajouterSprint'         :$sprintController->ajouterSprint($_POST);break; 
-        case 'showSprintUs'          :$sprintController->showSprintUs($_GET["IDSPRINT"]);break;
+        case 'showSprintUs'          :$sprintController->showSprintUs($_GET["IDSPRINT"], $_GET["IDPROJECT"]);break;
         case 'helpSprint'            :$sprintController->showHelpSprint($_GET["IDUSER"], $_GET["IDPROJECT"]);break;
         //new added
         case 'moveUsToNotAssignedUS' :$sprintController->moveUsToNotAssignedUS($_GET["IDUSERSTORYNotAssignedUS"],$_GET["IDSPRINTNotAssignedUS"]);break;
@@ -56,6 +56,7 @@ if(isset($_GET["p"]))
         case 'updateTask'            :$taskController->updateTask($_GET["IDTASK"]);break; 
         case 'delete'                :$taskController->deleteTask($_GET["IDTASK"]);break; 
         case 'ajouterTask'           :$taskController->ajouterTask($_POST);break;   
+        case 'helptTasks'            :$taskController->showHelpTasks($_GET["IDUSER"], $_GET["IDPROJECT"]);break;
 
         default :   include 'view/home.php'; break;    
     

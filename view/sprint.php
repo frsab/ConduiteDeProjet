@@ -31,7 +31,7 @@
       padding: 15px 50px 5px 50px;
       float: right;
       font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-      <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+      <a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
@@ -43,24 +43,21 @@
 
 
           <li  >
-            <a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
-          </li>   
+            <a class="active-menu" href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+          </li>
 
+          <?php if($sprint_s != null) { ?>
           <li>
             <a href="#"><i class="fa fa-sitemap fa-3x" ></i> Sprints <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
-
               <?php foreach ($sprint_s as $sprint) { ?>
-              <li>
-              
-                <a href="/ConduiteDeProjet/?p=showSprintUs&IDSPRINT=<?php echo $sprint->NUMERO; ?>">Sprint <?php echo $sprint->NUMERO; ?></a>
-            
-              </li>
-
+                <li>
+                  <a href="/ConduiteDeProjet/?p=showSprintUs&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $sprint->IDPROJECT; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT; ?>"><?php echo $sprint->SPRINT_ABSTRACT; ?></a>
+                </li>
               <?php } ?>
-              
             </ul>
-          </li> 
+          </li>
+          <?php } ?> 
         </ul>
 
       </div>
@@ -121,7 +118,7 @@
                                 <td><?php echo $userstory->COST; ?></td>
                                 <td><?php echo $userstory->ETAT; ?></td>
                                 <td><?php echo $userstory->IDSPRINT; ?></td>
-                              </tr>
+                            </tr>
                             <li>
 
                             <a href="/ConduiteDeProjet/?p=showSprintUs&IDSPRINT=<?php echo $sprint->IDSPRINT; ?>">Sprint <?php echo $sprint->NUMERO; ?></a>

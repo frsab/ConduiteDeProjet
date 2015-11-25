@@ -106,7 +106,7 @@
                       </td>
 
                       <td>
-                        <form method="POST" action="/ConduiteDeProjet/?p=ListTask&IDSPRINT=<?php echo $sprint->IDSPRINT;?>" enctype="multipart/form-data" role="form">
+                        <form method="POST" action="/ConduiteDeProjet/?p=ListTask&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT;?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" enctype="multipart/form-data" role="form">
                         <input type="submit" class="btn btn-success" name="Tasks" value="Tasks"/>
                       </td>
 
