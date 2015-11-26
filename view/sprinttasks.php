@@ -78,68 +78,66 @@
               <table class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>Task abstract</th>
                     <th>Cost Man/Day</th>
                   </tr>
                 </thead>
                 <tbody>
                  
-              
+                  
                  <?php if (is_array($task_s) || is_object($task_s)) ?>
                  <?php { ?>
-                   <?php foreach ($task_s as $task) { ?>
-                              <tr>
-                                  <td><?php echo $task->IDTASK; ?></td>
-                                  <td><?php echo $task->DESCRIPTION; ?></td>
-                                  <td><?php echo $task->Cost_Man_Day; ?></td>
-                      <td>
-                        <a href="/ConduiteDeProjet?p=UpdateTask" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                      </td>
-                      <td>
-                        <a href="/ConduiteDeProjet?p=DeleteTaskFromSprint" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                      </td>                   
-                    </tr>  
-                    <?php } ?>
-                 <?php } ?>
- 
-                </tbody>
-              </table>
-
-            </div>
+                 <?php foreach ($task_s as $task) { ?>
+                 <tr>
+                  <td><?php echo $task->DESCRIPTION; ?></td>
+                  <td><?php echo $task->Cost_Man_Day; ?></td>
+                  <td>
+                    <a href="/ConduiteDeProjet?p=UpdateTask" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
+                  </td>
+                  <td>
+                    <a href="/ConduiteDeProjet?p=DeleteTaskFromSprint" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                  </td>                   
+                </tr>  
+                <?php } ?>
+                <?php } ?>
+                
+              </tbody>
+            </table>
 
           </div>
+
         </div>
       </div>
-      <!-- End  Kitchen Sink -->
-      <div class="row">
+    </div>
+    <!-- End  Kitchen Sink -->
+    <div class="row">
 
-        <div class="col-md-12">
+      <div class="col-md-12">
         <?php //echo ";$_POST["IDSPRINT"]"?>
         <?php //echo ";$_GET["IDSPRINT"]"?>
-                 <form method="POST" action="/ConduiteDeProjet/?p=addTask&IDSPRINT=<?php echo "$id";?>" enctype="multipart/form-data" role="form">
-                                <input type="submit" class="btn btn-success" name="Tasks" value="add a Task"/>
-                </form>
-        </div>
+        <form method="POST" action="/ConduiteDeProjet/?p=addTask&IDSPRINT=<?php echo "$id";?>" enctype="multipart/form-data" role="form">
+          <input type="submit" class="btn btn-success" name="Tasks" value="add a Task"/>
+        </form>
+      </div>
 
-      </div> 
+    </div> 
 
-    </div>
-    <!-- /. PAGE WRAPPER  -->
-  </div>   
-  <!-- /. WRAPPER  -->
-  <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-  <!-- JQUERY SCRIPTS -->
-  <script src="../assets/js/jquery-1.10.2.js"></script>
-  <!-- BOOTSTRAP SCRIPTS -->
-  <script src="../assets/js/bootstrap.min.js"></script>
-  <!-- METISMENU SCRIPTS -->
-  <script src="../assets/js/jquery.metisMenu.js"></script>
-  <!-- MORRIS CHART SCRIPTS -->
-  <script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
-  <script src="../assets/js/morris/morris.js"></script>
-  <!-- CUSTOM SCRIPTS -->
-  <script src="../assets/js/custom.js"></script>
+  </div>
+  <!-- /. PAGE WRAPPER  -->
+</div>   
+<!-- /. WRAPPER  -->
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<!-- JQUERY SCRIPTS -->
+<script src="../assets/js/jquery-1.10.2.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="../assets/js/bootstrap.min.js"></script>
+<!-- METISMENU SCRIPTS -->
+<script src="../assets/js/jquery.metisMenu.js"></script>
+<!-- MORRIS CHART SCRIPTS -->
+<script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="../assets/js/morris/morris.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="../assets/js/custom.js"></script>
 
 
 </body>

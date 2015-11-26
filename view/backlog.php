@@ -86,7 +86,6 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>US Description</th>
                     <th>Priority</th>
                     <th>Cost</th>
@@ -102,7 +101,6 @@
 
                   <?php foreach ($userstory_s as $userstory) { ?>
                   <tr>   
-                    <td><?php echo $userstory->IDUSERSTORY; ?></td>
                     <td><?php echo $userstory->DESCRIPTION; ?></td>
                     <td><?php echo $userstory->PRIORITY; ?></td>
                     <td><?php echo $userstory->COST; ?></td>

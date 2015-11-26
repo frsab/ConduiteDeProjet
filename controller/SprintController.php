@@ -73,5 +73,9 @@ class SprintController {
 		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
 	}
 
+	public function showKanban(){
+		include 'view/sprintkanban.php';
+	}
+	
 }
 

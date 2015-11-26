@@ -101,29 +101,20 @@
                           <table class="table table-striped table-bordered table-hover">
                             <thead>
                               <tr>
-                                <th>#</th>
                                 <th>US Description</th>
                                 <th>Priority</th>
                                 <th>Cost</th>
                                 <th>Status</th>
-                                <th>Sprint</th>
                               </tr>
                             </thead>
                             <tbody>
                             <?php foreach ($userstory_sprint_s as $userstory) { ?>
                             <tr>
-                                <td><?php echo $userstory->IDUSERSTORY; ?></td>
                                 <td><?php echo $userstory->DESCRIPTION; ?></td>
                                 <td><?php echo $userstory->PRIORITY; ?></td>
                                 <td><?php echo $userstory->COST; ?></td>
                                 <td><?php echo $userstory->ETAT; ?></td>
-                                <td><?php echo $userstory->IDSPRINT; ?></td>
                             </tr>
-                            <li>
-
-                            <a href="/ConduiteDeProjet/?p=showSprintUs&IDSPRINT=<?php echo $sprint->IDSPRINT; ?>">Sprint <?php echo $sprint->NUMERO; ?></a>
-                            ?p=showUS
-                            </li>
 
                             <?php } ?>
 

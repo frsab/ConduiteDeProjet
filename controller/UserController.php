@@ -61,7 +61,7 @@ class UserController {
 		
         session_start();
         $_SESSION['username'] =$USERNAME;
-        header("Location: /ConduiteDeProjet/?p=showProjects&IDUSER=".$IDUSER['iduser']);
+        header("Location: /ConduiteDeProjet/?p=loginView");
 /*
         if(mysqli_query($con,$insertQuery)){
 

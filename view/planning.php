@@ -118,7 +118,7 @@
 
                     </td>
                       <td>
-                        <button class="btn btn-warning"><i class="fa "></i> Kanban</button>
+                        <a href="/ConduiteDeProjet/?p=showKanban" class="btn btn-warning"><i class="fa "></i> Kanban</a>
                       </td>                     
                     </tr>
                 <?php } ?>

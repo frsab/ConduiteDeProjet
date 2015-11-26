@@ -76,24 +76,21 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>US Description</th>
                                             <th>Priority</th>
                                             <th>Cost</th>
-                                            
                                         </tr>
                                     </thead>
                                    <tbody>
                                    <?php $notAssignedUserStory=$this->sprintModel->select_us_NotAssigned_sprint($_GET['IDPROJECT']); ?>
                                         <?php foreach ($notAssignedUserStory as $sprint) { ?>
                                         <tr>
-                                           <td><?php echo $sprint->IDUSERSTORY; ?></td>
                                           <td><?php echo $sprint->DESCRIPTION; ?></td>
                                           <td><?php echo $sprint->PRIORITY; ?></td>
                                           <td><?php echo $sprint->COST; ?></td>
                                           <td>
                                               <form role="form" name="moveUsToSprintUS" method="POST" action="/ConduiteDeProjet/?p=moveUsToSprintUS&IDSPRINT=<?php echo $_GET['IDSPRINT'];?>&IDUSERSTORY=<?php echo $sprint->IDUSERSTORY;?>">
-                                                   <input type="submit" class="btn btn-success" name="addSprint" value="Move to Left"/>
+                                                   <input type="submit" class="btn btn-info" name="addSprint" value="Move to right"/>
                                               </form>
                                           </td>
                                         </tr>
@@ -115,7 +112,6 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>US Description</th>
                                             <th>Priority</th>
                                             <th>Cost</th>
@@ -127,13 +123,12 @@
                                    <?php  $assignedUserStory=$this->sprintModel->select_us_sprint_id($_GET['IDSPRINT'], $_GET['IDPROJECT']); ?>
                                         <?php foreach ($assignedUserStory as $sprint1) { ?>
                                         <tr>
-                                          <td><?php echo $sprint1->IDUSERSTORY; ?></td>
                                           <td><?php echo $sprint1->DESCRIPTION; ?></td>
                                           <td><?php echo $sprint1->PRIORITY; ?></td>
                                           <td><?php echo $sprint1->COST; ?></td>
                                           <td>
                                               <form role="form" name="moveUsToNotAssignedUS" method="POST" action="/ConduiteDeProjet/?p=moveUsToNotAssignedUS&IDSPRINTNotAssignedUS=<?php echo $sprint1->IDSPRINT;?>&IDUSERSTORYNotAssignedUS=<?php echo $sprint1->IDUSERSTORY;?>">
-                                                   <input type="submit" class="btn btn-success" name="addSprint" value="Move to Right"/>
+                                                   <input type="submit" class="btn btn-info" name="addSprint" value="Move to left"/>
                                               </form>
                                           </td>
                                         </tr>
