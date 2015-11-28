@@ -47,7 +47,10 @@ if(isset($_GET["p"]))
         case 'ajouterSprint'         :$sprintController->ajouterSprint($_POST);break; 
         case 'showSprintUs'          :$sprintController->showSprintUs($_GET["IDSPRINT"], $_GET["IDPROJECT"]);break;
         case 'helpSprint'            :$sprintController->showHelpSprint($_GET["IDUSER"], $_GET["IDPROJECT"]);break;
-        case 'showKanban'            :$sprintController->showKanban();break;
+        case 'showKanban'            :$sprintController->showKanban($_GET["IDSPRINT"]);break;
+        case 'showHelpKanban'        :$sprintController->showHelpKanban();break;
+            # code...
+            break;
             # code...
             break;
         //new added

@@ -31,7 +31,7 @@
       padding: 15px 50px 5px 50px;
       float: right;
       font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-      <a href="controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+      <a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
@@ -42,15 +42,15 @@
           </li> 
 
           <li  >
-            <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+            <a  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
           </li>
 
           <li  >
-            <a   href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+            <a   href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-edit fa-3x"></i> Backlog</a>
           </li>
 
           <li  >
-            <a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+            <a class="active-menu" href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-calendar fa-3x"></i> Planning</a>
           </li>   
 
 
@@ -65,7 +65,7 @@
         <div class="row">
           <div class="col-md-12">
             <h2>Kanban</h2>   
-            <a href="../view/helpkanban.php" class="btn btn-info">How to manage your kanban</a>
+            <a href="/ConduiteDeProjet/?p=showHelpKanban&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo $_GET["IDSPRINT"]; ?>" class="btn btn-info">How to manage your kanban</a>
             <div style="margin-top: 10px;">
               <div class="panel panel-default">
                 <div class="panel-heading">
@@ -76,15 +76,43 @@
                     <table class="table table-striped table-bordered table-hover">
                       <thead>
                         <tr>
-                          <th>#</th>
                           <th>Task abstract</th>
                           <th>Status</th>
                         </tr>
                       </thead>
 
                       <tbody>
-                        <tr id= "tr1" class="success">
-                          <td>1</td>
+                        <?php if (is_array($task_s) || is_object($task_s)) ?>
+                          <?php { ?>
+                          <?php foreach ($task_s as $task) { ?>
+                            <tr id= "<?php echo $task->IDTASK; ?>" class="success">
+                              <td><?php echo $task->DESCRIPTION; ?></td>
+                              <td>
+                                <div class="form-group">
+                                  <div class="radio" >
+                                    <label>
+                                      <input type="radio" name="task1" id="optionsRadios1" value="option1" onclick="changeToRed()" />Todo
+                                    </label>
+                                  </div>
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="task1" id="optionsRadios2" value="option2" onclick="changeToOrange()" />On going
+                                    </label>
+                                  </div>
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="task1" id="optionsRadios3" value="option3" onclick="changeToGreen()" checked />Done
+                                    </label>
+                                  </div>
+                                </div>
+                              </td> 
+                            </tr>
+
+                         <?php } ?>
+                       <?php } ?>
+                        
+
+                        <tr id="tr1" class="success">
                           <td>Task 1</td>
                           <td>
                             <div class="form-group">
@@ -104,9 +132,8 @@
                                 </div>
                               </div>
                             </td> 
-                          </tr>
+                        </tr>
                           <tr class="warning">
-                            <td>2</td>
                             <td>Task 2</td>
                             <td>
                               <div class="form-group">
@@ -131,7 +158,6 @@
 
                           </tr>
                           <tr class="danger">
-                            <td>3</td>
                             <td>Task 3</td>
                             <td>
                               <div class="form-group">
@@ -154,7 +180,6 @@
                             </td> 
                           </tr>
                           <tr class="danger">
-                            <td>4</td>
                             <td>Task 4</td>
                             <td>
                               <div class="form-group">
@@ -186,7 +211,7 @@
                 <div class= "row">
                   <div style="margin-top: 10px;">
                     <div class="col-md-6">
-                      <a href="view/planning.php" class="btn btn-success">Back</a>
+                      <a href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-success">Back</a>
                     </div>
                   </div>
                 </div>

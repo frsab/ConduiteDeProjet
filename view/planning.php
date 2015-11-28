@@ -118,7 +118,7 @@
                         </a>
                       </td>
                       <td>
-                        <a href="/ConduiteDeProjet/?p=showKanban" class="btn btn-warning"><i class="fa "></i> Kanban</a>
+                        <a href="/ConduiteDeProjet/?p=showKanban&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT; ?>" class="btn btn-warning"><i class="fa "></i> Kanban</a>
                       </td>                     
                     </tr>
                 <?php } ?>

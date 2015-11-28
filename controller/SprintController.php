@@ -74,9 +74,13 @@ class SprintController {
 		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
 	}
 
-	public function showKanban(){
+	public function showKanban($IDSPRINT){
+		$task_s= $this->sprintModel->getTasksSprint($IDSPRINT);
 		include 'view/sprintkanban.php';
 	}
 	
+	public function showHelpKanban(){
+		include 'view/helpkanban.php';	
+	}
 }
 
