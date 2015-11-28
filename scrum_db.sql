@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2015 at 11:54 PM
+-- Generation Time: Nov 28, 2015 at 07:20 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `sprint` (
   PRIMARY KEY (`IDSPRINT`),
   KEY `AK_IDENTIFIANT_1` (`IDSPRINT`),
   KEY `IDPROJECT` (`IDPROJECT`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `sprint`
@@ -75,7 +75,8 @@ CREATE TABLE IF NOT EXISTS `sprint` (
 INSERT INTO `sprint` (`IDSPRINT`, `IDPROJECT`, `NUMERO`, `SPRINT_ABSTRACT`, `DATEDEBUT`, `DATEFIN`) VALUES
 (1, 37, 1, 'SPRINT1', NULL, NULL),
 (11, 38, 5, 'SPRINT1', NULL, NULL),
-(12, 37, 5, 'SPRINT4', NULL, NULL);
+(12, 37, 5, 'SPRINT4', NULL, NULL),
+(18, 38, 5, 'Sprint3', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `task` (
   PRIMARY KEY (`IDTASK`),
   KEY `AK_IDENTIFIANT_1` (`IDTASK`),
   KEY `FK_ASSOCIATIONTASKUSERSTORY` (`IDSPRINT`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `task`
@@ -101,7 +102,9 @@ CREATE TABLE IF NOT EXISTS `task` (
 INSERT INTO `task` (`IDTASK`, `IDSPRINT`, `DESCRIPTION`, `ETAT`, `Cost_Man_Day`) VALUES
 (2, 11, 'task1', NULL, 2),
 (3, 11, 'task2', NULL, 1),
-(4, 11, 'task3', NULL, 3);
+(4, 11, 'task3', NULL, 3),
+(7, 11, 't4', NULL, 4),
+(12, 18, 't1', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -118,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`IDUSER`),
   KEY `AK_IDENTIFIANT_1` (`IDUSER`),
   KEY `AK_IDENTIFIANT_2` (`IDUSER`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `user`
@@ -135,7 +138,9 @@ INSERT INTO `user` (`IDUSER`, `USERNAME`, `MAIL`, `PASSWORD`, `REGISTRATIONDATE`
 (8, 'm.salim92@hotmail.fr', 'm.salim92@hotmail.fr', '22d7fe8c185003c98f97e5d6ced420c7', 'November,13 2015'),
 (9, 'salimmoudache', 'salim@gmail.com', '22d7fe8c185003c98f97e5d6ced420c7', 'November,16 2015'),
 (10, 'salimmoudache', 'salim@gmail.com', '9b9bbd8d15d37ace5d6293942cfb0050', 'November,16 2015'),
-(11, 'moudache', 'salim@gmail.com', '22d7fe8c185003c98f97e5d6ced420c7', 'November,25 2015');
+(11, 'moudache', 'salim@gmail.com', '22d7fe8c185003c98f97e5d6ced420c7', 'November,25 2015'),
+(12, 'salim', 'salim@g', '22d7fe8c185003c98f97e5d6ced420c7', 'November,26 2015'),
+(13, 'test4', 'test4', '22d7fe8c185003c98f97e5d6ced420c7', 'November,26 2015');
 
 -- --------------------------------------------------------
 
@@ -162,10 +167,8 @@ CREATE TABLE IF NOT EXISTS `userstory` (
 --
 
 INSERT INTO `userstory` (`IDUSERSTORY`, `IDPROJECT`, `IDSPRINT`, `DESCRIPTION`, `PRIORITY`, `COST`, `ETAT`) VALUES
-(1, 37, 11, 'us3', 1, 2, 'todo'),
 (3, 38, 11, 'us1', 2, 2, 'todo'),
-(4, 38, 1, 'us3', 2, 5, 'TODO'),
-(5, 38, 11, 'us2', 6, 2, 'done'),
+(5, 38, 18, 'us2', 6, 2, 'done'),
 (6, 37, 1, 'us1', 5, 2, 'TODO'),
 (7, 37, 1, 'us4', 1, 1, 'todo');
 
@@ -177,26 +180,26 @@ INSERT INTO `userstory` (`IDUSERSTORY`, `IDPROJECT`, `IDSPRINT`, `DESCRIPTION`, 
 -- Constraints for table `project`
 --
 ALTER TABLE `project`
-  ADD CONSTRAINT `FK_ASSOCIATIONUSERPROJECT` FOREIGN KEY (`IDUSER`) REFERENCES `user` (`IDUSER`);
+  ADD CONSTRAINT `FK_ASSOCIATIONUSERPROJECT` FOREIGN KEY (`IDUSER`) REFERENCES `user` (`IDUSER`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `sprint`
 --
 ALTER TABLE `sprint`
-  ADD CONSTRAINT `sprint_ibfk_1` FOREIGN KEY (`IDPROJECT`) REFERENCES `project` (`IDPROJECT`);
+  ADD CONSTRAINT `sprint_ibfk_1` FOREIGN KEY (`IDPROJECT`) REFERENCES `project` (`IDPROJECT`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `task`
 --
 ALTER TABLE `task`
-  ADD CONSTRAINT `FK_ASSOCIATIONTASKUSERSTORY` FOREIGN KEY (`IDSPRINT`) REFERENCES `sprint` (`IDSPRINT`);
+  ADD CONSTRAINT `FK_ASSOCIATIONTASKUSERSTORY` FOREIGN KEY (`IDSPRINT`) REFERENCES `sprint` (`IDSPRINT`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `userstory`
 --
 ALTER TABLE `userstory`
-  ADD CONSTRAINT `FK_ASSOCIATIONPROJETUSERSTORY` FOREIGN KEY (`IDPROJECT`) REFERENCES `project` (`IDPROJECT`),
-  ADD CONSTRAINT `FK_ASSOCIATIONUSERSTORYSPRINT` FOREIGN KEY (`IDSPRINT`) REFERENCES `sprint` (`IDSPRINT`);
+  ADD CONSTRAINT `FK_ASSOCIATIONPROJETUSERSTORY` FOREIGN KEY (`IDPROJECT`) REFERENCES `project` (`IDPROJECT`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_ASSOCIATIONUSERSTORYSPRINT` FOREIGN KEY (`IDSPRINT`) REFERENCES `sprint` (`IDSPRINT`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
