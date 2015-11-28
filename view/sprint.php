@@ -141,32 +141,17 @@
                             <table class="table table-striped table-bordered table-hover">
                               <thead>
                                 <tr>
-                                  <th>#</th>
                                   <th>Task abstract</th>
                                   <th>Cost Man/Day</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr >
-                                  <td>1</td>
-                                  <td>Task 1</td>
-                                  <td>3</td>                 
-                                </tr>
-                                <tr >
-                                  <td>2</td>
-                                  <td>Task 2</td>
-                                  <td>2,5</td>
-                                </tr>
-                                <tr >
-                                  <td>3</td>
-                                  <td>Task 3</td>
-                                  <td>1,5</td>
-                                </tr>
-                                <tr >
-                                  <td>4</td>
-                                  <td>Task 4</td>
-                                  <td>4</td>                             
-                                </tr>
+                                <?php foreach ($task_s as $task) { ?>
+                                  <tr>
+                                      <td><?php echo $task->DESCRIPTION; ?></td>
+                                      <td><?php echo $task->Cost_Man_Day; ?></td>
+                                  </tr>
+                                <?php } ?>
                               </tbody>
                             </table>
 

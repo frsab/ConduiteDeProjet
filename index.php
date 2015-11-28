@@ -56,8 +56,9 @@ if(isset($_GET["p"]))
             
         case 'ListTask'              :$taskController->ListTask($_GET["IDSPRINT"]);break; 
         case 'addTask'               :$taskController->addTask($_GET["IDSPRINT"]);break; 
-        case 'updateTask'            :$taskController->updateTask($_GET["IDTASK"]);break; 
-        case 'delete'                :$taskController->deleteTask($_GET["IDTASK"]);break; 
+        case 'updateTask'            :$taskController->updateTask($_GET["IDTASK"]);break;
+        case 'validateUpdate'        :$taskController->update($_POST);break; 
+        case 'DeleteTaskFromSprint'  :$taskController->deleteTask($_GET["IDTASK"], $_GET["IDUSER"], $_GET["IDSPRINT"], $_GET["IDPROJECT"]);break; 
         case 'ajouterTask'           :$taskController->ajouterTask($_POST);break;   
         case 'helptTasks'            :$taskController->showHelpTasks($_GET["IDUSER"], $_GET["IDPROJECT"]);break;
 

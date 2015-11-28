@@ -75,4 +75,11 @@ class SprintModel extends Model{
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function getTasksSprint($IDSPRINT){
+        $sql="SELECT * FROM TASK WHERE IDSPRINT = :IDSPRINT";
+        $query = $this->db->prepare($sql);
+        $query->execute(array("IDSPRINT" => $IDSPRINT));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

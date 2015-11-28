@@ -27,16 +27,44 @@ class TaskModel extends Model{
     public function select($IDTASK){
     }
 
-    public function selectTask_Project_($IDTASK){
+    public function selectTask($IDTASK){
+        $query = $this->db->prepare('SELECT * FROM TASK WHERE IDTASK = :IDTASK');
+        $query->execute(array("IDTASK" => $IDTASK));
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    public function delete($IDTASK){
+    function delete($IDTASK){
+        try{
+            $req = $this->db->prepare("DELETE FROM TASK WHERE IDTASK = :IDTASK");
+            $result = $req->execute(array("IDTASK" => $IDTASK));
+            echo $result;
+        }catch (Exception $e){
+            return 0;
+        }
     }
 
     public function deleteAll($IDTASK){
     }
     
-    public function update($IDTASK){
+    function update($IDTASK, $DESCRIPTION, $COST){
+        $sqlUpdate = "UPDATE TASK
+                            SET 
+                                DESCRIPTION= :DESCRIPTION,
+                                Cost_Man_Day= :COST
+                            WHERE 
+                                IDTASK = :IDTASK";
+        $stmt = $this->db->prepare($sqlUpdate);
+        $valeurs = array(
+                            ':DESCRIPTION'=>$DESCRIPTION,
+                            ':COST'=>$COST,
+                            ':IDTASK'=>$IDTASK
+                            );
+        if ($stmt->fetch() == false){
+                echo 'ERROR on update';
+            }else{ 
+                    echo ' Update successful';
+                }   
+        return $stmt->execute($valeurs);
     }
 
 

@@ -92,10 +92,10 @@
                   <td><?php echo $task->DESCRIPTION; ?></td>
                   <td><?php echo $task->Cost_Man_Day; ?></td>
                   <td>
-                    <a href="/ConduiteDeProjet?p=UpdateTask" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
+                    <a href="/ConduiteDeProjet?p=updateTask&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo "$id";?>&IDTASK=<?php echo "$task->IDTASK"; ?>" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
                   </td>
                   <td>
-                    <a href="/ConduiteDeProjet?p=DeleteTaskFromSprint" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                    <a href="/ConduiteDeProjet?p=DeleteTaskFromSprint&IDTASK=<?php echo "$task->IDTASK"; ?>&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo "$id";?>" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
                   </td>                   
                 </tr>  
                 <?php } ?>
@@ -113,9 +113,7 @@
     <div class="row">
 
       <div class="col-md-12">
-        <?php //echo ";$_POST["IDSPRINT"]"?>
-        <?php //echo ";$_GET["IDSPRINT"]"?>
-        <form method="POST" action="/ConduiteDeProjet/?p=addTask&IDSPRINT=<?php echo "$id";?>" enctype="multipart/form-data" role="form">
+        <form method="POST" action="/ConduiteDeProjet/?p=addTask&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo "$id";?>" enctype="multipart/form-data" role="form">
           <input type="submit" class="btn btn-success" name="Tasks" value="add a Task"/>
         </form>
       </div>

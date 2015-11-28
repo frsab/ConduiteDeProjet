@@ -41,16 +41,16 @@
                         <img src="assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
                     <li  >
-                        <a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
 
                     <li  >
-                        <a   href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+                        <a   href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-edit fa-3x"></i> Backlog</a>
                     </li>
 
 
                     <li  >
-                        <a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+                        <a class="active-menu" href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-calendar fa-3x"></i> Planning</a>
                     </li>   
                 </li>  
             </ul>
@@ -68,33 +68,41 @@
                         <div class="panel-heading">
                             Update a Task
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                              <div style="margin-top: 10px;">
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                    <label>Task Abstract</label>
-                                    <input class="form-control" placeholder="Please re-enter your abstract task" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Task Cost</label>
-                                    <input class="form-control" placeholder="Please re-enter the task cost" />
-                                </div>
-                            
-
-                                <div class= "row">
-                                    <div class="col-md-6">
-                                        <a href="view/sprinttasks.php" class="btn btn-danger">Cancel</a>
-                                        <a href="view/sprinttasks.php" class="btn btn-success">Update</a>
+                        <form role="form" name="addTask" method="POST" action="/ConduiteDeProjet/?p=validateUpdate&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDSPRINT=<?php echo $_GET["IDSPRINT"];?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div style="margin-top: 10px;">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="hidden" name="IDSPRINT" value="<?php echo $_GET["IDSPRINT"];?>"/>
+                                                <input type="hidden" name="IDUSER" value="<?php echo $_GET["IDUSER"];?>"/>
+                                                <input type="hidden" name="IDPROJECT" value="<?php echo $_GET["IDPROJECT"];?>"/>
+                                                <input type="hidden" name="IDTASK" value="<?php echo $task->IDTASK;?>"/>
+                                                <label>Task Abstract</label>
+                                                <input class="form-control" placeholder="Please re-enter your abstract task" 
+                                                    name="DESCRIPTION" 
+                                                        value="<?php echo htmlentities($task->DESCRIPTION); ?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Task Cost</label>
+                                                <input class="form-control" placeholder="Please re-enter the task cost" 
+                                                    name="COST" 
+                                                        value="<?php echo htmlentities($task->Cost_Man_Day); ?>"/>
+                                            </div>                                
+                                            <div class= "row">
+                                                <div class="col-md-6">
+                                                    <input type="submit" class="btn btn-success" name="updateTask" value="Update"/>
+                                                    <a href="/ConduiteDeProjet/?p=ListTask&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDSPRINT=<?php echo $_GET["IDSPRINT"];?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-danger">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
     <!-- /. PAGE INNER  -->
 </div>

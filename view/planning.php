@@ -108,15 +108,15 @@
                       <td>
                         <form method="POST" action="/ConduiteDeProjet/?p=ListTask&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT;?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" enctype="multipart/form-data" role="form">
                         <input type="submit" class="btn btn-success" name="Tasks" value="Tasks"/>
+                        </form>
                       </td>
 
                       <td>
-                      <a href="/ConduiteDeProjet/?p=deleteSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT; ?>" class= "btn btn-danger">
-                        <i class=" fa fa-pencil "></i> 
-                        remove
-                      </a>
-
-                    </td>
+                        <a href="/ConduiteDeProjet/?p=deleteSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT; ?>" class= "btn btn-danger">
+                          <i class=" fa fa-pencil "></i> 
+                          remove
+                        </a>
+                      </td>
                       <td>
                         <a href="/ConduiteDeProjet/?p=showKanban" class="btn btn-warning"><i class="fa "></i> Kanban</a>
                       </td>                     

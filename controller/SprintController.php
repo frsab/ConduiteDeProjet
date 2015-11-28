@@ -33,6 +33,7 @@ class SprintController {
 	public function showSprintUs($IDSPRINT, $IDPROJECT){
 		$sprint_s = $this->sprintModel->selectAll($IDPROJECT);
 		$userstory_sprint_s = $this->sprintModel->select_us_sprint($IDSPRINT);
+		$task_s= $this->sprintModel->getTasksSprint($IDSPRINT);
 	    include "view/sprint.php";
 	}
 
