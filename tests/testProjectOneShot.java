@@ -1,0 +1,92 @@
+package com.example.tests;
+
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
+import org.junit.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class ProjectOneShot {
+  private WebDriver driver;
+  private String baseUrl;
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
+
+  @Before
+  public void setUp() throws Exception {
+    driver = new FirefoxDriver();
+    baseUrl = "http://www.youssefjawhar.com/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+  }
+
+  @Test
+  public void testProjectOneShot() throws Exception {
+    driver.get(baseUrl + "/ConduiteDeProjet/?p=showProjects&IDUSER=22");
+    driver.findElement(By.linkText("Add a project")).click();
+    driver.findElement(By.name("projectName")).clear();
+    driver.findElement(By.name("projectName")).sendKeys("seleniumOne");
+    driver.findElement(By.name("nbColaborators")).clear();
+    driver.findElement(By.name("nbColaborators")).sendKeys("4");
+    driver.findElement(By.name("status")).clear();
+    driver.findElement(By.name("status")).sendKeys("todo");
+    driver.findElement(By.name("description")).clear();
+    driver.findElement(By.name("description")).sendKeys("a little description");
+    driver.findElement(By.name("register")).click();
+    driver.findElement(By.linkText("Update")).click();
+    driver.findElement(By.name("projectName")).clear();
+    driver.findElement(By.name("projectName")).sendKeys("seleniumOneTwo");
+    driver.findElement(By.name("nbColaborators")).clear();
+    driver.findElement(By.name("nbColaborators")).sendKeys("6");
+    driver.findElement(By.name("status")).clear();
+    driver.findElement(By.name("status")).sendKeys("OnGoing");
+    driver.findElement(By.name("description")).clear();
+    driver.findElement(By.name("description")).sendKeys("Another description");
+    driver.findElement(By.name("update")).click();
+    driver.findElement(By.linkText("Delete")).click();
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+      fail(verificationErrorString);
+    }
+  }
+
+  private boolean isElementPresent(By by) {
+    try {
+      driver.findElement(by);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
+  }
+
+  private boolean isAlertPresent() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+  }
+
+  private String closeAlertAndGetItsText() {
+    try {
+      Alert alert = driver.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
+}
