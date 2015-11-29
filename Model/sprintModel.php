@@ -67,7 +67,7 @@ class SprintModel extends Model{
     }
 
     public function update_userStory_idSprint($IDUSERSTORY,$IDSPRINT){
-//        echo "id de ton sprint est $IDSPRINT";
+        echo "id de ton sprint est $IDSPRINT";
         $sql="UPDATE USERSTORY SET  IDSPRINT = $IDSPRINT WHERE IDUSERSTORY=$IDUSERSTORY ";
         //UPDATE userstory SET IDSPRINT`=[value-3] WHERE 1
         echo $sql;
