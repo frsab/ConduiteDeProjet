@@ -42,16 +42,16 @@
 					</li> 
 
 					<li  >
-						<a  href="view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+						<a  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
 					</li>
 
 					<li  >
-						<a   href="view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+						<a   href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-edit fa-3x"></i> Backlog</a>
 					</li>
 
 
 					<li  >
-						<a class="active-menu" href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+						<a class="active-menu" href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-calendar fa-3x"></i> Planning</a>
 					</li>   
 				</ul>
 
@@ -155,7 +155,7 @@
 
 						English tutorial is growing, coming soon.. </br></br>
 
-						<a href="view/planning.php" class="btn btn-success">Back</a>
+						<a href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-success">Back</a>
 					</div>
 				</div>         
 			</div>

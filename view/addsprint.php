@@ -15,7 +15,7 @@
   <!-- GOOGLE FONTS-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
-<body> 
+<body>
     <div id="wrapper">
     <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
       <div class="navbar-header">
@@ -25,32 +25,32 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Home</a> 
+        <a class="navbar-brand" href="#">SPM</a> 
       </div>
       <div style="color: white;
       padding: 15px 50px 5px 50px;
       float: right;
       font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-      <a href="../controller/logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+      <a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
-                        <img src="../assets/img/scrum.png" class="user-image img-responsive"/>
+                        <img src="assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
                     <li  >
-                        <a  href="../view/projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
 
                     <li  >
-                        <a   href="../view/backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+                        <a   href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-edit fa-3x"></i> Backlog</a>
                     </li>
 
 
                     <li  >
-                        <a class="active-menu" href="../view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+                        <a class="active-menu" href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-calendar fa-3x"></i> Planning</a>
                     </li>   
                 </li>  
             </ul>
@@ -74,6 +74,9 @@
                                       <div style="margin-top: 10px;">
                                         <div class="col-md-6">
                                           <div class="form-group">
+                                                <input type="hidden" name="IDPROJECT" value="<?php echo $_GET["IDPROJECT"];/*Added by MS*/ ?>"/>
+                                                <input type="hidden" name="IDUSER" value="<?php echo $_GET["IDUSER"];/*Added by MS*/ ?>"/>
+
                                                 <label>Sprint Abstract</label>
                                                 <input id="SPRINT_ABSTRACT" class="form-control" placeholder="Please enter your sprint abstract" 
                                                 name="SPRINT_ABSTRACT" 
@@ -83,7 +86,7 @@
                                         <div class= "row">
                                             <div class="col-md-6">
                                               <input type="submit" class="btn btn-success" name="addSprint" value="AddSprint"/>
-                                              <a href="/ConduiteDeProjet/?p=showSprintt" class="btn btn-danger">Cancel</a>                     
+                                              <a href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-danger">Cancel</a>                     
                                           </div>
                                       </div>
                                   </div>
@@ -103,16 +106,16 @@
 <!-- /. WRAPPER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
-<script src="../assets/js/jquery-1.10.2.js"></script>
+<script src="assets/js/jquery-1.10.2.js"></script>
 <!-- BOOTSTRAP SCRIPTS -->
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 <!-- METISMENU SCRIPTS -->
-<script src="../assets/js/jquery.metisMenu.js"></script>
+<script src="assets/js/jquery.metisMenu.js"></script>
 <!-- MORRIS CHART SCRIPTS -->
-<script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="../assets/js/morris/morris.js"></script>
+<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="assets/js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
-<script src="../assets/js/custom.js"></script>
+<script src="assets/js/custom.js"></script>
 
 
 </body>

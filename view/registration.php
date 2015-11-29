@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
 					
 					<div class="panel-body">
 						<form role="form" name="registration" method="POST" action="/ConduiteDeProjet/?p=register" enctype="multipart/form-data" ><br/>
-							<div id="error"><font color="red"><?/*php echo $error*/ ?></font></div>
+							<div id="error"><font color="red"><?php if(isset($_GET['error'])) echo $_GET['error'] ?></font></div>
 							<br />
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-tag"  ></i></span>

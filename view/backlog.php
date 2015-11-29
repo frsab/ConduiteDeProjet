@@ -50,7 +50,7 @@
           </li>
 
           <li  >
-            <a href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+            <a href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-calendar fa-3x"></i> Planning</a>
           </li>   
         </ul>
 
@@ -86,7 +86,6 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>US Description</th>
                     <th>Priority</th>
                     <th>Cost</th>
@@ -102,7 +101,6 @@
 
                   <?php foreach ($userstory_s as $userstory) { ?>
                   <tr>   
-                    <td><?php echo $userstory->IDUSERSTORY; ?></td>
                     <td><?php echo $userstory->DESCRIPTION; ?></td>
                     <td><?php echo $userstory->PRIORITY; ?></td>
                     <td><?php echo $userstory->COST; ?></td>

@@ -1,81 +1,47 @@
 <?php
-//require_once('GlobalController.php');
-//require_once('model/sprintModel.php');
-require_once('model/Model.php'); 
+require_once('model/sprintModel.php');
+
 class SprintController {
-	//private $modelSprint;//= new sprintModel();
+	private $sprintModel;
 
     function __construct(){
-		 //$modelSprint= $model;//new sprintModel();
-	
+		$this->sprintModel= new SprintModel();
     }
 
-	public function showPlanning(){
-		$sprint_s = Model::getInstance()->sprintModel->selectAll();
-	 
-	//	$sprint_s = Model::getInstance()->sprintModel->selectSprint();
-//		$userstory_sprint_s = Model::getInstance()->sprintModel->select_us_sprint($IDSPRINT);
-	    include "view/planning.php";
-	}
 
-	public function showAllSprintBacklog(){
-		
-		$sprint_s = Model::getInstance()->sprintModel->selectAll();
-	    $userstory_sprint_s=Model::getInstance()->sprintModel->select_us_sprint();
-	    include "view/sprint.php";
-	}
-	public function moveUsToNotAssignedUS($IDUSERSTORY,$IDSPRINT){
-		echo "moveUsToNotAssignedUS($IDUSERSTORY,$IDSPRINT)";
-		$sprint_s = Model::getInstance()->sprintModel->update_userStory_idSprint($IDUSERSTORY,-1);
-		header("location:".  $_SERVER['HTTP_REFERER']); 
-		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
-	}
-	public function moveUsToSprintUS($IDUSERSTORY,$IDSPRINT){
-		echo "moveUsToSprintUS($IDUSERSTORY,$IDSPRINT)";
-		$sprint_s = Model::getInstance()->sprintModel->update_userStory_idSprint($IDUSERSTORY,$IDSPRINT);
-		header("location:".  $_SERVER['HTTP_REFERER']); 
-		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
-	
-	}
-
-
-
-	public function deleteSprint($IDSPRINT){
-		echo "Model::getInstance()->sprintModel->deleteSprint($IDSPRINT);";
-				Model::getInstance()->sprintModel->deleteSprint($IDSPRINT);
-
-        header("Location: /ConduiteDeProjet");
-
-
-		
+	public function deleteSprint($IDSPRINT, $IDPROJECT, $IDUSER){
+		$this->sprintModel->deleteSprint($IDSPRINT);
+		header("Location: /ConduiteDeProjet/?p=showSprint&IDUSER=".$IDUSER."&IDPROJECT=".$IDPROJECT);
 	 //   include "view/updatesprint.php";
 	}
 
-	public function updateUsSprint(){
-		
-		//$sprint_s = Model::getInstance()->sprintModel->selectAll();
+	public function updateUsSprint($IDUSER){	
+		//$sprint_s = $this->sprintModel->selectAll();
+		$IDUSER=$IDUSER;
 	    include "view/updatesprint.php";
 	}
-	public function addSprint(){
-		
-	//	$sprint_s = Model::getInstance()->sprintModel->selectAll();
+
+	public function addSprint(){	
 	    include "view/addsprint.php";
 	}
 
-
-	public function showSprintTasks(){
-
-		
-		$sprint_s = Model::getInstance()->sprintModel->selectAll();
-	    $userstory_sprint_s=Model::getInstance()->sprintModel->select_us_sprint();
-	    include "view/sprinttasks.php";
+	public function showAll($IDUSER,$IDPROJECT){
+		echo "string$IDUSER,$IDPROJECT";
+		$sprint_s = $this->sprintModel->selectAll($IDPROJECT);
+	    include "view/planning.php";
 	}
 
 
-	public function showSprintUs($IDSPRINT){
-		$sprint_s = Model::getInstance()->sprintModel->selectAll();
-		$userstory_sprint_s = Model::getInstance()->sprintModel->select_us_sprint($IDSPRINT);
-		
+	public function showAllSprintBacklog($IDSPRINT, $IDPROJECT){
+		$sprint_s = $this->sprintModel->selectAll($IDPROJECT);
+		$userstory_sprint_s = $this->sprintModel->select_us_sprint($IDSPRINT);
+		$task_s= $this->sprintModel->getTasksSprint($IDSPRINT);
+	    include "view/sprint.php";
+	}
+	public function showSprintUs($IDSPRINT, $IDPROJECT){
+		$sprint_s = $this->sprintModel->selectAll($IDPROJECT);
+		$userstory_sprint_s = $this->sprintModel->select_us_sprint($IDSPRINT);
+		$task_s= $this->sprintModel->getTasksSprint($IDSPRINT);
 	    include "view/sprint.php";
 	}
 
@@ -83,12 +49,7 @@ class SprintController {
 	    include "view/addsprint.php";
 	}
 
-	public function updateSprint($IDSPRINT){
-		$IDSPRIN=$IDSPRINT;
-		//$assignedUserStory=Model::getInstance()->sprintModel->select_us_sprint_id($IDSPRINT);
-		//$notAssignedUserStory=Model::getInstance()->sprintModel->select_us_NotAssigned_sprint();
-//		$assignedUserStory=Model::getInstance()->sprintModel->select_us_sprint_id($IDSPRINT);
-		
+	public function update(){
 	    include "view/updatesprint.php";
 	}
 
@@ -97,9 +58,37 @@ class SprintController {
 	} 
 
 	 public function ajouterSprint($data){
+	 	$IDPROJECT = $data["IDPROJECT"];
+	 	$IDUSER= $data["IDUSER"];
         $SPRINT_ABSTRACT = $data["SPRINT_ABSTRACT"];
-		echo Model::getInstance()->sprintModel->insert($SPRINT_ABSTRACT);
-        header("Location: /ConduiteDeProjet");
+		$this->sprintModel->insert($SPRINT_ABSTRACT, $IDPROJECT);
+        header("Location: /ConduiteDeProjet/?p=showSprint&IDUSER=".$IDUSER."&IDPROJECT=".$IDPROJECT);
+	}
+
+	public function showHelpSprint($IDUSER, $IDPROJECT){
+        include "view/helpplanning.php";
+    }
+
+    public function moveUsToSprintUS($IDUSERSTORY,$IDSPRINT){
+		$sprint_s = $this->sprintModel->update_userStory_idSprint($IDUSERSTORY,$IDSPRINT);
+		header("location:".  $_SERVER['HTTP_REFERER']); 
+		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
+	
+	}
+
+	public function moveUsToNotAssignedUS($IDUSERSTORY,$IDSPRINT){
+		$sprint_s = $this->sprintModel->update_userStory_idSprint($IDUSERSTORY,1);
+		header("location:".  $_SERVER['HTTP_REFERER']); 
+		//include "ConduiteDeProjet/?p=updateUsSprint&IDSPRINT=$IDSPRINT";
+	}
+
+	public function showKanban($IDSPRINT){
+		$task_s= $this->sprintModel->getTasksSprint($IDSPRINT);
+		include 'view/sprintkanban.php';
+	}
+	
+	public function showHelpKanban(){
+		include 'view/helpkanban.php';	
 	}
 }
 

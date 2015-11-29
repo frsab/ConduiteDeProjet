@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrum Project Manager</title>
-  <!-- BOOTSTRAP STYLES-->
+ <!-- BOOTSTRAP STYLES-->
   <link href="assets/css/bootstrap.css" rel="stylesheet" />
   <!-- FONTAWESOME STYLES-->
   <link href="assets/css/font-awesome.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
             padding: 15px 50px 5px 50px;
             float: right;
             font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-            <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -42,15 +42,15 @@
                     </li>
 
                     <li  >
-                        <a  href="projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
 
                     <li  >
-                        <a class="active-menu"  href="backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+                        <a class="active-menu"  href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-edit fa-3x"></i> Backlog</a>
                     </li>
 
                     <li  >
-                        <a href="planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+                        <a href="view/planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
                     </li>   
                 </ul>
 
@@ -72,15 +72,16 @@
                                 <div class="row">
                                   <div style="margin-top: 10px;">
                                     <div class="col-md-6">
-                                        <form role="form" name="updateUSphp" method="POST" action="/scrum/?p=update">
-
+                                        <form role="form" name="updateUSphp" method="POST" action="/ConduiteDeProjet/?p=update">
+                                            <input type="hidden" name="IDUSER" value="<?php echo $_GET["IDUSER"];/*Added by MS*/ ?>"/>
+                                            <input type="hidden" name="IDPROJECT" value="<?php echo $_GET["IDPROJECT"];/*Added by MS*/ ?>"/>
                                             <input type="hidden" name="IDUSERSTORY" value="<?php echo $_GET["IDUSERSTORY"]; ?>"/>
 
                                             <div class="form-group">
                                                 <label>User story</label>
                                                 <input  class="form-control" type="text" placeholder="Please enter your US" 
-                                                    name="DISCRIPTION" 
-                                                    value="<?php echo htmlentities($userstory->DISCRIPTION); ?>"/>                                       
+                                                    name="DESCRIPTION" 
+                                                    value="<?php echo htmlentities($userstory->DESCRIPTION); ?>"/>                                       
                                             </div>
                                             <div class="form-group">
                                                 <label>Cost</label> 
@@ -102,8 +103,8 @@
                                             </div>
                                             <div class= "row">
                                                 <div class="col-md-6">
-                                                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
-                                                    <input type="reset" class="btn btn-primary" name="updateCancel" value="Cancel"/>    
+                                                    <input type="submit" class="btn btn-success" name="update" value="Update"/>
+                                                    <a href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-danger">Cancel</a>    
                                                 </div>
                                             </div>
                                         </form>
