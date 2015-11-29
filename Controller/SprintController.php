@@ -26,7 +26,7 @@ class SprintController {
 	}
 
 	public function showAll($IDUSER,$IDPROJECT){
-		echo "string$IDUSER,$IDPROJECT";
+		//echo "string$IDUSER,$IDPROJECT";
 		$sprint_s = $this->sprintModel->selectAll($IDPROJECT);
 	    include "view/planning.php";
 	}
