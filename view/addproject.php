@@ -75,10 +75,6 @@
                                                 <input class="form-control" placeholder="Please enter the number of colaborator" name="nbColaborators" value="<?php if(isset($_POST['nbColaborators'])) { echo htmlentities($_POST['nbColaborators']);}?>" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Project Status</label>
-                                                <input class="form-control" placeholder="Please enter your project status" name="status" value="<?php if(isset($_POST['status'])) { echo htmlentities($_POST['status']);}?>" />
-                                            </div>
-                                            <div class="form-group">
                                                 <label>Description</label>
                                                 <textarea class="form-control" placeholder="Please enter a description" rows="5" name="description" value="<?php if(isset($_POST['description'])) { echo htmlentities($_POST['description']);}?>" ></textarea>
                                             </div>

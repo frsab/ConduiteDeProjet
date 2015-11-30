@@ -117,13 +117,18 @@ else{
                       <h3 class="text-center">Aucun Projet ajouté.</h3>
                     <?php } ?>
                     <?php foreach ($Project_s as $project) { ?>
-                      <tr>   
+                      <tr <?php Switch ($project->STATUS){
+                          case stristr($project->STATUS, "TODO")    :       echo "class= \"danger\"";   break;
+                          case stristr($project->STATUS,"ON GOING") :       echo "class= \"warning\"";  break;
+                          case stristr($project->STATUS,"DONE")     :       echo "class= \"success\"";  break;
+                          default : break;
+                        } ?>>   
                         <td><?php echo $project->NAME; ?></td>
                         <td><?php echo $project->NBCOLABORATORS; ?></td>
                         <td><?php echo $project->STATUS; ?></td>
                         <td><?php echo $project->DESCRIPTION; ?></td>
                         <td>
-                          <a href="/ConduiteDeProjet/?p=updateViewProject&IDUSER=<?php echo $project->IDUSER; ?>&IDPROJECT=<?php echo $project->IDPROJECT; ?>" class= "btn btn-default">
+                          <a href="/ConduiteDeProjet/?p=updateViewProject&IDUSER=<?php echo $project->IDUSER; ?>&IDPROJECT=<?php echo $project->IDPROJECT; ?>" class= "btn btn-info">
                             <i class=" fa fa-refresh "></i> 
                             Update
                           </a>

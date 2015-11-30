@@ -19,14 +19,14 @@ class Project extends Model {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function insert($IDUSER, $NAME , $NBCOLABORATORS, $STATUS, $DESCRIPTION){
+    function insert($IDUSER, $NAME , $NBCOLABORATORS, $DESCRIPTION){
 	    $query = $this->db->prepare('INSERT INTO PROJECT (IDPROJECT, IDUSER, NAME, NBCOLABORATORS, STATUS, DESCRIPTION) 
                                                 VALUES (NULL, :IDUSER, :NAME, :NBCOLABORATORS, :STATUS, :DESCRIPTION)');
         return $query->execute(array(
             "IDUSER"=>$IDUSER,
             "NAME"=>$NAME,
             "NBCOLABORATORS"=>$NBCOLABORATORS,
-            "STATUS"=>$STATUS,
+            "STATUS"=>"TODO",
 			"DESCRIPTION"=>$DESCRIPTION 
         ));
     }

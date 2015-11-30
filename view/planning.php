@@ -102,7 +102,11 @@
                   <tr>
                       <td><?php echo $sprint->SPRINT_ABSTRACT; ?></td>
                       <td>
+<<<<<<< HEAD
                         <a href="/ConduiteDeProjet/?p=updateUsSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT;?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class= "btn btn-default"><i class=" fa fa-edit "></i> User stories</a>
+=======
+                        <a href="/ConduiteDeProjet/?p=updateUsSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDSPRINT=<?php echo $sprint->IDSPRINT;?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class= "btn btn-info"><i class=" fa fa-refresh "></i> User stories</a>
+>>>>>>> refs/remotes/origin/devMS
                       </td>
 
                       <td>

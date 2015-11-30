@@ -88,6 +88,15 @@
                                                 <input class="form-control" placeholder="Please re-enter the task cost" 
                                                     name="COST" 
                                                         value="<?php echo htmlentities($task->Cost_Man_Day); ?>"/>
+<<<<<<< HEAD
+=======
+                                            </div>
+                                            <div class="form-group">
+                                                <label>STATE</label>
+                                                <input class="form-control" placeholder="Please re-enter the state" 
+                                                    name="STATE" 
+                                                        value="<?php echo htmlentities($task->ETAT); ?>"/>
+>>>>>>> refs/remotes/origin/devMS
                                             </div>                                
                                             <div class= "row">
                                                 <div class="col-md-6">

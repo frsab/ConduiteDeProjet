@@ -85,22 +85,40 @@
                         <?php if (is_array($task_s) || is_object($task_s)) ?>
                           <?php { ?>
                           <?php foreach ($task_s as $task) { ?>
+<<<<<<< HEAD
                             <tr id= "<?php echo $task->IDTASK; ?>" class="success">
+=======
+                            <tr <?php Switch ($task->ETAT){
+                              case stristr($task->ETAT, "TODO")    :       echo "class= \"danger\"";   break;
+                              case stristr($task->ETAT,"ON GOING") :       echo "class= \"warning\"";  break;
+                              case stristr($task->ETAT,"DONE")     :       echo "class= \"success\"";  break;
+                              default : break;
+                            } ?>>
+>>>>>>> refs/remotes/origin/devMS
                               <td><?php echo $task->DESCRIPTION; ?></td>
                               <td>
                                 <div class="form-group">
                                   <div class="radio" >
                                     <label>
+<<<<<<< HEAD
                                       <input type="radio" name="task1" id="optionsRadios1" value="option1" onclick="changeToRed()" />Todo
+=======
+                                      <input type="radio" name="<?php echo $task->IDTASK; ?>" id="optionsRadios1" value="option1" onclick="changeToRed()" <?php if(strcasecmp($task->ETAT, "TODO")==0)echo " checked" ?> />Todo
+>>>>>>> refs/remotes/origin/devMS
                                     </label>
                                   </div>
                                   <div class="radio">
                                     <label>
+<<<<<<< HEAD
                                       <input type="radio" name="task1" id="optionsRadios2" value="option2" onclick="changeToOrange()" />On going
+=======
+                                      <input type="radio" name="<?php echo $task->IDTASK; ?>" id="optionsRadios2" value="option2" onclick="changeToOrange()" <?php if(strcasecmp($task->ETAT, "ON GOING")==0)echo " checked" ?> />On going
+>>>>>>> refs/remotes/origin/devMS
                                     </label>
                                   </div>
                                   <div class="radio">
                                     <label>
+<<<<<<< HEAD
                                       <input type="radio" name="task1" id="optionsRadios3" value="option3" onclick="changeToGreen()" checked />Done
                                     </label>
                                   </div>
@@ -201,6 +219,17 @@
                               </div>
                             </td> 
                           </tr>
+=======
+                                      <input type="radio" name="<?php echo $task->IDTASK; ?>" id="optionsRadios3" value="option3" onclick="changeToGreen()" <?php if(strcasecmp($task->ETAT, "DONE")==0)echo " checked" ?> />Done
+                                    </label>
+                                  </div>
+                                </div>
+                              </td> 
+                            </tr>
+
+                         <?php } ?>
+                       <?php } ?>
+>>>>>>> refs/remotes/origin/devMS
                         </tbody>
                       </table>
 

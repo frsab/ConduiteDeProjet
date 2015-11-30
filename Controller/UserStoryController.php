@@ -18,8 +18,7 @@ class UserStoryController {
         $DESCRIPTION = $data["DESCRIPTION"];
         $PRIORITY = $data["PRIORITY"];
         $COST = $data["COST"];
-        $ETAT = $data["ETAT"];
-		echo $this->model->insert($IDPROJECT, $DESCRIPTION, $PRIORITY, $COST, $ETAT);
+		$this->model->insert($IDPROJECT, $DESCRIPTION, $PRIORITY, $COST);
         $IDUSER= $data["IDUSER"];
         header("Location: /ConduiteDeProjet/?p=showUS&IDUSER=".$IDUSER."&IDPROJECT=".$IDPROJECT);
     }
@@ -31,8 +30,7 @@ class UserStoryController {
         $PRIORITY = $data["PRIORITY"];
         $COST = $data["COST"];
         $ETAT = $data["ETAT"];
-		echo "userstoryController ---- >  update(data)$IDUSERSTORY, $DESCRIPTION, $PRIORITY, $COST, $ETAT";
-        echo $this->model->update($IDUSERSTORY, $DESCRIPTION, $PRIORITY, $COST, $ETAT);
+        $this->model->update($IDUSERSTORY, $DESCRIPTION, $PRIORITY, $COST, $ETAT);
         $IDUSER= $data["IDUSER"];
         header("Location: /ConduiteDeProjet/?p=showUS&IDUSER=".$IDUSER."&IDPROJECT=".$IDPROJECT);
         //header("Location: /ConduiteDeProjet?p=updateView&IDUSERSTORY=".$IDUSERSTORY);

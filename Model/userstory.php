@@ -15,7 +15,7 @@ class UserStory extends Model {
         $query->execute(array("IDPROJECT" => $IDPROJECT));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
-    function insert($IDPROJECT, $DESCRIPTION, $PRIORITY, $COST , $ETAT){
+    function insert($IDPROJECT, $DESCRIPTION, $PRIORITY, $COST){
 	    $query = $this->db->prepare('INSERT INTO USERSTORY (IDUSERSTORY, IDPROJECT, IDSPRINT, DESCRIPTION, PRIORITY, COST, ETAT) 
                                         VALUES (NULL, :IDPROJECT, 1, :DESCRIPTION, :PRIORITY, :COST, :ETAT)');
 //		'INSERT INTO USERSTORY VALUES (null, :DESCRIPTION, :PRIORITY, :COST, :ETAT)');
@@ -24,7 +24,7 @@ class UserStory extends Model {
 			"DESCRIPTION"=>$DESCRIPTION, 
 			"PRIORITY"=>$PRIORITY, 
 			"COST"=>$COST, 
-			"ETAT"=>$ETAT
+			"ETAT"=>"TODO"
         ));
     }
 
