@@ -1,9 +1,9 @@
 <?php 
-
-include("connect.php");
-include("functions.php");
+/*
+include("config/connect.php");
 if(logged_in()){
-	header("location:profil.php");
+	//header("location:profil.php");
+	header("location:/ConduiteDeProjet/?p=showProjects");
 	exit();
 }
 $error="";
@@ -36,14 +36,16 @@ if (isset($_POST['submit'])) {
 	else{
 		$passwordproject = md5($passwordproject);
 
-		$insertQuery="INSERT INTO projects(nameproject,emailproject,password,date)
+		$insertQuery="INSERT INTO user(USERNAME,MAIL,PASSWORD,REGISTRATIONDATE)
 		VALUES('$nameproject','$emailproject','$passwordproject','$date')";
 		if(mysqli_query($con,$insertQuery)){
 
 			$error="You are succefully registred.";
+			
 		}
 	}
 }
+//*/
 ?>
 
 
@@ -83,29 +85,29 @@ if (isset($_POST['submit'])) {
 					</div>
 					
 					<div class="panel-body">
-						<form method="POST" action="registration.php" enctype="multipart/form-data" role="form"><br/>
-							<div id="error"><font color="red"><?php echo $error ?></font></div>
+						<form role="form" name="registration" method="POST" action="/ConduiteDeProjet/?p=register" enctype="multipart/form-data" ><br/>
+							<div id="error"><font color="red"><?php if(isset($_GET['error'])) echo $_GET['error'] ?></font></div>
 							<br />
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-								<input type="text" name="nameproject" class="form-control" placeholder="Desired Username" />
+								<input type="text" name="username" class="form-control" placeholder="Desired Username" value="<?php if(isset($_POST['username'])) { echo htmlentities($_POST['nameproject']);}?>" />
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon">@</span>
-								<input type="text" name="emailproject" class="form-control" placeholder="Your Email" />
+								<input type="text" name="email" class="form-control" placeholder="Your Email" value="<?php if(isset($_POST['email'])) { echo htmlentities($_POST['emailproject']);}?>" />
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-								<input type="password" name="password" class="form-control" placeholder="Enter Password" />
+								<input type="password" name="password" class="form-control" placeholder="Enter Password" value="<?php if(isset($_POST['password'])) { echo htmlentities($_POST['password']);}?>" />
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-								<input type="password" name="passwordConfirm" class="form-control" placeholder="Retype Password" />
+								<input type="password" name="passwordConfirm" class="form-control" placeholder="Retype Password" value="<?php if(isset($_POST['passwordConfirm'])) { echo htmlentities($_POST['passwordConfirm']);}?>" />
 							</div>
 							
 							<input class="btn btn-success" name ="submit" type="submit" />
 							<hr />
-							Already Registered ?  <a href="login.php" >Login here</a>
+							Already Registered ?  <a href="/ConduiteDeProjet/?p=loginView" >Login here</a>
 						</form>
 					</div>
 

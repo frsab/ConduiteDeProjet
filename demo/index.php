@@ -1,89 +1,68 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scrum Project Manager</title>
-  <!-- BOOTSTRAP STYLES-->
-  <link href="assets/css/bootstrap.css" rel="stylesheet" />
-  <!-- FONTAWESOME STYLES-->
-  <link href="assets/css/font-awesome.css" rel="stylesheet" />
-  <!-- MORRIS CHART STYLES-->
-  <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-  <!-- CUSTOM STYLES-->
-  <link href="assets/css/custom.css" rel="stylesheet" />
-  <!-- GOOGLE FONTS-->
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-</head>
-<body>
-  <div id="wrapper">
-    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.php">SPM</a> 
-      </div>
-    </nav>   
-    <!-- /. NAV TOP  -->
-    <nav class="navbar-default navbar-side" role="navigation">
-      <div class="sidebar-collapse">
-        <ul class="nav" id="main-menu">
-          <li class="text-center">
-            <img src="assets/img/scrum.png" class="user-image img-responsive"/>
-          </li>
+<?php
+require_once('Controller/ProjectController.php');
+require_once('Controller/userStoryController.php');
+require_once('Controller/userController.php');
+require_once('Controller/SprintController.php');
+require_once('Controller/TaskController.php');
 
+$userController = new UserController();
+$projectController = new ProjectController();
+$userStoryController = new UserStoryController();
+$sprintController = new SprintController();
+$taskController = new TaskController();
 
-          <li>
-            <a class="active-menu"  href="index.php"><i class="fa fa-home fa-3x"></i> Welcome</a>
-          </li>
+if(isset($_GET["p"]))
+    switch ($_GET["p"]) {
+		
+        case 'home'                  :$userController->home();break;
+        case 'authentify'            :$userController->authentify();break;
+        case 'logout'                :$userController->logout();break;
+        case 'registerView'          :$userController->registerView();break;
+        case 'register'              :$userController->register($_POST);break;
+        case 'loginView'             :$userController->loginView();break;
+        case 'login'                 :$userController->login($_POST);break;
 
-          <li  >
-            <a  href="registration.php"><i class="fa fa-laptop fa-3x"></i> Sign up </a>
-          </li>
+        case 'insertProject'         :$projectController->insertProject($_POST);  break;
+        case 'updateProject'         :$projectController->update($_POST);    break;
+        case 'removeProject'         :$projectController->removeProject($_GET["IDPROJECT"],$_GET["IDUSER"]);  break;
+        case 'newProject'            :$projectController->newProject();  break;
+        case 'updateViewProject'     :$projectController->updateProject($_GET["IDPROJECT"]);  break;
+        case 'showProjects'          :$projectController->showAll($_GET["IDUSER"]);break;
 
-          <li  >
-            <a  href="login.php"><i class="fa fa-user fa-3x"></i> Login </a>
-          </li>   
-        </ul>
+        case 'insert'                :$userStoryController->insert($_POST); break;
+        case 'update'                :$userStoryController->update($_POST); break;
+        case 'remove'                :$userStoryController->remove($_GET["IDUSERSTORY"], $_GET["IDPROJECT"], $_GET["IDUSER"]); 
+        case 'new'                   :$userStoryController->newUserStory();                         break;
+        case 'updateView'            :$userStoryController->updateUserStory($_GET["IDUSERSTORY"],$_GET["IDUSER"]);   break;
+        case 'showUS'                :$userStoryController->showall($_GET["IDPROJECT"]);break; 
+        case 'helpbacklog'           :$userStoryController->showHelpBacklog($_GET["IDUSER"], $_GET["IDPROJECT"]);break; 
 
-      </div>
+        case 'deleteSprint'          :$sprintController->deleteSprint($_GET["IDSPRINT"], $_GET["IDPROJECT"], $_GET["IDUSER"]); break;
+        case 'updateUsSprint'        :$sprintController->updateUsSprint($_GET["IDSPRINT"]); break;
+        case 'addSprint'             :$sprintController->addSprint(); break;
+        case 'insertSprint'          :$sprintController->insert(); break;
+        case 'updateSprint'          :$sprintController->update(); break;
+        case 'removeSprint'          :$sprintController->remove(); break;
+        case 'showSprint'            :$sprintController->showAll($_GET["IDPROJECT"]);break;
+        case 'ajouterSprint'         :$sprintController->ajouterSprint($_POST);break; 
+        case 'showSprintUs'          :$sprintController->showSprintUs($_GET["IDSPRINT"], $_GET["IDPROJECT"]);break;
+        case 'helpSprint'            :$sprintController->showHelpSprint($_GET["IDUSER"], $_GET["IDPROJECT"]);break;
+        case 'showKanban'            :$sprintController->showKanban($_GET["IDSPRINT"]);break;
+        case 'showHelpKanban'        :$sprintController->showHelpKanban();break;
+        //new added
+        case 'moveUsToNotAssignedUS' :$sprintController->moveUsToNotAssignedUS($_GET["IDUSERSTORYNotAssignedUS"],$_GET["IDSPRINTNotAssignedUS"]);break;
+        case 'moveUsToSprintUS'      :$sprintController->moveUsToSprintUS($_GET["IDUSERSTORY"],$_GET["IDSPRINT"]);break;
+            
+        case 'ListTask'              :$taskController->ListTask($_GET["IDSPRINT"]);break; 
+        case 'addTask'               :$taskController->addTask($_GET["IDSPRINT"]);break; 
+        case 'updateTask'            :$taskController->updateTask($_GET["IDTASK"]);break;
+        case 'validateUpdate'        :$taskController->update($_POST);break; 
+        case 'DeleteTaskFromSprint'  :$taskController->deleteTask($_GET["IDTASK"], $_GET["IDUSER"], $_GET["IDSPRINT"], $_GET["IDPROJECT"]);break; 
+        case 'ajouterTask'           :$taskController->ajouterTask($_POST);break;   
+        case 'helptTasks'            :$taskController->showHelpTasks($_GET["IDUSER"], $_GET["IDPROJECT"]);break;
 
-    </nav>  
-    <!-- /. NAV SIDE  -->
-    <div id="page-wrapper" >
-      <div id="page-inner">
-        <div class="row">
-          <div class="col-md-12">
-           <h2>Scrum Project Manager</h2>   
-           <h5>Welcome to Scrum Project Manager, the "best" website to manage your scrum projects. </h5>
-
-           <h3>Please sign up or log in.</h3>
-         </div>
-       </div>         
-     </div>
-     <!-- /. PAGE INNER  -->
-   </div>
-   <!-- /. PAGE WRAPPER  -->
- </div>   
- <!-- /. WRAPPER  -->
- <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
- <!-- JQUERY SCRIPTS -->
- <script src="assets/js/jquery-1.10.2.js"></script>
- <!-- BOOTSTRAP SCRIPTS -->
- <script src="assets/js/bootstrap.min.js"></script>
- <!-- METISMENU SCRIPTS -->
- <script src="assets/js/jquery.metisMenu.js"></script>
- <!-- MORRIS CHART SCRIPTS -->
- <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
- <script src="assets/js/morris/morris.js"></script>
- <!-- CUSTOM SCRIPTS -->
- <script src="assets/js/custom.js"></script>
-
-
-</body>
-</html>
-
+        default :   include 'view/home.php'; break;    
+    
+    }else {
+        include 'view/home.php';
+    }

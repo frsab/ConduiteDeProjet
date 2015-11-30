@@ -1,14 +1,16 @@
 <?php   
-include("connect.php");
-include("functions.php");
+/*
+include("../controller/connect.php");
+include("../controller/functions.php");
 
 if(logged_in()){
   
 }
 else{
-  header("location:login.php");
+  header("location:../view/login.php");
   exit();
 }
+//*/
 ?>
 
 
@@ -18,18 +20,16 @@ else{
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrum Project Manager</title>
-  <!-- BOOTSTRAP STYLES-->
+ <!-- BOOTSTRAP STYLES-->
   <link href="assets/css/bootstrap.css" rel="stylesheet" />
   <!-- FONTAWESOME STYLES-->
   <link href="assets/css/font-awesome.css" rel="stylesheet" />
   <!-- MORRIS CHART STYLES-->
-
+  <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
   <!-- CUSTOM STYLES-->
   <link href="assets/css/custom.css" rel="stylesheet" />
   <!-- GOOGLE FONTS-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-  <!-- TABLE STYLES-->
-  <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
   <div id="wrapper">
@@ -47,7 +47,7 @@ else{
       padding: 15px 50px 5px 50px;
       float: right;
       font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp;  -->
-      <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+      <a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
@@ -58,20 +58,20 @@ else{
           </li>
 
           <li  >
-            <a  class="active-menu"  href="projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+            <a  class="active-menu"  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
           </li>
+          <?php if($Project_s != null) { ?>
           <li>
             <a href="#"><i class="fa fa-sitemap fa-3x" ></i> Projects <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
-              <li>
-                <a href="backlog.php">Project 1</a>
-              </li>
-              <li>
-                <a href="backlog.php">Project 2</a>
-              </li>
-              
+              <?php foreach ($Project_s as $project) { ?>
+                <li>
+                  <a href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $project->IDPROJECT; ?>"><?php echo $project->NAME; ?></a>
+                </li>
+              <?php } ?>
             </ul>
-          </li> 
+          </li>
+          <?php } ?> 
 
         </ul>
 
@@ -84,7 +84,7 @@ else{
         <div class="row">
           <div class="col-md-12">
            <h2>Your Project List</h2>   
-           <h5>You can see all your scrum projects on the list below.</h5>
+           <h5>You can see all your Scrum projects on the list below.</h5>
            
          </div>
        </div>
@@ -102,61 +102,56 @@ else{
             </div>
             <div class="panel-body">
               <div class="table-responsive">
+                <?php if($Project_s != null) { ?>
                 <table class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>#</th>
                       <th>Project Name</th>
                       <th>Number of Collaborators</th>
-                      <th>Project Status</th>
+                      <th>Status</th>
+                      <th>Description</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Cdp</td>
-                      <td>4</td>
-                      <td>On going</td>
-                      <td>
-                        <a href="updateproject.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                      </td>
-                      <td>
-                        <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>PdP</td>
-                      <td>4</td>
-                      <td>Done</td>
-                      <td>
-                        <a href="updateproject.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                      </td>
-                      <td>
-                        <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Ped</td>
-                      <td>3</td>
-                      <td>To do</td>
-                      <td>
-                        <a href="updateproject.php" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                      </td>
-                      <td>
-                        <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
-                      </td>
-                    </tr>
+                    <?php }else { ?>
+                      <h3 class="text-center">Aucun Projet ajouté.</h3>
+                    <?php } ?>
+                    <?php foreach ($Project_s as $project) { ?>
+                      <tr <?php Switch ($project->STATUS){
+                          case stristr($project->STATUS, "TODO")    :       echo "class= \"danger\"";   break;
+                          case stristr($project->STATUS,"ON GOING") :       echo "class= \"warning\"";  break;
+                          case stristr($project->STATUS,"DONE")     :       echo "class= \"success\"";  break;
+                          default : break;
+                        } ?>>   
+                        <td><?php echo $project->NAME; ?></td>
+                        <td><?php echo $project->NBCOLABORATORS; ?></td>
+                        <td><?php echo $project->STATUS; ?></td>
+                        <td><?php echo $project->DESCRIPTION; ?></td>
+                        <td>
+                          <a href="/ConduiteDeProjet/?p=updateViewProject&IDUSER=<?php echo $project->IDUSER; ?>&IDPROJECT=<?php echo $project->IDPROJECT; ?>" class= "btn btn-info">
+                            <i class=" fa fa-refresh "></i> 
+                            Update
+                          </a>
+                        </td>
+                        <td>
+                          <a href="/ConduiteDeProjet/?p=removeProject&IDUSER=<?php echo $project->IDUSER; ?>&IDPROJECT=<?php echo $project->IDPROJECT; ?>" class= "btn btn-danger">
+                            <i class="fa fa-pencil"></i> 
+                            Delete
+                          </a>
+                        </td>
+                      </tr>
+                    <?php } ?>
+                  <?php if($Project_s != null) { ?>
                   </tbody>
-                </table>
+                  </table>
+                <?php } ?>
               </div>
             </div>
-          </div>
+          
           <!-- End  Kitchen Sink -->
           <div class="row">
             <div class="col-md-12">
-              <a href="addproject.php" class="btn btn-success">Add a project</a>
+              <a href="/ConduiteDeProjet/?p=newProject&IDUSER=<?php echo $_GET["IDUSER"]; ?>" class="btn btn-success">Add a project</a>
             </div>
           </div> 
 
@@ -177,9 +172,9 @@ else{
 <script src="assets/js/bootstrap.min.js"></script>
 <!-- METISMENU SCRIPTS -->
 <script src="assets/js/jquery.metisMenu.js"></script>
-<!-- DATA TABLE SCRIPTS -->
-<script src="assets/js/dataTables/jquery.dataTables.js"></script>
-<script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+<!-- MORRIS CHART SCRIPTS -->
+<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="assets/js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="assets/js/custom.js"></script>
 

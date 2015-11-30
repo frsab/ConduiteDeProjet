@@ -31,7 +31,7 @@
       padding: 15px 50px 5px 50px;
       float: right;
       font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-      <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+      <a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
     </nav>   
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
@@ -42,32 +42,32 @@
           </li> 
 
           <li  >
-            <a  href="projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+            <a  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
           </li>
 
           <li  >
-            <a class="active-menu"  href="backlog.php"><i class="fa fa-edit fa-3x"></i> Backlog</a>
+            <a class="active-menu"  href="/ConduiteDeProjet/?p=showUS&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-edit fa-3x"></i> Backlog</a>
           </li>
 
           <li  >
-            <a href="planning.php"><i class="fa fa-calendar fa-3x"></i> Planning</a>
+            <a href="/ConduiteDeProjet/?p=showSprint&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>"><i class="fa fa-calendar fa-3x"></i> Planning</a>
           </li>   
         </ul>
-        
+
       </div>
-      
+
     </nav>  
     <!-- /. NAV SIDE  -->
     <div id="page-wrapper" >
       <div id="page-inner">
-       
+
 
         <div class="row">
           <div class="col-md-12">
            <h2>Backlog</h2>   
            <h5>You must begin by your backlog project. </h5>
-           
-           <a href="helpbacklog.php" class="btn btn-info">How to make a backlog</a>
+
+           <a href="/ConduiteDeProjet/?p=helpbacklog&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-info">How to make a backlog</a>
 
          </div>
        </div> 
@@ -79,77 +79,73 @@
             User stories list
           </div>
           <div class="panel-body">
-            
+
             <div class="table-responsive"> 
 
               <?php if($userstory_s != null) { ?>
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>US Description</th>
                     <th>Priority</th>
                     <th>Cost</th>
                     <th>Status</th>
-                    
+
                   </tr>
                 </thead>
-                
+
                 <tbody>
                   <?php }else { ?>
                   <h3 class="text-center">Aucune UserStory ajoutée.</h3>
                   <?php } ?>
 
-<!--                   <?php foreach ($userstory_s as $userstory) { ?>
-                  <tr>   
-                    <td><?php echo $userstory->IDUSERSTORY; ?></td>
-                    <td><?php echo $userstory->DISCRIPTION; ?></td>
+                  <?php foreach ($userstory_s as $userstory) { ?>
+                  <tr <?php Switch ($userstory->ETAT){
+                    case stristr($userstory->ETAT, "TODO")    :       echo "class= \"danger\"";   break;
+                    case stristr($userstory->ETAT,"ON GOING") :       echo "class= \"warning\"";  break;
+                    case stristr($userstory->ETAT,"DONE")     :       echo "class= \"success\"";  break;
+                    default : break;
+                  } ?>>   
+                    <td><?php echo $userstory->DESCRIPTION; ?></td>
                     <td><?php echo $userstory->PRIORITY; ?></td>
                     <td><?php echo $userstory->COST; ?></td>
                     <td><?php echo $userstory->ETAT; ?></td>
                     <td>
-                      <a href="/scrum/?p=updateview&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-default">
+                      <a href="/ConduiteDeProjet/?p=updateView&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-info">
                         <i class=" fa fa-refresh "></i> 
                         Update
                       </a>
                     </td>
                     <td>
-                      <a href="/scrum/?p=remove&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-default">
-                        <i class=" fa fa-refresh "></i> 
+                      <a href="/ConduiteDeProjet/?p=remove&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-danger">
+                        <i class=" fa fa-pencil "></i> 
                         remove
                       </a>
-                      
-                    </td>
 
-                    <td>
-                      <button class="btn btn-danger" onclick="/scrum/?p=remove&id=<?php echo $userstory->IDUSERSTORY; ?>">
-                        <i class="fa fa-pencil"></i> 
-                        Delete
-                      </button>
                     </td>
                   </tr>
                   <?php } ?>
-                  <?php if($userstory_s != null) { ?> -->
+                  <?php if($userstory_s != null) { ?>
                 </tbody>
               </table>
               <?php } ?>
             </div>
-            
+
           </div>
         </div>
       </div>
       <!-- End  Kitchen Sink -->
       <div class="row">
-        
+
         <div class="col-md-12">
-          <!-- <a href="/scrum/?p=new" class="btn btn-success">Add an user story</a> -->
-          <a href="addus.php" class="btn btn-success">Add an user story</a>
+          <a href="/ConduiteDeProjet/?p=new&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>" class="btn btn-success">Add an user story</a>
+
         </div>
-        
+
       </div> 
       
     </div> 
-    
+
   </div>
   <!-- /. PAGE INNER  -->
 </div>

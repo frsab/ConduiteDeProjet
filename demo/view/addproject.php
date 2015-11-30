@@ -31,7 +31,7 @@
             padding: 15px 50px 5px 50px;
             float: right;
             font-size: 16px;"> <!-- Last access : 18 october 2015 &nbsp; --> 
-            <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <a href="/ConduiteDeProjet/?p=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -41,7 +41,7 @@
                         <img src="assets/img/scrum.png" class="user-image img-responsive"/>
                     </li>
                     <li  >
-                        <a  class="active-menu"  href="projectlist.php"><i class="fa fa-list fa-3x"></i> Project List</a>
+                        <a  class="active-menu"  href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"]; ?>"><i class="fa fa-list fa-3x"></i> Project List</a>
                     </li>
                 </li>  
             </ul>
@@ -59,46 +59,45 @@
                         <div class="panel-heading">
                             Add a project
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                              <div style="margin-top: 10px;">
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                    <label>Project Name</label>
-                                    <input class="form-control" placeholder="Please enter your project Name" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Number of colaborators</label>
-                                    <input class="form-control" placeholder="Please enter the number of colaborator" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Project Status</label>
-                                    <input class="form-control" placeholder="Please enter your project status" />
-                                </div>
+                        <form role="form" name="registration" method="POST" action="/ConduiteDeProjet/?p=insertProject">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div style="margin-top: 10px;">
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="IDUSER" value="<?php echo $_GET["IDUSER"];/*Added by MS*/ ?>"/>
 
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea class="form-control" placeholder="Please enter a description" rows="5"></textarea>
-                                </div>
+                                            <div class="form-group">
+                                                <label>Project Name</label>
+                                                <input class="form-control" placeholder="Please enter your project Name" name="projectName" value="<?php if(isset($_POST['projectName'])) { echo htmlentities($_POST['projectName']);}?>" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Number of colaborators</label>
+                                                <input class="form-control" placeholder="Please enter the number of colaborator" name="nbColaborators" value="<?php if(isset($_POST['nbColaborators'])) { echo htmlentities($_POST['nbColaborators']);}?>" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea class="form-control" placeholder="Please enter a description" rows="5" name="description" value="<?php if(isset($_POST['description'])) { echo htmlentities($_POST['description']);}?>" ></textarea>
+                                            </div>
 
-                                <div class= "row">
-                                    <div class="col-md-6">
-                                        <a href="projectlist.php" class="btn btn-danger">Cancel</a>
-                                        <a href="projectlist.php" class="btn btn-success">Add</a>
+                                            <div class= "row">
+                                                <div class="col-md-6">
+                                                    <input type="submit" class="btn btn-success" name="register" value="Add"/>
+                                                    <a href="/ConduiteDeProjet/?p=showProjects&IDUSER=<?php echo $_GET["IDUSER"];/*Added by MS*/ ?>" class="btn btn-danger">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </div>
+                </div>       
             </div>
-        </div>
-    </div>
 
-    <!-- /. PAGE INNER  -->
-</div>
-<!-- /. PAGE WRAPPER  -->
-</div>   
+        <!-- /. PAGE INNER  -->
+        </div>
+    <!-- /. PAGE WRAPPER  -->
+    </div>   
 <!-- /. WRAPPER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
