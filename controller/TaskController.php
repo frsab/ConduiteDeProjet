@@ -41,7 +41,8 @@ class TaskController {
         $IDTASK =(int) $data["IDTASK"];
         $DESCRIPTION = $data["DESCRIPTION"];
         $COST = $data["COST"];
-		$this->taskModel->update($IDTASK, $DESCRIPTION, $COST);
+        $STATE=$data["STATE"];
+		$this->taskModel->update($IDTASK, $DESCRIPTION, $COST, $STATE);
         $IDSPRINT = $data["IDSPRINT"];
         $IDUSER= $data["IDUSER"];
         $IDPROJECT=$data["IDPROJECT"];

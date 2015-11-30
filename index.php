@@ -49,10 +49,6 @@ if(isset($_GET["p"]))
         case 'helpSprint'            :$sprintController->showHelpSprint($_GET["IDUSER"], $_GET["IDPROJECT"]);break;
         case 'showKanban'            :$sprintController->showKanban($_GET["IDSPRINT"]);break;
         case 'showHelpKanban'        :$sprintController->showHelpKanban();break;
-            # code...
-            break;
-            # code...
-            break;
         //new added
         case 'moveUsToNotAssignedUS' :$sprintController->moveUsToNotAssignedUS($_GET["IDUSERSTORYNotAssignedUS"],$_GET["IDSPRINTNotAssignedUS"]);break;
         case 'moveUsToSprintUS'      :$sprintController->moveUsToSprintUS($_GET["IDUSERSTORY"],$_GET["IDSPRINT"]);break;

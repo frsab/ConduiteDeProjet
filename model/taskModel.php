@@ -16,10 +16,11 @@ class TaskModel extends Model{
 
     public function insertTask($DESCRIPTION,$COST,$IDSPRINT){
        $query = $this->db->prepare('INSERT INTO TASK (IDTASK, IDSPRINT, DESCRIPTION, ETAT, Cost_Man_Day) 
-                                                    VALUES (NULL, :IDSPRINT, :DESCRIPTION,NULL, :COST)');
+                                                    VALUES (NULL, :IDSPRINT, :DESCRIPTION,:ETAT, :COST)');
         return $query->execute(array(
            "IDSPRINT"=>$IDSPRINT,
             "DESCRIPTION"=>$DESCRIPTION,
+            "ETAT"=>"TODO",
             "COST"=>$COST
         ));
     }    
@@ -46,17 +47,19 @@ class TaskModel extends Model{
     public function deleteAll($IDTASK){
     }
     
-    function update($IDTASK, $DESCRIPTION, $COST){
+    function update($IDTASK, $DESCRIPTION, $COST, $STATE){
         $sqlUpdate = "UPDATE TASK
                             SET 
                                 DESCRIPTION= :DESCRIPTION,
-                                Cost_Man_Day= :COST
+                                Cost_Man_Day= :COST,
+                                ETAT= :STATE
                             WHERE 
                                 IDTASK = :IDTASK";
         $stmt = $this->db->prepare($sqlUpdate);
         $valeurs = array(
                             ':DESCRIPTION'=>$DESCRIPTION,
                             ':COST'=>$COST,
+                            ':STATE'=>$STATE,
                             ':IDTASK'=>$IDTASK
                             );
         if ($stmt->fetch() == false){

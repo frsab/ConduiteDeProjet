@@ -94,12 +94,6 @@
                                                 name="PRIORITY" 
                                                 value="<?php if(isset($_POST['PRIORITY'])) { echo htmlentities($_POST['PRIORITY']);}?>"/>                                      
                                         </div>
-                                        <div class="form-group">
-                                            <label>Satus</label>
-                                            <input id="ETAT" class="form-control" placeholder="Please enter your US" 
-                                                name="ETAT" 
-                                                value="<?php if(isset($_POST['ETAT'])) { echo htmlentities($_POST['ETAT']);}?>"/>                                      
-                                        </div>
                                         <div class= "row">
                                             <div class="col-md-6">
                                               <input type="submit" class="btn btn-success" name="register" value="Add"/>

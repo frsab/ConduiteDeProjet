@@ -70,9 +70,6 @@
        <div style="margin-top: 10px;">
         <div class="panel panel-default">
 
-          <div class="panel-heading">
-            User stories list
-          </div>
           <div class="panel-body">
             <div class="table-responsive">             
               <table class="table table-striped table-bordered table-hover">
@@ -80,6 +77,7 @@
                   <tr>
                     <th>Task abstract</th>
                     <th>Cost Man/Day</th>
+                    <th>State</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -88,12 +86,18 @@
                  <?php if (is_array($task_s) || is_object($task_s)) ?>
                  <?php { ?>
                  <?php foreach ($task_s as $task) { ?>
-                 <tr>
-                  <td><?php echo $task->DESCRIPTION; ?></td>
-                  <td><?php echo $task->Cost_Man_Day; ?></td>
-                  <td>
-                    <a href="/ConduiteDeProjet?p=updateTask&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo "$id";?>&IDTASK=<?php echo "$task->IDTASK"; ?>" class= "btn btn-default"><i class=" fa fa-refresh "></i> Update</a>
-                  </td>
+                 <tr <?php Switch ($task->ETAT){
+                      case stristr($task->ETAT, "TODO")    :       echo "class= \"danger\"";   break;
+                      case stristr($task->ETAT,"ON GOING") :       echo "class= \"warning\"";  break;
+                      case stristr($task->ETAT,"DONE")     :       echo "class= \"success\"";  break;
+                      default : break;
+                    } ?>>
+                    <td><?php echo $task->DESCRIPTION; ?></td>
+                    <td><?php echo $task->Cost_Man_Day; ?></td>
+                    <td><?php echo $task->ETAT; ?></td>
+                    <td>
+                      <a href="/ConduiteDeProjet?p=updateTask&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo "$id";?>&IDTASK=<?php echo "$task->IDTASK"; ?>" class= "btn btn-info"><i class=" fa fa-refresh "></i> Update</a>
+                    </td>
                   <td>
                     <a href="/ConduiteDeProjet?p=DeleteTaskFromSprint&IDTASK=<?php echo "$task->IDTASK"; ?>&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDSPRINT=<?php echo "$id";?>" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
                   </td>                   

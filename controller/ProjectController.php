@@ -28,9 +28,8 @@ class ProjectController {
         $IDUSER = $data["IDUSER"];
         $NAME = $data["projectName"];
         $NBCOLABORATORS= $data["nbColaborators"];
-        $STATUS= $data["status"];
         $DESCRIPTION = $data["description"];
-		echo $this->model->insert($IDUSER, $NAME, $NBCOLABORATORS,$STATUS, $DESCRIPTION);
+		echo $this->model->insert($IDUSER, $NAME, $NBCOLABORATORS, $DESCRIPTION);
         header("Location: /ConduiteDeProjet/?p=showProjects&IDUSER=".$IDUSER);
     }
 

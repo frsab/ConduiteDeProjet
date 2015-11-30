@@ -109,7 +109,12 @@
                             </thead>
                             <tbody>
                             <?php foreach ($userstory_sprint_s as $userstory) { ?>
-                            <tr>
+                            <tr <?php Switch ($userstory->ETAT){
+                                    case stristr($userstory->ETAT, "TODO")    :       echo "class= \"danger\"";   break;
+                                    case stristr($userstory->ETAT,"ON GOING") :       echo "class= \"warning\"";  break;
+                                    case stristr($userstory->ETAT,"DONE")     :       echo "class= \"success\"";  break;
+                                    default : break;
+                                  } ?>>
                                 <td><?php echo $userstory->DESCRIPTION; ?></td>
                                 <td><?php echo $userstory->PRIORITY; ?></td>
                                 <td><?php echo $userstory->COST; ?></td>
@@ -172,33 +177,23 @@
                           <table class="table table-striped table-bordered table-hover">
                             <thead>
                               <tr>
-                                <th>#</th>
                                 <th>Task abstract</th>
+                                <th>STATE</th>
                               </tr>
                             </thead>
 
                             <tbody>
-                              <tr class="success">
-                                <td>1</td>
-                                <td>Task 1</td>
-
-                              </tr>
-                              <tr class="warning">
-                                <td>2</td>
-                                <td>Task 2</td>
-
-
-                              </tr>
-                              <tr class="danger">
-                                <td>3</td>
-                                <td>Task 3</td>
-
-                              </tr>
-                              <tr class="danger">
-                                <td>4</td>
-                                <td>Task 4</td>
-
-                              </tr>
+                                <?php foreach ($task_s as $task) { ?>
+                                  <tr <?php Switch ($task->ETAT){
+                                    case stristr($task->ETAT, "TODO")    :       echo "class= \"danger\"";   break;
+                                    case stristr($task->ETAT,"ON GOING") :       echo "class= \"warning\"";  break;
+                                    case stristr($task->ETAT,"DONE")     :       echo "class= \"success\"";  break;
+                                    default : break;
+                                  } ?>>
+                                    <td><?php echo $task->DESCRIPTION; ?></td>
+                                    <td><?php echo $task->ETAT; ?></td>
+                                  </tr>
+                                <?php } ?>
                             </tbody>
                           </table>
 

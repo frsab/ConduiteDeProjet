@@ -100,13 +100,18 @@
                   <?php } ?>
 
                   <?php foreach ($userstory_s as $userstory) { ?>
-                  <tr>   
+                  <tr <?php Switch ($userstory->ETAT){
+                    case stristr($userstory->ETAT, "TODO")    :       echo "class= \"danger\"";   break;
+                    case stristr($userstory->ETAT,"ON GOING") :       echo "class= \"warning\"";  break;
+                    case stristr($userstory->ETAT,"DONE")     :       echo "class= \"success\"";  break;
+                    default : break;
+                  } ?>>   
                     <td><?php echo $userstory->DESCRIPTION; ?></td>
                     <td><?php echo $userstory->PRIORITY; ?></td>
                     <td><?php echo $userstory->COST; ?></td>
                     <td><?php echo $userstory->ETAT; ?></td>
                     <td>
-                      <a href="/ConduiteDeProjet/?p=updateView&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-default">
+                      <a href="/ConduiteDeProjet/?p=updateView&IDUSER=<?php echo $_GET["IDUSER"]; ?>&IDPROJECT=<?php echo $_GET["IDPROJECT"]; ?>&IDUSERSTORY=<?php echo $userstory->IDUSERSTORY; ?>" class= "btn btn-info">
                         <i class=" fa fa-refresh "></i> 
                         Update
                       </a>

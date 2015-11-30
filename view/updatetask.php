@@ -88,6 +88,12 @@
                                                 <input class="form-control" placeholder="Please re-enter the task cost" 
                                                     name="COST" 
                                                         value="<?php echo htmlentities($task->Cost_Man_Day); ?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>STATE</label>
+                                                <input class="form-control" placeholder="Please re-enter the state" 
+                                                    name="STATE" 
+                                                        value="<?php echo htmlentities($task->ETAT); ?>"/>
                                             </div>                                
                                             <div class= "row">
                                                 <div class="col-md-6">
